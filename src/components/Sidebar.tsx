@@ -1,4 +1,3 @@
-import React from 'react';
 import { Flame, Wind, Activity, ChevronRight } from 'lucide-react';
 
 interface SidebarProps {

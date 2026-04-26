@@ -1,4 +1,3 @@
-import React from 'react';
 import { History, Leaf } from 'lucide-react';
 
 export default function DeepDivesPage() {

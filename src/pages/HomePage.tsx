@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, Zap } from 'lucide-react';
+import { Globe, Zap } from 'lucide-react';
 
 export default function HomePage() {
   return (
