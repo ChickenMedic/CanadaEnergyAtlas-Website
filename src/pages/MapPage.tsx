@@ -4,8 +4,11 @@ import Sidebar from '../components/Sidebar';
 
 export default function MapPage() {
   const [layers, setLayers] = useState({
-    oilGas: true,
-    renewable: false
+    basins: true,
+    pipelines: true,
+    refineries: false,
+    grid: false,
+    renewables: false
   });
 
   const toggleLayer = (layer: keyof typeof layers) => {

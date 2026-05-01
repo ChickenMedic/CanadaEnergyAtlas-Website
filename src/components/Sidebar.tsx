@@ -1,19 +1,30 @@
-import { Flame, Wind, Activity, ChevronRight } from 'lucide-react';
+import { Database, TrendingRight, Factory, Zap, Leaf, Activity } from 'lucide-react';
 
 interface SidebarProps {
   layers: {
-    oilGas: boolean;
-    renewable: boolean;
+    basins: boolean;
+    pipelines: boolean;
+    refineries: boolean;
+    grid: boolean;
+    renewables: boolean;
   };
-  onToggleLayer: (layer: 'oilGas' | 'renewable') => void;
+  onToggleLayer: (layer: keyof SidebarProps['layers']) => void;
 }
 
 export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
+  const toggleConfigs = [
+    { key: 'basins', icon: <Database size={20} />, label: 'Basins & Resources', desc: 'Geological Formations', colorClass: 'gas' },
+    { key: 'pipelines', icon: <TrendingRight size={20} />, label: 'Pipelines & Flows', desc: 'Liquids & Gas Networks', colorClass: 'gas' },
+    { key: 'refineries', icon: <Factory size={20} />, label: 'Refineries & Storage', desc: 'Processing Hubs', colorClass: 'gas' },
+    { key: 'grid', icon: <Zap size={20} />, label: 'The Grid', desc: 'Transmission Lines', colorClass: 'renewable' },
+    { key: 'renewables', icon: <Leaf size={20} />, label: 'Renewables', desc: 'Wind, Solar & Hydro', colorClass: 'renewable' },
+  ] as const;
+
   return (
     <div className="sidebar glass-panel">
       <div className="sidebar-header">
         <h1>Canadian Energy Atlas</h1>
-        <p>Interactive exploration of Canada's energy infrastructure, tracking both conventional and renewable resources.</p>
+        <p>Interactive exploration of Canada's energy architecture and resources.</p>
       </div>
       
       <div className="sidebar-content">
@@ -22,51 +33,31 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
             Data Layers
           </h2>
           
-          <div 
-            className={`layer-toggle gas ${layers.oilGas ? 'active' : ''}`}
-            onClick={() => onToggleLayer('oilGas')}
-          >
-            <div className="toggle-info">
-              <div className="toggle-icon gas">
-                <Flame size={20} />
+          {toggleConfigs.map(({ key, icon, label, desc, colorClass }) => (
+            <div 
+              key={key}
+              className={`layer-toggle ${colorClass} ${layers[key as keyof typeof layers] ? 'active' : ''}`}
+              onClick={() => onToggleLayer(key as keyof typeof layers)}
+            >
+              <div className="toggle-info">
+                <div className={`toggle-icon ${colorClass}`}>
+                  {icon}
+                </div>
+                <div className="toggle-text">
+                  <h3>{label}</h3>
+                  <p>{desc}</p>
+                </div>
               </div>
-              <div className="toggle-text">
-                <h3>Oil & Gas</h3>
-                <p>Pipelines & Facilities</p>
-              </div>
+              <label className="switch" onClick={e => e.stopPropagation()}>
+                <input 
+                  type="checkbox" 
+                  checked={layers[key as keyof typeof layers]}
+                  onChange={() => onToggleLayer(key as keyof typeof layers)}
+                />
+                <span className={`slider ${colorClass}`}></span>
+              </label>
             </div>
-            <label className="switch" onClick={e => e.stopPropagation()}>
-              <input 
-                type="checkbox" 
-                checked={layers.oilGas}
-                onChange={() => onToggleLayer('oilGas')}
-              />
-              <span className="slider gas"></span>
-            </label>
-          </div>
-
-          <div 
-            className={`layer-toggle renewable ${layers.renewable ? 'active' : ''}`}
-            onClick={() => onToggleLayer('renewable')}
-          >
-            <div className="toggle-info">
-              <div className="toggle-icon renewable">
-                <Wind size={20} />
-              </div>
-              <div className="toggle-text">
-                <h3>Renewable Energy</h3>
-                <p>Wind, Solar & Hydro</p>
-              </div>
-            </div>
-            <label className="switch" onClick={e => e.stopPropagation()}>
-              <input 
-                type="checkbox" 
-                checked={layers.renewable}
-                onChange={() => onToggleLayer('renewable')}
-              />
-              <span className="slider renewable"></span>
-            </label>
-          </div>
+          ))}
         </div>
 
         <div>
@@ -80,39 +71,17 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
               <span style={{ fontWeight: 500 }}>System Status</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
-              <span style={{ color: 'var(--text-muted)' }}>Active Pipelines</span>
-              <span style={{ fontWeight: 600 }}>840,000 km</span>
+              <span style={{ color: 'var(--text-muted)' }}>Transmission</span>
+              <span style={{ fontWeight: 600 }}>160k km</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
               <span style={{ color: 'var(--text-muted)' }}>Wind Capacity</span>
-              <span style={{ fontWeight: 600 }}>15.3 GW</span>
+              <span style={{ fontWeight: 600 }}>19 GW</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ color: 'var(--text-muted)' }}>Solar Capacity</span>
-              <span style={{ fontWeight: 600 }}>4.3 GW</span>
+              <span style={{ fontWeight: 600 }}>5 GW</span>
             </div>
-            
-            <button style={{ 
-              marginTop: '20px', 
-              width: '100%', 
-              padding: '12px', 
-              background: 'var(--accent-blue)', 
-              color: 'white', 
-              border: 'none', 
-              borderRadius: '8px',
-              fontWeight: 500,
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              transition: 'background 0.2s'
-            }}
-            onMouseOver={e => e.currentTarget.style.background = '#2563eb'}
-            onMouseOut={e => e.currentTarget.style.background = 'var(--accent-blue)'}
-            >
-              View Detailed Report <ChevronRight size={16} />
-            </button>
           </div>
         </div>
 
