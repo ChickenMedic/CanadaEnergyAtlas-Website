@@ -1,4 +1,4 @@
-import { Database, TrendingRight, Factory, Zap, Leaf, Activity } from 'lucide-react';
+import { Database, Route, Factory, Zap, Leaf, Activity } from 'lucide-react';
 
 interface SidebarProps {
   layers: {
@@ -14,7 +14,7 @@ interface SidebarProps {
 export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
   const toggleConfigs = [
     { key: 'basins', icon: <Database size={20} />, label: 'Basins & Resources', desc: 'Geological Formations', colorClass: 'gas' },
-    { key: 'pipelines', icon: <TrendingRight size={20} />, label: 'Pipelines & Flows', desc: 'Liquids & Gas Networks', colorClass: 'gas' },
+    { key: 'pipelines', icon: <Route size={20} />, label: 'Pipelines & Flows', desc: 'Liquids & Gas Networks', colorClass: 'gas' },
     { key: 'refineries', icon: <Factory size={20} />, label: 'Refineries & Storage', desc: 'Processing Hubs', colorClass: 'gas' },
     { key: 'grid', icon: <Zap size={20} />, label: 'The Grid', desc: 'Transmission Lines', colorClass: 'renewable' },
     { key: 'renewables', icon: <Leaf size={20} />, label: 'Renewables', desc: 'Wind, Solar & Hydro', colorClass: 'renewable' },

@@ -1,4 +1,4 @@
-import { Database, TrendingRight, Factory, Box, Zap, Leaf } from 'lucide-react';
+import { Database, Route, Factory, Box, Zap, Leaf } from 'lucide-react';
 
 export default function DeepDivesPage() {
   return (
@@ -22,7 +22,7 @@ export default function DeepDivesPage() {
       </div>
 
       <div className="content-section">
-        <h2><TrendingRight color="var(--accent-blue)" size={32} /> The Transcontinental Pipeline Network</h2>
+        <h2><Route color="var(--accent-blue)" size={32} /> The Transcontinental Pipeline Network</h2>
         <p>
           Canadian liquids pipeline systems are dominated by a few massive networks that serve as the primary conduits for export. Because the WCSB produces more oil than domestic refineries can process, export capacity is critical.
         </p>
