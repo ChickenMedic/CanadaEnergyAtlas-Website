@@ -1,4 +1,6 @@
 const fs = require('fs');
+const bezier = require('@turf/bezier-spline').default;
+const { lineString } = require('@turf/helpers');
 
 const features = [
   // Trans Mountain (TMX)
@@ -21,7 +23,7 @@ const features = [
       ]
     }
   },
-  // Enbridge Mainline (Line 1, 2, 3, 4, 67, etc.)
+  // Enbridge Mainline
   {
     type: "Feature",
     properties: { name: "Enbridge Mainline", type: "pipeline", commodity: "crude", status: "active" },
@@ -37,7 +39,7 @@ const features = [
         [-97.8, 49.0],  // Gretna (Border crossing)
         [-95.0, 47.9],  // Clearbrook MN
         [-92.1, 46.7],  // Superior WI
-        [-86.0, 46.0],  // Straits of Mackinac (Line 5 route)
+        [-86.0, 46.0],  // Straits of Mackinac
         [-82.4, 43.0],  // Sarnia ON
         [-79.9, 43.2],  // Westover
         [-73.6, 45.5]   // Montreal
@@ -121,27 +123,6 @@ const features = [
       ]
     }
   },
-  // NGTL System (Dense network abstraction)
-  {
-    type: "Feature",
-    properties: { name: "NGTL System Backbone", type: "pipeline", commodity: "gas", status: "active" },
-    geometry: {
-      type: "MultiLineString",
-      coordinates: [
-        [
-          [-118.8, 55.2], // Grande Prairie
-          [-113.3, 53.5], // Edmonton
-          [-114.1, 51.0], // Calgary
-          [-112.8, 49.7]  // Pincher Creek
-        ],
-        [
-          [-113.3, 53.5], // Edmonton
-          [-111.3, 52.7], // Hardisty
-          [-110.0, 50.0]  // Empress
-        ]
-      ]
-    }
-  },
   // Express Pipeline
   {
     type: "Feature",
@@ -157,10 +138,39 @@ const features = [
   }
 ];
 
+// Apply bezier spline smoothing to all LineStrings to make them look organic
+const smoothedFeatures = features.map(feat => {
+  // We use turf's bezier spline with high resolution
+  try {
+    const curved = bezier(feat, { resolution: 10000, sharpness: 0.6 });
+    curved.properties = feat.properties;
+    return curved;
+  } catch(e) {
+    return feat;
+  }
+});
+
+// NGTL System Backbone
+smoothedFeatures.push({
+  type: "Feature",
+  properties: { name: "NGTL System Backbone", type: "pipeline", commodity: "gas", status: "active" },
+  geometry: {
+    type: "MultiLineString",
+    coordinates: [
+      bezier(lineString([
+        [-118.8, 55.2], [-113.3, 53.5], [-114.1, 51.0], [-112.8, 49.7]
+      ]), { resolution: 10000, sharpness: 0.6 }).geometry.coordinates,
+      bezier(lineString([
+        [-113.3, 53.5], [-111.3, 52.7], [-110.0, 50.0]
+      ]), { resolution: 10000, sharpness: 0.6 }).geometry.coordinates
+    ]
+  }
+});
+
 const geojson = {
   type: "FeatureCollection",
-  features: features
+  features: smoothedFeatures
 };
 
 fs.writeFileSync('public/pipelines.geojson', JSON.stringify(geojson, null, 2));
-console.log("Generated comprehensive major pipelines geojson!");
+console.log("Generated smoothed major pipelines geojson!");
