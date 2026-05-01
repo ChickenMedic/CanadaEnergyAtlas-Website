@@ -12,10 +12,12 @@
   "dependencies": {
     "lucide-react": "^1.11.0",
     "maplibre-gl": "^5.24.0",
+    "mapshaper": "^0.7.6",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-map-gl": "^8.1.1",
-    "react-router-dom": "^7.14.2"
+    "react-router-dom": "^7.14.2",
+    "shapefile": "^0.6.6"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
