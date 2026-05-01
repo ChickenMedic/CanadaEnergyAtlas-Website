@@ -28,9 +28,9 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
 
   const mapCenter = {
     longitude: -100.0,
-    latitude: 55.0,
-    zoom: 3.5,
-    pitch: 45
+    latitude: 45.0,
+    zoom: 2.8,
+    pitch: 0
   };
 
   return (

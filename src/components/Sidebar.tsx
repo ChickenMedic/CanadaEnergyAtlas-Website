@@ -23,8 +23,8 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
   return (
     <div className="sidebar glass-panel">
       <div className="sidebar-header">
-        <h1>Canadian Energy Atlas</h1>
-        <p>Interactive exploration of Canada's energy architecture and resources.</p>
+        <h1>Canada Energy Atlas</h1>
+        <p>Interactive exploration of North America's energy architecture and resources.</p>
       </div>
       
       <div className="sidebar-content">
