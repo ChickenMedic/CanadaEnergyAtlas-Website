@@ -9,7 +9,7 @@ export default function Navigation() {
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         <Layers color="var(--accent-blue)" size={28} />
         <Link to="/" style={{ textDecoration: 'none', color: 'white', fontSize: '1.2rem', fontWeight: 600 }}>
-          Canadian Energy Atlas
+          Canada Energy Atlas
         </Link>
       </div>
       

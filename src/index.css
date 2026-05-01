@@ -303,10 +303,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px;
+  padding: 12px;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -335,8 +335,8 @@ body {
 }
 
 .toggle-icon {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 10px;
   display: flex;
   align-items: center;
