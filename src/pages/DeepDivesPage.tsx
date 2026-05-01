@@ -1,22 +1,14 @@
 import { useState } from 'react';
-import { Database, Route, Factory, Box, Zap, Leaf, ChevronDown, ChevronUp } from 'lucide-react';
+import { Database, Route, Factory, Box, Zap, Leaf } from 'lucide-react';
 
 export default function DeepDivesPage() {
-  const [openSection, setOpenSection] = useState<string | null>(null);
-
-  const toggleSection = (id: string) => {
-    if (openSection === id) {
-      setOpenSection(null);
-    } else {
-      setOpenSection(id);
-    }
-  };
-
   const sections = [
     {
       id: 'geology',
-      icon: <Database color="var(--accent-orange)" size={32} />,
-      title: "Geological Foundations",
+      icon: <Database size={20} />,
+      title: "Geology",
+      fullTitle: "Geological Foundations",
+      color: "var(--accent-orange)",
       content: (
         <>
           <p>
@@ -31,8 +23,10 @@ export default function DeepDivesPage() {
     },
     {
       id: 'pipelines',
-      icon: <Route color="var(--accent-blue)" size={32} />,
-      title: "The Transcontinental Pipeline Network",
+      icon: <Route size={20} />,
+      title: "Pipelines",
+      fullTitle: "The Transcontinental Pipeline Network",
+      color: "var(--accent-blue)",
       content: (
         <>
           <p>
@@ -65,8 +59,10 @@ export default function DeepDivesPage() {
     },
     {
       id: 'refining',
-      icon: <Factory color="#a855f7" size={32} />,
-      title: "Refining and Processing",
+      icon: <Factory size={20} />,
+      title: "Refining",
+      fullTitle: "Refining and Processing",
+      color: "#a855f7",
       content: (
         <>
           <p>
@@ -81,8 +77,10 @@ export default function DeepDivesPage() {
     },
     {
       id: 'storage',
-      icon: <Box color="#eab308" size={32} />,
-      title: "Storage Hubs",
+      icon: <Box size={20} />,
+      title: "Storage",
+      fullTitle: "Storage Hubs",
+      color: "#eab308",
       content: (
         <>
           <p>
@@ -96,8 +94,10 @@ export default function DeepDivesPage() {
     },
     {
       id: 'grid',
-      icon: <Zap color="#38bdf8" size={32} />,
-      title: "The Electrical Grid",
+      icon: <Zap size={20} />,
+      title: "The Grid",
+      fullTitle: "The Electrical Grid",
+      color: "#38bdf8",
       content: (
         <>
           <p>
@@ -112,8 +112,10 @@ export default function DeepDivesPage() {
     },
     {
       id: 'green',
-      icon: <Leaf color="var(--accent-green)" size={32} />,
-      title: "Green Energy Initiatives",
+      icon: <Leaf size={20} />,
+      title: "Green Energy",
+      fullTitle: "Green Energy Initiatives",
+      color: "var(--accent-green)",
       content: (
         <>
           <p>
@@ -128,53 +130,51 @@ export default function DeepDivesPage() {
     }
   ];
 
+  const [activeTab, setActiveTab] = useState(sections[0].id);
+  const activeSection = sections.find(s => s.id === activeTab);
+
   return (
     <div className="page-container" style={{ overflowY: 'auto' }}>
-      <div className="content-header">
-        <h1>Deep Dives</h1>
-        <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '800px', margin: '0 auto' }}>
-          Understanding Canada's energy history, infrastructure, and our transition to renewables.
+      <div className="hero-section" style={{ minHeight: '40vh', padding: '60px 20px', background: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.05) 0%, var(--bg-dark) 70%)', justifyContent: 'center' }}>
+        <h1 className="hero-title" style={{ fontSize: '3.5rem', marginBottom: '16px' }}>Deep Dives</h1>
+        <p className="hero-subtitle" style={{ marginBottom: '0' }}>
+          Comprehensive insights into energy history, critical infrastructure, and the transition to a net-zero future.
         </p>
       </div>
 
-      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '60px 20px' }}>
-        {sections.map(section => (
-          <div 
-            key={section.id} 
-            style={{ 
-              marginBottom: '16px', 
-              background: 'rgba(255,255,255,0.02)', 
-              border: '1px solid var(--border-light)', 
-              borderRadius: '16px', 
-              overflow: 'hidden',
-              transition: 'all 0.3s ease'
-            }}
-          >
-            <div 
-              style={{ 
-                padding: '24px', 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'space-between', 
-                cursor: 'pointer', 
-                background: openSection === section.id ? 'rgba(255,255,255,0.05)' : 'transparent' 
-              }}
-              onClick={() => toggleSection(section.id)}
+      <div style={{ maxWidth: '1200px', margin: '-30px auto 80px', padding: '0 20px', position: 'relative', zIndex: 10, width: '100%' }}>
+        <div className="tabs-container">
+          {sections.map(section => (
+            <button 
+              key={section.id} 
+              className={`tab-btn ${activeTab === section.id ? 'active' : ''}`}
+              onClick={() => setActiveTab(section.id)}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <div style={{ color: activeTab === section.id ? section.color : 'inherit', display: 'flex', alignItems: 'center' }}>
                 {section.icon}
-                <h2 style={{ margin: 0, fontSize: '1.5rem', color: 'var(--text-main)' }}>{section.title}</h2>
               </div>
-              {openSection === section.id ? <ChevronUp size={24} color="var(--text-muted)" /> : <ChevronDown size={24} color="var(--text-muted)" />}
+              {section.title}
+            </button>
+          ))}
+        </div>
+
+        <div className="tab-content" key={activeTab}>
+          {activeSection && (
+            <div className="glass-panel" style={{ padding: '40px', maxWidth: '900px', margin: '0 auto' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
+                <div style={{ color: activeSection.color, display: 'flex', alignItems: 'center' }}>
+                  <div style={{ transform: 'scale(1.5)' }}>
+                    {activeSection.icon}
+                  </div>
+                </div>
+                <h2 style={{ fontSize: '2rem', margin: 0, color: 'var(--text-main)' }}>{activeSection.fullTitle}</h2>
+              </div>
+              <div style={{ fontSize: '1.1rem', color: 'var(--text-muted)', lineHeight: 1.8 }}>
+                {activeSection.content}
+              </div>
             </div>
-            
-            {openSection === section.id && (
-              <div style={{ padding: '24px', borderTop: '1px solid var(--border-light)' }}>
-                {section.content}
-              </div>
-            )}
-          </div>
-        ))}
+          )}
+        </div>
       </div>
     </div>
   );
