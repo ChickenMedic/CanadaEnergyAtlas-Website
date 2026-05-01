@@ -4,32 +4,53 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Trans Mountain (TMX)",
+        "name": "Trans Mountain Pipeline (TMX)",
         "type": "pipeline",
-        "commodity": "crude"
+        "commodity": "crude",
+        "status": "active"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            -113.4909,
-            53.5444
+            -113.3,
+            53.5
           ],
           [
-            -117.021,
-            53.1111
+            -114.9,
+            53.6
           ],
           [
-            -120.3273,
-            50.6745
+            -117,
+            53.1
           ],
           [
-            -121.9422,
-            49.1632
+            -118,
+            52.8
           ],
           [
-            -122.9805,
-            49.2488
+            -119.3,
+            52.3
+          ],
+          [
+            -120.3,
+            50.7
+          ],
+          [
+            -121,
+            50.1
+          ],
+          [
+            -121.5,
+            49.4
+          ],
+          [
+            -122,
+            49.2
+          ],
+          [
+            -122.9,
+            49.3
           ]
         ]
       }
@@ -39,54 +60,63 @@
       "properties": {
         "name": "Enbridge Mainline",
         "type": "pipeline",
-        "commodity": "crude"
+        "commodity": "crude",
+        "status": "active"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            -113.4909,
-            53.5444
+            -113.3,
+            53.5
           ],
           [
-            -111.3036,
-            52.6666
+            -111.3,
+            52.7
           ],
           [
-            -109,
-            51.5
+            -109.1,
+            51.7
           ],
           [
-            -104.6189,
-            50.4452
+            -106.6,
+            51.1
           ],
           [
-            -101.2333,
-            49.7667
+            -104.6,
+            50.4
           ],
           [
-            -97.1384,
+            -101.2,
+            49.8
+          ],
+          [
+            -97.8,
             49
           ],
           [
-            -92.1005,
-            46.7208
+            -95,
+            47.9
           ],
           [
-            -84.5,
-            45
+            -92.1,
+            46.7
           ],
           [
-            -82.4066,
-            42.9745
+            -86,
+            46
           ],
           [
-            -79.3832,
-            43.6532
+            -82.4,
+            43
           ],
           [
-            -73.5673,
-            45.5017
+            -79.9,
+            43.2
+          ],
+          [
+            -73.6,
+            45.5
           ]
         ]
       }
@@ -94,36 +124,45 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "Keystone Pipeline",
+        "name": "Keystone Pipeline System",
         "type": "pipeline",
-        "commodity": "crude"
+        "commodity": "crude",
+        "status": "active"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            -111.3036,
-            52.6666
+            -111.3,
+            52.7
           ],
           [
-            -104.6189,
-            50.4452
+            -108,
+            51.5
           ],
           [
-            -97.9,
+            -104.6,
+            50.4
+          ],
+          [
+            -98,
             49
           ],
           [
-            -97.0205,
-            40.0336
+            -97.5,
+            45
           ],
           [
-            -96.7667,
-            35.9833
+            -97,
+            40
           ],
           [
-            -93.9399,
-            29.885
+            -96.8,
+            36
+          ],
+          [
+            -93.9,
+            29.9
           ]
         ]
       }
@@ -133,26 +172,39 @@
       "properties": {
         "name": "Coastal GasLink",
         "type": "pipeline",
-        "commodity": "gas"
+        "commodity": "gas",
+        "status": "active"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            -120.2377,
-            55.7606
+            -120.2,
+            55.8
           ],
           [
-            -122,
+            -121.5,
+            55.6
+          ],
+          [
+            -122.5,
             55
           ],
           [
-            -125,
+            -124,
             54.5
           ],
           [
-            -128.6596,
-            54.0531
+            -126,
+            54.3
+          ],
+          [
+            -128,
+            54.1
+          ],
+          [
+            -128.7,
+            54
           ]
         ]
       }
@@ -162,38 +214,55 @@
       "properties": {
         "name": "Alliance Pipeline",
         "type": "pipeline",
-        "commodity": "gas"
+        "commodity": "gas",
+        "status": "active"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            -120.2377,
-            55.7606
+            -120.2,
+            55.8
           ],
           [
-            -118,
-            55
+            -118.8,
+            55.2
           ],
           [
-            -113.4909,
-            53.5444
+            -115.6,
+            54.1
           ],
           [
-            -104.6189,
-            50.4452
+            -113.3,
+            53.5
           ],
           [
-            -97,
+            -111.3,
+            52.7
+          ],
+          [
+            -104.6,
+            50.4
+          ],
+          [
+            -101.5,
+            49.3
+          ],
+          [
+            -100,
             49
           ],
           [
-            -92,
-            45
+            -97,
+            46
           ],
           [
-            -87.6298,
-            41.8781
+            -92,
+            43
+          ],
+          [
+            -88.1,
+            41.4
           ]
         ]
       }
@@ -201,24 +270,129 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "NGTL Gathering Main",
+        "name": "TC Energy Mainline",
         "type": "pipeline",
-        "commodity": "gas"
+        "commodity": "gas",
+        "status": "active"
       },
       "geometry": {
         "type": "LineString",
         "coordinates": [
           [
-            -113.4909,
-            53.5444
+            -110,
+            50
           ],
           [
-            -114.0719,
-            51.0447
+            -105.5,
+            50.4
           ],
           [
-            -112.8218,
-            49.6942
+            -104.6,
+            50.4
+          ],
+          [
+            -97.1,
+            49.8
+          ],
+          [
+            -94.5,
+            49.8
+          ],
+          [
+            -89.2,
+            48.4
+          ],
+          [
+            -84,
+            46.5
+          ],
+          [
+            -79.4,
+            43.6
+          ],
+          [
+            -75.7,
+            45.4
+          ],
+          [
+            -73.6,
+            45.5
+          ],
+          [
+            -71.2,
+            46.8
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "NGTL System Backbone",
+        "type": "pipeline",
+        "commodity": "gas",
+        "status": "active"
+      },
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -118.8,
+              55.2
+            ],
+            [
+              -113.3,
+              53.5
+            ],
+            [
+              -114.1,
+              51
+            ],
+            [
+              -112.8,
+              49.7
+            ]
+          ],
+          [
+            [
+              -113.3,
+              53.5
+            ],
+            [
+              -111.3,
+              52.7
+            ],
+            [
+              -110,
+              50
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Express Pipeline",
+        "type": "pipeline",
+        "commodity": "crude",
+        "status": "active"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -111.3,
+            52.7
+          ],
+          [
+            -111,
+            49
+          ],
+          [
+            -106.3,
+            42.8
           ]
         ]
       }
