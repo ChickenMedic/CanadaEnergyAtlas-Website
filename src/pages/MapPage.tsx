@@ -4,15 +4,26 @@ import Sidebar from '../components/Sidebar';
 
 export default function MapPage() {
   const [layers, setLayers] = useState({
-    basins: true,
-    pipelines: true,
+    basins: false,
+    pipelines: false,
     refineries: false,
     grid: false,
     renewables: false
   });
 
   const toggleLayer = (layer: keyof typeof layers) => {
-    setLayers(prev => ({ ...prev, [layer]: !prev[layer] }));
+    setLayers(prev => {
+      // If it's already on, turn it off. Otherwise, turn it on and all others off.
+      const isTurningOn = !prev[layer];
+      return {
+        basins: false,
+        pipelines: false,
+        refineries: false,
+        grid: false,
+        renewables: false,
+        [layer]: isTurningOn
+      };
+    });
   };
 
   return (

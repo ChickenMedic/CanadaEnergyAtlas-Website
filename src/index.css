@@ -550,3 +550,226 @@ input:checked + .slider:before {
   font-weight: 600;
   color: var(--text-muted);
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 12px 16px;
+    gap: 0;
+    position: relative;
+  }
+
+  .mobile-menu-btn {
+    display: block !important;
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 16px;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    color: var(--text-main);
+    transition: all 0.2s;
+  }
+
+  .nav-link:active {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .ar-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 0;
+    padding: 12px;
+    box-sizing: border-box;
+  }
+
+  .hero-section {
+    padding: 60px 20px;
+    min-height: auto;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    gap: 16px;
+  }
+
+  .primary-btn, .secondary-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dashboard-section {
+    margin-top: 0;
+    padding-bottom: 40px;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    background: transparent;
+    box-shadow: none;
+    border: none; /* Remove glass-panel border */
+    backdrop-filter: none; /* Remove glass-panel blur */
+    -webkit-backdrop-filter: none;
+    border-radius: 0;
+    padding: 0 0 20px 0;
+    pointer-events: none; /* Let map clicks through where there's no button */
+  }
+
+  .sidebar-header, .sidebar-content > div:last-child {
+    display: none !important; /* Hide header and national overview */
+  }
+
+  .sidebar-content {
+    padding: 0;
+    overflow: visible;
+  }
+
+  .sidebar-content > div:first-child h2 {
+    display: none; /* Hide 'Data Layers' heading */
+  }
+
+  .sidebar-content > div:first-child {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Line up and center */
+    align-items: flex-end; /* Align to bottom so pop up looks correct */
+    gap: 12px;
+    padding: 70px 20px 10px; /* Increased top padding to allow room for the active items to completely clear the row */
+    margin: 0 !important; /* Override inline style margin */
+    pointer-events: auto; /* Re-enable clicks on the scroll row */
+  }
+
+  .layer-toggle-wrapper {
+    position: relative;
+    width: 46px; /* 32px icon + 12px padding + 2px border */
+    height: 46px;
+    flex: 0 0 auto;
+  }
+
+  .layer-toggle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    padding: 6px; /* Circle when inactive */
+    margin: 0;
+    border-radius: 30px;
+    background: var(--bg-panel-solid);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  /* Inactive hover moves up slightly */
+  @media (hover: hover) {
+    .layer-toggle:hover {
+      transform: translateX(-50%) translateY(-8px);
+    }
+  }
+
+  /* Active pops up high enough to clear the other buttons with a buffer */
+  .layer-toggle.active,
+  .layer-toggle.active:hover {
+    padding: 6px 16px 6px 6px; /* Expand to pill when active */
+    transform: translateX(-50%) translateY(-56px); /* Completely clear inactive circles */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7); /* Enhance shadow when popped up */
+    z-index: 100;
+  }
+
+  .toggle-info {
+    gap: 0; /* We control spacing via text margin so it animates cleanly */
+  }
+
+  .toggle-icon {
+    width: 32px; /* Slightly larger touch target */
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  .toggle-text p {
+    display: none; /* Hide description */
+  }
+
+  .toggle-text h3 {
+    font-size: 0.9rem;
+    white-space: nowrap;
+    margin: 0;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .layer-toggle.active .toggle-text h3 {
+    max-width: 150px;
+    opacity: 1;
+    margin-left: 8px;
+  }
+
+  .switch {
+    display: none; /* Hide the slider switch on mobile, the pill itself acts as the toggle */
+  }
+
+  .ui-layer {
+    padding: 0;
+    align-items: flex-end; /* Push sidebar to bottom */
+  }
+
+  .content-header {
+    padding: 40px 20px 20px;
+  }
+
+  .content-header h1 {
+    font-size: 2rem;
+  }
+
+  .content-section {
+    padding: 30px 20px;
+  }
+
+  .content-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .tabs-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .tab-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

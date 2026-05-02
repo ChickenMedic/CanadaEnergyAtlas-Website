@@ -34,28 +34,29 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
           </h2>
           
           {toggleConfigs.map(({ key, icon, label, desc, colorClass }) => (
-            <div 
-              key={key}
-              className={`layer-toggle ${colorClass} ${layers[key as keyof typeof layers] ? 'active' : ''}`}
-              onClick={() => onToggleLayer(key as keyof typeof layers)}
-            >
-              <div className="toggle-info">
-                <div className={`toggle-icon ${colorClass}`}>
-                  {icon}
+            <div key={key} className="layer-toggle-wrapper">
+              <div 
+                className={`layer-toggle ${colorClass} ${layers[key as keyof typeof layers] ? 'active' : ''}`}
+                onClick={() => onToggleLayer(key as keyof typeof layers)}
+              >
+                <div className="toggle-info">
+                  <div className={`toggle-icon ${colorClass}`}>
+                    {icon}
+                  </div>
+                  <div className="toggle-text">
+                    <h3>{label}</h3>
+                    <p>{desc}</p>
+                  </div>
                 </div>
-                <div className="toggle-text">
-                  <h3>{label}</h3>
-                  <p>{desc}</p>
-                </div>
+                <label className="switch" onClick={e => e.stopPropagation()}>
+                  <input 
+                    type="checkbox" 
+                    checked={layers[key as keyof typeof layers]}
+                    onChange={() => onToggleLayer(key as keyof typeof layers)}
+                  />
+                  <span className={`slider ${colorClass}`}></span>
+                </label>
               </div>
-              <label className="switch" onClick={e => e.stopPropagation()}>
-                <input 
-                  type="checkbox" 
-                  checked={layers[key as keyof typeof layers]}
-                  onChange={() => onToggleLayer(key as keyof typeof layers)}
-                />
-                <span className={`slider ${colorClass}`}></span>
-              </label>
             </div>
           ))}
         </div>
