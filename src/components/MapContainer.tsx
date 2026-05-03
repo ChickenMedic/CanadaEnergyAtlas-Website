@@ -66,9 +66,40 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       )}
 
       {activeLayers.pipelines && (
-        <Source id="pipelines-data" type="geojson" data="/pipelines.geojson?v=7">
-          <Layer id="pipelines-layer" type="line" paint={{ 'line-color': '#f59e0b', 'line-width': 2.5, 'line-opacity': 0.8 }} />
-        </Source>
+        <>
+          <Source id="pipelines-data" type="geojson" data="/pipelines.geojson?v=8">
+            <Layer 
+              id="pipelines-layer" 
+              type="line" 
+              paint={{ 
+                'line-color': [
+                  'match',
+                  ['get', 'Commodity'],
+                  'Gas', '#3b82f6', // Blue for gas
+                  'Liquid', '#f97316', // Orange for oil/liquids
+                  'crude', '#f97316',
+                  'natural gas', '#3b82f6',
+                  '#f59e0b' // Fallback
+                ], 
+                'line-width': 1.5, 
+                'line-opacity': 0.8 
+              }} 
+            />
+          </Source>
+          
+          {/* Pipelines Legend */}
+          <div className="glass-panel" style={{ position: 'absolute', top: activeLayers.grid ? 140 : 20, right: 20, padding: '12px 16px', zIndex: 10, borderRadius: '8px' }}>
+            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Pipelines</h4>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <div style={{ width: '16px', height: '4px', backgroundColor: '#f97316', borderRadius: '2px' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Oil / Liquids</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div style={{ width: '16px', height: '4px', backgroundColor: '#3b82f6', borderRadius: '2px' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Natural Gas</span>
+            </div>
+          </div>
+        </>
       )}
 
       {activeLayers.refineries && (
