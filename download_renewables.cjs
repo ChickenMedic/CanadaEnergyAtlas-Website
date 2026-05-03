@@ -25,7 +25,7 @@ async function downloadRenewables() {
   const query = `
     [out:json][timeout:180];
     (
-      nwr["power"="plant"](20.0,-170.0,75.0,-50.0);
+      nwr["power"="plant"](24.5,-170.0,75.0,-50.0);
     );
     out center tags;
   `;

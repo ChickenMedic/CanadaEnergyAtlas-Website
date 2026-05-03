@@ -16,6 +16,7 @@ interface MapContainerProps {
 export default function MapContainer({ activeLayers }: MapContainerProps) {
   const mapStyle = "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
   const [hoverInfo, setHoverInfo] = useState<any>(null);
+  const [activeRenewables, setActiveRenewables] = useState({ hydro: true, wind: true, solar: true });
 
   const mapCenter = {
     longitude: -100.0,
@@ -151,7 +152,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
                 100000, 4,
                 5000000, 12
               ], 
-              'circle-color': '#111', 
+              'circle-color': 'transparent', 
               'circle-stroke-width': 2, 
               'circle-stroke-color': '#f97316' 
             }} 
@@ -167,7 +168,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
                 100000, 4,
                 5000000, 12
               ], 
-              'circle-color': '#111', 
+              'circle-color': 'transparent', 
               'circle-stroke-width': 2, 
               'circle-stroke-color': '#3b82f6' 
             }} 
@@ -218,53 +219,59 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       {activeLayers.renewables && (
         <Source id="renewables-data" type="geojson" data="/renewables.geojson">
           {/* Hydro Plants */}
-          <Layer 
-            id="renewable-hydro" 
-            type="circle" 
-            filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'hydro']]} 
-            paint={{ 
-              'circle-radius': [
-                'interpolate', ['linear'], ['get', 'capacity_num'],
-                10, 3,
-                5000, 15
-              ], 
-              'circle-color': '#0ea5e9', // Light Blue for Hydro
-              'circle-stroke-width': 1.5, 
-              'circle-stroke-color': '#ffffff' 
-            }} 
-          />
+          {activeRenewables.hydro && (
+            <Layer 
+              id="renewable-hydro" 
+              type="circle" 
+              filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'hydro']]} 
+              paint={{ 
+                'circle-radius': [
+                  'interpolate', ['linear'], ['get', 'capacity_num'],
+                  10, 3,
+                  5000, 15
+                ], 
+                'circle-color': '#0ea5e9', // Light Blue for Hydro
+                'circle-stroke-width': 1.5, 
+                'circle-stroke-color': '#ffffff' 
+              }} 
+            />
+          )}
           {/* Wind Farms */}
-          <Layer 
-            id="renewable-wind" 
-            type="circle" 
-            filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'wind']]} 
-            paint={{ 
-              'circle-radius': [
-                'interpolate', ['linear'], ['get', 'capacity_num'],
-                10, 3,
-                1000, 10
-              ], 
-              'circle-color': '#8b5cf6', // Purple/Indigo for Wind
-              'circle-stroke-width': 1.5, 
-              'circle-stroke-color': '#ffffff' 
-            }} 
-          />
+          {activeRenewables.wind && (
+            <Layer 
+              id="renewable-wind" 
+              type="circle" 
+              filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'wind']]} 
+              paint={{ 
+                'circle-radius': [
+                  'interpolate', ['linear'], ['get', 'capacity_num'],
+                  10, 3,
+                  1000, 10
+                ], 
+                'circle-color': '#8b5cf6', // Purple/Indigo for Wind
+                'circle-stroke-width': 1.5, 
+                'circle-stroke-color': '#ffffff' 
+              }} 
+            />
+          )}
           {/* Solar Farms */}
-          <Layer 
-            id="renewable-solar" 
-            type="circle" 
-            filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'solar']]} 
-            paint={{ 
-              'circle-radius': [
-                'interpolate', ['linear'], ['get', 'capacity_num'],
-                10, 3,
-                500, 10
-              ], 
-              'circle-color': '#fbbf24', // Yellow/Gold for Solar
-              'circle-stroke-width': 1.5, 
-              'circle-stroke-color': '#ffffff' 
-            }} 
-          />
+          {activeRenewables.solar && (
+            <Layer 
+              id="renewable-solar" 
+              type="circle" 
+              filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'solar']]} 
+              paint={{ 
+                'circle-radius': [
+                  'interpolate', ['linear'], ['get', 'capacity_num'],
+                  10, 3,
+                  500, 10
+                ], 
+                'circle-color': '#fbbf24', // Yellow/Gold for Solar
+                'circle-stroke-width': 1.5, 
+                'circle-stroke-color': '#ffffff' 
+              }} 
+            />
+          )}
           
           {/* Name labels (zoom > 5) */}
           <Layer 
@@ -289,7 +296,8 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       )}
 
       {/* Popups */}
-      {hoverInfo && activeLayers.refineries && (
+      {/* Popups */}
+      {hoverInfo && (hoverInfo.feature.layer.id.startsWith('facility-') || hoverInfo.feature.layer.id.startsWith('renewable-')) && (
         <Popup
           longitude={hoverInfo.longitude}
           latitude={hoverInfo.latitude}
@@ -381,16 +389,25 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
 
         {activeLayers.renewables && (
           <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px' }}>
-            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Renewables</h4>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Renewables (Toggle)</h4>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeRenewables.hydro ? 1 : 0.4 }}
+              onClick={() => setActiveRenewables(prev => ({ ...prev, hydro: !prev.hydro }))}
+            >
               <div style={{ width: '12px', height: '12px', backgroundColor: '#0ea5e9', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
               <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Hydroelectric</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeRenewables.wind ? 1 : 0.4 }}
+              onClick={() => setActiveRenewables(prev => ({ ...prev, wind: !prev.wind }))}
+            >
               <div style={{ width: '12px', height: '12px', backgroundColor: '#8b5cf6', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
               <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Wind Farm</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', opacity: activeRenewables.solar ? 1 : 0.4 }}
+              onClick={() => setActiveRenewables(prev => ({ ...prev, solar: !prev.solar }))}
+            >
               <div style={{ width: '12px', height: '12px', backgroundColor: '#fbbf24', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
               <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Solar Farm</span>
             </div>
