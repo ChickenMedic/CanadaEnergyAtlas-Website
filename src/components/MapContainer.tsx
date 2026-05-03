@@ -37,9 +37,31 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
     <Map initialViewState={mapCenter} mapStyle={mapStyle} style={{ width: '100%', height: '100%' }}>
       <NavigationControl position="bottom-right" />
 
+      {/* Base Canada Map (Always visible) */}
+      <Source id="canada-base" type="geojson" data="/canada.geojson">
+        <Layer id="canada-base-fill" type="fill" paint={{ 'fill-color': '#ffffff', 'fill-opacity': 0.02 }} />
+        <Layer id="canada-base-line" type="line" paint={{ 'line-color': '#ffffff', 'line-width': 1, 'line-opacity': 0.1 }} />
+      </Source>
+
       {activeLayers.basins && (
-        <Source id="basins-data" type="geojson" data={dummyData}>
-          <Layer id="basins-layer" type="circle" filter={['==', 'type', 'basin']} paint={{ 'circle-radius': 14, 'circle-color': '#7c3aed', 'circle-stroke-width': 2, 'circle-stroke-color': '#161a21', 'circle-opacity': 0.6 }} />
+        <Source id="basins-data" type="geojson" data="/oil_gas_plays.geojson">
+          <Layer id="basins-fill" type="fill" paint={{ 'fill-color': ['get', 'color'], 'fill-opacity': 0.2 }} />
+          <Layer id="basins-line" type="line" paint={{ 'line-color': ['get', 'color'], 'line-width': 2, 'line-opacity': 0.8 }} />
+          <Layer 
+            id="basins-label" 
+            type="symbol" 
+            layout={{ 
+              'text-field': ['get', 'name'], 
+              'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'], 
+              'text-size': 12,
+              'symbol-placement': 'point'
+            }} 
+            paint={{ 
+              'text-color': '#ffffff',
+              'text-halo-color': '#161a21',
+              'text-halo-width': 2
+            }} 
+          />
         </Source>
       )}
 
@@ -56,8 +78,8 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       )}
 
       {activeLayers.grid && (
-        <Source id="grid-data" type="geojson" data={dummyData}>
-          <Layer id="grid-layer" type="circle" filter={['==', 'type', 'grid']} paint={{ 'circle-radius': 8, 'circle-color': '#38bdf8', 'circle-stroke-width': 2, 'circle-stroke-color': '#161a21' }} />
+        <Source id="grid-data" type="geojson" data="/canada_grid.geojson">
+          <Layer id="grid-line" type="line" paint={{ 'line-color': '#38bdf8', 'line-width': 1.5, 'line-opacity': 0.8 }} />
         </Source>
       )}
 
