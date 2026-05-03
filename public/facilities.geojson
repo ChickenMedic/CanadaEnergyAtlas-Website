@@ -15,9 +15,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "2.9M bbls",
-        "capacity_num": 2909615,
-        "utilization": 80
+        "capacity": "5.4M bbls",
+        "capacity_num": 5384508,
+        "utilization": 82
       }
     },
     {
@@ -34,9 +34,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "2.8M bbls",
-        "capacity_num": 2843676,
-        "utilization": 97
+        "capacity": "2.5M bbls",
+        "capacity_num": 2487799,
+        "utilization": 93
       }
     },
     {
@@ -53,9 +53,9 @@
         "subtype": "gas",
         "name": "Clear Lake Gas Storage",
         "operator": "Kinder Morgan",
-        "capacity": "0.9M bbls",
-        "capacity_num": 898297,
-        "utilization": 81
+        "capacity": "0.7M bbls",
+        "capacity_num": 749798,
+        "utilization": 93
       }
     },
     {
@@ -72,9 +72,9 @@
         "subtype": "gas",
         "name": "Wescott Gas Plant",
         "operator": "Xcel Energy",
-        "capacity": "2.3M bbls",
-        "capacity_num": 2290295,
-        "utilization": 97
+        "capacity": "1.1M bbls",
+        "capacity_num": 1111690,
+        "utilization": 91
       }
     },
     {
@@ -91,9 +91,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "5.1M bbls",
-        "capacity_num": 5149301,
-        "utilization": 75
+        "capacity": "4.6M bbls",
+        "capacity_num": 4613549,
+        "utilization": 82
       }
     },
     {
@@ -110,9 +110,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "2.8M bbls",
-        "capacity_num": 2848912,
-        "utilization": 83
+        "capacity": "5.2M bbls",
+        "capacity_num": 5218963,
+        "utilization": 82
       }
     },
     {
@@ -129,9 +129,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "2.5M bbls",
-        "capacity_num": 2494418,
-        "utilization": 81
+        "capacity": "3.2M bbls",
+        "capacity_num": 3222080,
+        "utilization": 82
       }
     },
     {
@@ -148,9 +148,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "0.9M bbls",
-        "capacity_num": 928838,
-        "utilization": 79
+        "capacity": "4.3M bbls",
+        "capacity_num": 4290350,
+        "utilization": 88
       }
     },
     {
@@ -167,9 +167,9 @@
         "subtype": "oil",
         "name": "Colonial Pipeline Tank Farm",
         "operator": "Products (SE) Pipe Line Corporation",
-        "capacity": "3.3M bbls",
-        "capacity_num": 3284657,
-        "utilization": 87
+        "capacity": "4.6M bbls",
+        "capacity_num": 4588324,
+        "utilization": 93
       }
     },
     {
@@ -186,8 +186,8 @@
         "subtype": "oil",
         "name": "Atlanta Airport Tank Farm",
         "operator": "Multiple/Unknown",
-        "capacity": "4.9M bbls",
-        "capacity_num": 4897830,
+        "capacity": "5.3M bbls",
+        "capacity_num": 5266592,
         "utilization": 91
       }
     },
@@ -205,9 +205,9 @@
         "subtype": "oil",
         "name": "PEMEX",
         "operator": "Multiple/Unknown",
-        "capacity": "3.1M bbls",
-        "capacity_num": 3081673,
-        "utilization": 86
+        "capacity": "3.5M bbls",
+        "capacity_num": 3495154,
+        "utilization": 91
       }
     },
     {
@@ -224,9 +224,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "0.9M bbls",
-        "capacity_num": 863788,
-        "utilization": 95
+        "capacity": "4.6M bbls",
+        "capacity_num": 4581148,
+        "utilization": 85
       }
     },
     {
@@ -243,9 +243,9 @@
         "subtype": "oil",
         "name": "Pemex",
         "operator": "Multiple/Unknown",
-        "capacity": "2.1M bbls",
-        "capacity_num": 2050912,
-        "utilization": 93
+        "capacity": "4.6M bbls",
+        "capacity_num": 4559037,
+        "utilization": 91
       }
     },
     {
@@ -262,9 +262,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "3.8M bbls",
-        "capacity_num": 3827872,
-        "utilization": 77
+        "capacity": "3.4M bbls",
+        "capacity_num": 3402868,
+        "utilization": 85
       }
     },
     {
@@ -281,9 +281,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "4.9M bbls",
-        "capacity_num": 4910722,
-        "utilization": 92
+        "capacity": "1.9M bbls",
+        "capacity_num": 1920450,
+        "utilization": 91
       }
     },
     {
@@ -300,9 +300,9 @@
         "subtype": "oil",
         "name": "Freedom Station",
         "operator": "Marathon Pipe Line LLC",
-        "capacity": "4.8M bbls",
-        "capacity_num": 4787557,
-        "utilization": 81
+        "capacity": "0.7M bbls",
+        "capacity_num": 747046,
+        "utilization": 85
       }
     },
     {
@@ -319,9 +319,9 @@
         "subtype": "oil",
         "name": "Sterling Services",
         "operator": "Multiple/Unknown",
-        "capacity": "2.2M bbls",
-        "capacity_num": 2236734,
-        "utilization": 97
+        "capacity": "1.6M bbls",
+        "capacity_num": 1552912,
+        "utilization": 85
       }
     },
     {
@@ -338,9 +338,9 @@
         "subtype": "oil",
         "name": "Michigan Marine Terminal",
         "operator": "Multiple/Unknown",
-        "capacity": "0.8M bbls",
-        "capacity_num": 802355,
-        "utilization": 93
+        "capacity": "5.0M bbls",
+        "capacity_num": 5000147,
+        "utilization": 85
       }
     },
     {
@@ -357,9 +357,9 @@
         "subtype": "oil",
         "name": "Marathon Melvindale Tank Farm",
         "operator": "Multiple/Unknown",
-        "capacity": "1.7M bbls",
-        "capacity_num": 1650906,
-        "utilization": 76
+        "capacity": "3.8M bbls",
+        "capacity_num": 3831177,
+        "utilization": 85
       }
     },
     {
@@ -376,9 +376,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "2.0M bbls",
-        "capacity_num": 1969906,
-        "utilization": 82
+        "capacity": "5.3M bbls",
+        "capacity_num": 5321118,
+        "utilization": 93
       }
     },
     {
@@ -395,9 +395,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "4.9M bbls",
-        "capacity_num": 4869408,
-        "utilization": 94
+        "capacity": "4.0M bbls",
+        "capacity_num": 4009176,
+        "utilization": 85
       }
     },
     {
@@ -414,9 +414,9 @@
         "subtype": "oil",
         "name": "Wolverine Oil and Supply Company",
         "operator": "Multiple/Unknown",
-        "capacity": "1.0M bbls",
-        "capacity_num": 980470,
-        "utilization": 93
+        "capacity": "4.8M bbls",
+        "capacity_num": 4825811,
+        "utilization": 85
       }
     },
     {
@@ -433,9 +433,9 @@
         "subtype": "oil",
         "name": "Mid-Valley Pipeline Company",
         "operator": "Multiple/Unknown",
-        "capacity": "4.9M bbls",
-        "capacity_num": 4941537,
-        "utilization": 82
+        "capacity": "2.1M bbls",
+        "capacity_num": 2128450,
+        "utilization": 93
       }
     },
     {
@@ -452,9 +452,9 @@
         "subtype": "oil",
         "name": "Sunoco Pipeline",
         "operator": "Multiple/Unknown",
-        "capacity": "3.5M bbls",
-        "capacity_num": 3547666,
-        "utilization": 97
+        "capacity": "1.8M bbls",
+        "capacity_num": 1786226,
+        "utilization": 93
       }
     },
     {
@@ -471,9 +471,9 @@
         "subtype": "oil",
         "name": "Permian Express Partners",
         "operator": "Multiple/Unknown",
-        "capacity": "3.9M bbls",
-        "capacity_num": 3916101,
-        "utilization": 95
+        "capacity": "1.9M bbls",
+        "capacity_num": 1853063,
+        "utilization": 93
       }
     },
     {
@@ -490,9 +490,9 @@
         "subtype": "oil",
         "name": "Delek Crude Logistics",
         "operator": "Multiple/Unknown",
-        "capacity": "4.0M bbls",
-        "capacity_num": 3975925,
-        "utilization": 82
+        "capacity": "2.3M bbls",
+        "capacity_num": 2250057,
+        "utilization": 93
       }
     },
     {
@@ -509,9 +509,9 @@
         "subtype": "oil",
         "name": "Plains Marketing",
         "operator": "Multiple/Unknown",
-        "capacity": "1.8M bbls",
-        "capacity_num": 1845900,
-        "utilization": 83
+        "capacity": "4.6M bbls",
+        "capacity_num": 4619198,
+        "utilization": 93
       }
     },
     {
@@ -528,9 +528,9 @@
         "subtype": "oil",
         "name": "Marathon Petroleum Rouge Terminal",
         "operator": "Multiple/Unknown",
-        "capacity": "4.4M bbls",
-        "capacity_num": 4353055,
-        "utilization": 95
+        "capacity": "1.7M bbls",
+        "capacity_num": 1693260,
+        "utilization": 85
       }
     },
     {
@@ -547,9 +547,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "3.5M bbls",
-        "capacity_num": 3474397,
-        "utilization": 96
+        "capacity": "3.3M bbls",
+        "capacity_num": 3294746,
+        "utilization": 91
       }
     },
     {
@@ -566,9 +566,9 @@
         "subtype": "oil",
         "name": "Haynesville Tank Farm",
         "operator": "Mid Valley Pipeline Company LLC",
-        "capacity": "2.1M bbls",
-        "capacity_num": 2053629,
-        "utilization": 98
+        "capacity": "0.9M bbls",
+        "capacity_num": 898632,
+        "utilization": 93
       }
     },
     {
@@ -585,9 +585,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "0.7M bbls",
-        "capacity_num": 689477,
-        "utilization": 85
+        "capacity": "1.3M bbls",
+        "capacity_num": 1315094,
+        "utilization": 93
       }
     },
     {
@@ -606,7 +606,7 @@
         "operator": "US Department of Energy",
         "capacity": "220400000 barrels",
         "capacity_num": 220400000,
-        "utilization": 91
+        "utilization": 93
       }
     },
     {
@@ -623,9 +623,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "1.3M bbls",
-        "capacity_num": 1264319,
-        "utilization": 96
+        "capacity": "5.3M bbls",
+        "capacity_num": 5324710,
+        "utilization": 91
       }
     },
     {
@@ -642,9 +642,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "4.9M bbls",
-        "capacity_num": 4912113,
-        "utilization": 96
+        "capacity": "2.6M bbls",
+        "capacity_num": 2626522,
+        "utilization": 93
       }
     },
     {
@@ -661,9 +661,9 @@
         "subtype": "oil",
         "name": "Nixon Refinery",
         "operator": "Lazarus Energy;Blue Dolphin",
-        "capacity": "203k bbl/d",
-        "capacity_num": 203466,
-        "utilization": 82
+        "capacity": "349k bbl/d",
+        "capacity_num": 349490,
+        "utilization": 93
       }
     },
     {
@@ -680,9 +680,9 @@
         "subtype": "gas",
         "name": "Muldon Gas Storage",
         "operator": "Southern Natural Gas",
-        "capacity": "4.7M bbls",
-        "capacity_num": 4708948,
-        "utilization": 77
+        "capacity": "0.8M bbls",
+        "capacity_num": 765879,
+        "utilization": 93
       }
     },
     {
@@ -699,9 +699,9 @@
         "subtype": "oil",
         "name": "Plains Marketing",
         "operator": "Multiple/Unknown",
-        "capacity": "4.6M bbls",
-        "capacity_num": 4649573,
-        "utilization": 94
+        "capacity": "0.9M bbls",
+        "capacity_num": 877906,
+        "utilization": 93
       }
     },
     {
@@ -718,9 +718,9 @@
         "subtype": "gas",
         "name": "West Unionville Gas Storage",
         "operator": "Enable Mississippi River Transmission, LLC",
-        "capacity": "4.9M bbls",
-        "capacity_num": 4880489,
-        "utilization": 92
+        "capacity": "2.1M bbls",
+        "capacity_num": 2101876,
+        "utilization": 93
       }
     },
     {
@@ -737,9 +737,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "2.2M bbls",
-        "capacity_num": 2232254,
-        "utilization": 86
+        "capacity": "2.4M bbls",
+        "capacity_num": 2434242,
+        "utilization": 85
       }
     },
     {
@@ -756,9 +756,9 @@
         "subtype": "gas",
         "name": "Bay Gas Storage",
         "operator": "Bay Gas Storage Company, LLC",
-        "capacity": "5.4M bbls",
-        "capacity_num": 5359570,
-        "utilization": 97
+        "capacity": "1.5M bbls",
+        "capacity_num": 1496686,
+        "utilization": 93
       }
     },
     {
@@ -775,9 +775,9 @@
         "subtype": "oil",
         "name": "Port Hudson Tank Farm",
         "operator": "Multiple/Unknown",
-        "capacity": "1.3M bbls",
-        "capacity_num": 1283352,
-        "utilization": 95
+        "capacity": "3.6M bbls",
+        "capacity_num": 3583453,
+        "utilization": 93
       }
     },
     {
@@ -794,9 +794,9 @@
         "subtype": "gas",
         "name": "Saltville Gas Storage",
         "operator": "Saltville Gas Storage Company L.L.C.",
-        "capacity": "1.3M bbls",
-        "capacity_num": 1313728,
-        "utilization": 94
+        "capacity": "3.0M bbls",
+        "capacity_num": 3018397,
+        "utilization": 85
       }
     },
     {
@@ -815,7 +815,7 @@
         "operator": "Multiple/Unknown",
         "capacity": "975691 barrels",
         "capacity_num": 975691,
-        "utilization": 78
+        "utilization": 93
       }
     },
     {
@@ -832,9 +832,9 @@
         "subtype": "oil",
         "name": "Creal Springs Terminal",
         "operator": "Enterprise Products Operating LLC",
-        "capacity": "2.5M bbls",
-        "capacity_num": 2541898,
-        "utilization": 96
+        "capacity": "2.1M bbls",
+        "capacity_num": 2073960,
+        "utilization": 91
       }
     },
     {
@@ -851,9 +851,9 @@
         "subtype": "gas",
         "name": "Oaktown Gas Storage",
         "operator": "Texas Gas Transmission, LLC",
-        "capacity": "2.2M bbls",
-        "capacity_num": 2174389,
-        "utilization": 79
+        "capacity": "3.3M bbls",
+        "capacity_num": 3305189,
+        "utilization": 91
       }
     },
     {
@@ -870,9 +870,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "1.7M bbls",
-        "capacity_num": 1723207,
-        "utilization": 95
+        "capacity": "3.1M bbls",
+        "capacity_num": 3116988,
+        "utilization": 91
       }
     },
     {
@@ -889,9 +889,9 @@
         "subtype": "oil",
         "name": "Ergon Oil Purchasing",
         "operator": "Multiple/Unknown",
-        "capacity": "4.4M bbls",
-        "capacity_num": 4413865,
-        "utilization": 86
+        "capacity": "3.6M bbls",
+        "capacity_num": 3642845,
+        "utilization": 93
       }
     },
     {
@@ -910,7 +910,7 @@
         "operator": "Ergon Terminaling, Inc.",
         "capacity": "2000000 barrels",
         "capacity_num": 2000000,
-        "utilization": 97
+        "utilization": 93
       }
     },
     {
@@ -927,9 +927,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "4.7M bbls",
-        "capacity_num": 4704675,
-        "utilization": 79
+        "capacity": "1.1M bbls",
+        "capacity_num": 1053612,
+        "utilization": 91
       }
     },
     {
@@ -947,8 +947,8 @@
         "name": "Fuel Storage",
         "operator": "Multiple/Unknown",
         "capacity": "2.1M bbls",
-        "capacity_num": 2070834,
-        "utilization": 75
+        "capacity_num": 2147974,
+        "utilization": 91
       }
     },
     {
@@ -965,9 +965,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "4.5M bbls",
-        "capacity_num": 4493361,
-        "utilization": 78
+        "capacity": "2.0M bbls",
+        "capacity_num": 1970862,
+        "utilization": 91
       }
     },
     {
@@ -984,9 +984,9 @@
         "subtype": "oil",
         "name": "Stephenson Oil Company",
         "operator": "Multiple/Unknown",
-        "capacity": "4.7M bbls",
-        "capacity_num": 4747287,
-        "utilization": 75
+        "capacity": "3.9M bbls",
+        "capacity_num": 3876030,
+        "utilization": 91
       }
     },
     {
@@ -1003,9 +1003,9 @@
         "subtype": "gas",
         "name": "Balloon Inflation Building",
         "operator": "Multiple/Unknown",
-        "capacity": "3.6M bbls",
-        "capacity_num": 3558502,
-        "utilization": 93
+        "capacity": "0.9M bbls",
+        "capacity_num": 947415,
+        "utilization": 85
       }
     },
     {
@@ -1022,8 +1022,8 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "5.0M bbls",
-        "capacity_num": 5038962,
+        "capacity": "4.6M bbls",
+        "capacity_num": 4618277,
         "utilization": 85
       }
     },
@@ -1043,7 +1043,7 @@
         "operator": "Exxon Mobil Corporation",
         "capacity": "4000000 barrels",
         "capacity_num": 4000000,
-        "utilization": 97
+        "utilization": 93
       }
     },
     {
@@ -1062,7 +1062,7 @@
         "operator": "Leaf River Energy Center LLC",
         "capacity": "39239700 Mcf",
         "capacity_num": 39239700,
-        "utilization": 94
+        "utilization": 93
       }
     },
     {
@@ -1081,7 +1081,7 @@
         "operator": "Transcontinental Gas Pipeline Company",
         "capacity": "15025000 Mcf",
         "capacity_num": 15025000,
-        "utilization": 81
+        "utilization": 93
       }
     },
     {
@@ -1117,9 +1117,9 @@
         "subtype": "oil",
         "name": "Delhi Crude Station",
         "operator": "Mid Valley Pipeline Company LLC",
-        "capacity": "3.4M bbls",
-        "capacity_num": 3381976,
-        "utilization": 75
+        "capacity": "5.2M bbls",
+        "capacity_num": 5227217,
+        "utilization": 93
       }
     },
     {
@@ -1136,9 +1136,9 @@
         "subtype": "gas",
         "name": "Freebird Gas Storage",
         "operator": "Freebird Gas Storage, LLC",
-        "capacity": "1.9M bbls",
-        "capacity_num": 1940632,
-        "utilization": 75
+        "capacity": "1.5M bbls",
+        "capacity_num": 1486337,
+        "utilization": 93
       }
     },
     {
@@ -1157,7 +1157,7 @@
         "operator": "Monroe Gas Storage Company, LLC",
         "capacity": "19000000 Mcf",
         "capacity_num": 19000000,
-        "utilization": 80
+        "utilization": 93
       }
     },
     {
@@ -1176,7 +1176,7 @@
         "operator": "Caledonia Energy Partners, L.L.C.",
         "capacity": "23200000 Mcf",
         "capacity_num": 23200000,
-        "utilization": 75
+        "utilization": 93
       }
     },
     {
@@ -1193,9 +1193,9 @@
         "subtype": "oil",
         "name": "Krotz Springs Breakout Tanks",
         "operator": "Colonial Pipeline Company",
-        "capacity": "1.5M bbls",
-        "capacity_num": 1520210,
-        "utilization": 79
+        "capacity": "5.4M bbls",
+        "capacity_num": 5448052,
+        "utilization": 93
       }
     },
     {
@@ -1212,9 +1212,9 @@
         "subtype": "gas",
         "name": "Mississippi Hub Gas Storage",
         "operator": "Mississippi Hub, LLC",
-        "capacity": "2.1M bbls",
-        "capacity_num": 2118870,
-        "utilization": 98
+        "capacity": "5.1M bbls",
+        "capacity_num": 5062081,
+        "utilization": 93
       }
     },
     {
@@ -1231,9 +1231,9 @@
         "subtype": "gas",
         "name": "Wilson Gas Storage",
         "operator": "Enterprise Products Operating, LLC",
-        "capacity": "0.6M bbls",
-        "capacity_num": 648416,
-        "utilization": 97
+        "capacity": "3.1M bbls",
+        "capacity_num": 3058889,
+        "utilization": 93
       }
     },
     {
@@ -1252,7 +1252,7 @@
         "operator": "Petal Gas Storage LLC",
         "capacity": "46008000 Mcf",
         "capacity_num": 46008000,
-        "utilization": 84
+        "utilization": 93
       }
     },
     {
@@ -1269,9 +1269,9 @@
         "subtype": "oil",
         "name": "Mayersville Tank Farm",
         "operator": "Mid Valley Pipeline Company LLC",
-        "capacity": "2.2M bbls",
-        "capacity_num": 2178867,
-        "utilization": 94
+        "capacity": "4.8M bbls",
+        "capacity_num": 4754465,
+        "utilization": 93
       }
     },
     {
@@ -1288,9 +1288,9 @@
         "subtype": "oil",
         "name": "Spartanburg Tank Farm",
         "operator": "Products (SE) Pipe Line Corporation",
-        "capacity": "4.2M bbls",
-        "capacity_num": 4188693,
-        "utilization": 85
+        "capacity": "1.8M bbls",
+        "capacity_num": 1814988,
+        "utilization": 91
       }
     },
     {
@@ -1307,9 +1307,9 @@
         "subtype": "oil",
         "name": "Baton Rogue Junction Storage Facility",
         "operator": "Colonial Pipeline Company",
-        "capacity": "4.3M bbls",
-        "capacity_num": 4325089,
-        "utilization": 80
+        "capacity": "2.7M bbls",
+        "capacity_num": 2663892,
+        "utilization": 93
       }
     },
     {
@@ -1326,8 +1326,8 @@
         "subtype": "oil",
         "name": "Bengal Pipeline Company",
         "operator": "Multiple/Unknown",
-        "capacity": "2.7M bbls",
-        "capacity_num": 2717662,
+        "capacity": "1.8M bbls",
+        "capacity_num": 1769257,
         "utilization": 93
       }
     },
@@ -1347,7 +1347,7 @@
         "operator": "NuStar Logistics, L.P.",
         "capacity": "9738000 barrels",
         "capacity_num": 9738000,
-        "utilization": 86
+        "utilization": 93
       }
     },
     {
@@ -1366,7 +1366,7 @@
         "operator": "Shell Pipeline Company LP",
         "capacity": "6700000 barrels",
         "capacity_num": 6700000,
-        "utilization": 87
+        "utilization": 93
       }
     },
     {
@@ -1385,7 +1385,7 @@
         "operator": "Shell Pipeline Company LP",
         "capacity": "3992000 barrels",
         "capacity_num": 3992000,
-        "utilization": 77
+        "utilization": 93
       }
     },
     {
@@ -1404,7 +1404,7 @@
         "operator": "Plains Marketing, L.P.",
         "capacity": "5960000 barrels",
         "capacity_num": 5960000,
-        "utilization": 86
+        "utilization": 93
       }
     },
     {
@@ -1421,9 +1421,9 @@
         "subtype": "oil",
         "name": "Koch Methanol Terminal",
         "operator": "Multiple/Unknown",
-        "capacity": "0.5M bbls",
-        "capacity_num": 501659,
-        "utilization": 88
+        "capacity": "3.0M bbls",
+        "capacity_num": 3004672,
+        "utilization": 93
       }
     },
     {
@@ -1442,7 +1442,7 @@
         "operator": "US Department of Energy",
         "capacity": "76000000 barrels",
         "capacity_num": 76000000,
-        "utilization": 87
+        "utilization": 93
       }
     },
     {
@@ -1461,7 +1461,7 @@
         "operator": "Loop LLC",
         "capacity": "60000000 barrels",
         "capacity_num": 60000000,
-        "utilization": 90
+        "utilization": 93
       }
     },
     {
@@ -1478,9 +1478,9 @@
         "subtype": "oil",
         "name": "Cabot Marine Feedstock Terminal",
         "operator": "Cabot Corporation",
-        "capacity": "3.3M bbls",
-        "capacity_num": 3293008,
-        "utilization": 85
+        "capacity": "1.9M bbls",
+        "capacity_num": 1880428,
+        "utilization": 93
       }
     },
     {
@@ -1497,9 +1497,9 @@
         "subtype": "gas",
         "name": "Bobcat Gas Storage",
         "operator": "Bobcat Gas Storage, LLC",
-        "capacity": "4.4M bbls",
-        "capacity_num": 4432891,
-        "utilization": 82
+        "capacity": "1.8M bbls",
+        "capacity_num": 1839266,
+        "utilization": 93
       }
     },
     {
@@ -1516,9 +1516,9 @@
         "subtype": "gas",
         "name": "Pine Prairie Energy Center",
         "operator": "Pine Prairie Energy Center, LLC",
-        "capacity": "2.7M bbls",
-        "capacity_num": 2711840,
-        "utilization": 84
+        "capacity": "4.1M bbls",
+        "capacity_num": 4051513,
+        "utilization": 93
       }
     },
     {
@@ -1535,9 +1535,9 @@
         "subtype": "gas",
         "name": "Egan Gas Storage Dome",
         "operator": "Egan Hub Storage, LLC",
-        "capacity": "5.1M bbls",
-        "capacity_num": 5060191,
-        "utilization": 87
+        "capacity": "1.3M bbls",
+        "capacity_num": 1339541,
+        "utilization": 93
       }
     },
     {
@@ -1554,9 +1554,9 @@
         "subtype": "gas",
         "name": "Bear Creek Gas Storage",
         "operator": "Bear Creek Storage Company, L.L.C.",
-        "capacity": "2.7M bbls",
-        "capacity_num": 2720389,
-        "utilization": 92
+        "capacity": "2.0M bbls",
+        "capacity_num": 2032937,
+        "utilization": 93
       }
     },
     {
@@ -1573,9 +1573,9 @@
         "subtype": "gas",
         "name": "Goodwin Gas Storage",
         "operator": "Atmos Energy Corporation",
-        "capacity": "2.7M bbls",
-        "capacity_num": 2685685,
-        "utilization": 86
+        "capacity": "2.0M bbls",
+        "capacity_num": 2005954,
+        "utilization": 93
       }
     },
     {
@@ -1592,9 +1592,9 @@
         "subtype": "gas",
         "name": "Perryville Gas Storage",
         "operator": "Perryville Gas Storage LLC",
-        "capacity": "0.6M bbls",
-        "capacity_num": 595261,
-        "utilization": 90
+        "capacity": "1.8M bbls",
+        "capacity_num": 1760974,
+        "utilization": 93
       }
     },
     {
@@ -1611,9 +1611,9 @@
         "subtype": "gas",
         "name": "Bon Harbour Gas Storage",
         "operator": "Atmos Energy Corporation",
-        "capacity": "1.2M bbls",
-        "capacity_num": 1161509,
-        "utilization": 82
+        "capacity": "2.0M bbls",
+        "capacity_num": 2011544,
+        "utilization": 91
       }
     },
     {
@@ -1632,7 +1632,7 @@
         "operator": "Transcontinental Gas Pipe Line Company, LLC",
         "capacity": "790000 Mcf",
         "capacity_num": 790000,
-        "utilization": 89
+        "utilization": 93
       }
     },
     {
@@ -1649,9 +1649,9 @@
         "subtype": "gas",
         "name": "Napoleonville Gas Storage",
         "operator": "Bridgeline Storage Company, LLC",
-        "capacity": "3.0M bbls",
-        "capacity_num": 3005036,
-        "utilization": 97
+        "capacity": "4.9M bbls",
+        "capacity_num": 4883919,
+        "utilization": 93
       }
     },
     {
@@ -1668,9 +1668,9 @@
         "subtype": "gas",
         "name": "Napoleonville Gas Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "2.6M bbls",
-        "capacity_num": 2550535,
-        "utilization": 95
+        "capacity": "3.9M bbls",
+        "capacity_num": 3883175,
+        "utilization": 93
       }
     },
     {
@@ -1687,9 +1687,9 @@
         "subtype": "gas",
         "name": "Bistineau Gas Storage",
         "operator": "Gulf South Pipeline Company, LLC",
-        "capacity": "1.2M bbls",
-        "capacity_num": 1180998,
-        "utilization": 90
+        "capacity": "5.4M bbls",
+        "capacity_num": 5379656,
+        "utilization": 93
       }
     },
     {
@@ -1706,9 +1706,9 @@
         "subtype": "gas",
         "name": "Bayou Choctaw Gas Storage",
         "operator": "Boardwalk Storage Company, LLC",
-        "capacity": "4.7M bbls",
-        "capacity_num": 4745342,
-        "utilization": 95
+        "capacity": "5.1M bbls",
+        "capacity_num": 5135843,
+        "utilization": 93
       }
     },
     {
@@ -1725,9 +1725,9 @@
         "subtype": "gas",
         "name": "Cadeville Gas Storage",
         "operator": "Cadeville Gas Storage, LLC",
-        "capacity": "2.1M bbls",
-        "capacity_num": 2114198,
-        "utilization": 82
+        "capacity": "1.2M bbls",
+        "capacity_num": 1185216,
+        "utilization": 93
       }
     },
     {
@@ -1744,9 +1744,9 @@
         "subtype": "gas",
         "name": "East Unionville Gas Storage",
         "operator": "Enable Mississippi River Transmission, LLC",
-        "capacity": "5.4M bbls",
-        "capacity_num": 5411260,
-        "utilization": 82
+        "capacity": "5.3M bbls",
+        "capacity_num": 5258604,
+        "utilization": 93
       }
     },
     {
@@ -1763,9 +1763,9 @@
         "subtype": "gas",
         "name": "Ruston Gas Storage",
         "operator": "Enable Gas Transmission, LLC",
-        "capacity": "0.5M bbls",
-        "capacity_num": 542838,
-        "utilization": 79
+        "capacity": "0.6M bbls",
+        "capacity_num": 577553,
+        "utilization": 93
       }
     },
     {
@@ -1782,9 +1782,9 @@
         "subtype": "oil",
         "name": "Magnolia Tank Farm",
         "operator": "Mid Valley Pipeline Company LLC",
-        "capacity": "3.0M bbls",
-        "capacity_num": 3001964,
-        "utilization": 86
+        "capacity": "5.4M bbls",
+        "capacity_num": 5417720,
+        "utilization": 93
       }
     },
     {
@@ -1803,7 +1803,7 @@
         "operator": "Multiple/Unknown",
         "capacity": "90000 barrels",
         "capacity_num": 90000,
-        "utilization": 78
+        "utilization": 93
       }
     },
     {
@@ -1820,9 +1820,9 @@
         "subtype": "oil",
         "name": "Hebron Pump Station",
         "operator": "Mid Valley Pipeline Company LLC",
-        "capacity": "3.0M bbls",
-        "capacity_num": 3033119,
-        "utilization": 89
+        "capacity": "0.9M bbls",
+        "capacity_num": 920855,
+        "utilization": 85
       }
     },
     {
@@ -1839,9 +1839,9 @@
         "subtype": "oil",
         "name": "Cygnet Tank Farm",
         "operator": "Mid Valley Pipeline Company LLC",
-        "capacity": "1.3M bbls",
-        "capacity_num": 1313002,
-        "utilization": 80
+        "capacity": "5.0M bbls",
+        "capacity_num": 5034451,
+        "utilization": 85
       }
     },
     {
@@ -1858,9 +1858,9 @@
         "subtype": "oil",
         "name": "Finney Tank Farm",
         "operator": "Permian Express Partners LLC",
-        "capacity": "2.4M bbls",
-        "capacity_num": 2363975,
-        "utilization": 95
+        "capacity": "2.3M bbls",
+        "capacity_num": 2252108,
+        "utilization": 93
       }
     },
     {
@@ -1877,9 +1877,9 @@
         "subtype": "oil",
         "name": "Searcy Gathering Facility",
         "operator": "Central Louisiana Energy Pipeline Co., L.L.C.",
-        "capacity": "3.2M bbls",
-        "capacity_num": 3222597,
-        "utilization": 90
+        "capacity": "1.0M bbls",
+        "capacity_num": 976390,
+        "utilization": 93
       }
     },
     {
@@ -1896,9 +1896,9 @@
         "subtype": "gas",
         "name": "Saltville Gas Storage",
         "operator": "Saltville Gas Storage Company, LLC",
-        "capacity": "2.1M bbls",
-        "capacity_num": 2072992,
-        "utilization": 89
+        "capacity": "3.5M bbls",
+        "capacity_num": 3482996,
+        "utilization": 85
       }
     },
     {
@@ -1915,9 +1915,9 @@
         "subtype": "gas",
         "name": "Barnsley Gas Storage",
         "operator": "Atmos Energy Corporation",
-        "capacity": "4.3M bbls",
-        "capacity_num": 4322746,
-        "utilization": 89
+        "capacity": "3.1M bbls",
+        "capacity_num": 3141990,
+        "utilization": 91
       }
     },
     {
@@ -1934,9 +1934,9 @@
         "subtype": "gas",
         "name": "West Greenville Gas Storage",
         "operator": "Texas Gas Transmission, LLC",
-        "capacity": "2.1M bbls",
-        "capacity_num": 2051513,
-        "utilization": 94
+        "capacity": "1.2M bbls",
+        "capacity_num": 1169676,
+        "utilization": 91
       }
     },
     {
@@ -1953,9 +1953,9 @@
         "subtype": "gas",
         "name": "Graham Lake Gas Storage",
         "operator": "Texas Gas Transmission, LLC",
-        "capacity": "1.6M bbls",
-        "capacity_num": 1567367,
-        "utilization": 79
+        "capacity": "4.0M bbls",
+        "capacity_num": 4034559,
+        "utilization": 91
       }
     },
     {
@@ -1972,8 +1972,8 @@
         "subtype": "gas",
         "name": "Hanson Gas Storage Field",
         "operator": "Texas Gas Transmission, LLC",
-        "capacity": "2.0M bbls",
-        "capacity_num": 2000510,
+        "capacity": "0.7M bbls",
+        "capacity_num": 708527,
         "utilization": 91
       }
     },
@@ -1991,9 +1991,9 @@
         "subtype": "gas",
         "name": "Midland Gas Storage",
         "operator": "Texas Gas Transmission, LLC",
-        "capacity": "3.9M bbls",
-        "capacity_num": 3880398,
-        "utilization": 95
+        "capacity": "4.4M bbls",
+        "capacity_num": 4426322,
+        "utilization": 91
       }
     },
     {
@@ -2010,9 +2010,9 @@
         "subtype": "gas",
         "name": "Dixie Gas Storage",
         "operator": "Texas Gas Transmission, LLC",
-        "capacity": "3.7M bbls",
-        "capacity_num": 3732968,
-        "utilization": 83
+        "capacity": "0.8M bbls",
+        "capacity_num": 788332,
+        "utilization": 91
       }
     },
     {
@@ -2029,9 +2029,9 @@
         "subtype": "gas",
         "name": "Midway Gas Storage Field",
         "operator": "Southern Indiana Gas & Electric",
-        "capacity": "3.4M bbls",
-        "capacity_num": 3449908,
-        "utilization": 93
+        "capacity": "1.5M bbls",
+        "capacity_num": 1504232,
+        "utilization": 91
       }
     },
     {
@@ -2048,9 +2048,9 @@
         "subtype": "gas",
         "name": "Alford Gas Storage Field",
         "operator": "Texas Gas Transmission, LLC",
-        "capacity": "3.3M bbls",
-        "capacity_num": 3326565,
-        "utilization": 81
+        "capacity": "4.6M bbls",
+        "capacity_num": 4550631,
+        "utilization": 91
       }
     },
     {
@@ -2067,9 +2067,9 @@
         "subtype": "gas",
         "name": "Monroe City Gas Storage",
         "operator": "Ohio Valley Hub LLC",
-        "capacity": "3.2M bbls",
-        "capacity_num": 3226167,
-        "utilization": 77
+        "capacity": "0.8M bbls",
+        "capacity_num": 801319,
+        "utilization": 91
       }
     },
     {
@@ -2086,9 +2086,9 @@
         "subtype": "gas",
         "name": "Hebron Gas Storage Field",
         "operator": "Tennessee Gas Pipeline Company, L.L.C.",
-        "capacity": "3.8M bbls",
-        "capacity_num": 3777549,
-        "utilization": 76
+        "capacity": "1.5M bbls",
+        "capacity_num": 1498400,
+        "utilization": 85
       }
     },
     {
@@ -2105,9 +2105,9 @@
         "subtype": "oil",
         "name": "Rhymes Propane",
         "operator": "Multiple/Unknown",
-        "capacity": "4.9M bbls",
-        "capacity_num": 4887940,
-        "utilization": 95
+        "capacity": "1.6M bbls",
+        "capacity_num": 1557992,
+        "utilization": 85
       }
     },
     {
@@ -2124,8 +2124,8 @@
         "subtype": "gas",
         "name": "Canada Mountain Gas Storage",
         "operator": "Delta Natural Gas Company, Inc.",
-        "capacity": "3.0M bbls",
-        "capacity_num": 3035708,
+        "capacity": "4.3M bbls",
+        "capacity_num": 4308868,
         "utilization": 85
       }
     },
@@ -2143,9 +2143,9 @@
         "subtype": "gas",
         "name": "LHT - Fullerton Terminal",
         "operator": "Multiple/Unknown",
-        "capacity": "2.7M bbls",
-        "capacity_num": 2664321,
-        "utilization": 87
+        "capacity": "1.7M bbls",
+        "capacity_num": 1733137,
+        "utilization": 85
       }
     },
     {
@@ -2162,9 +2162,9 @@
         "subtype": "gas",
         "name": "United Energy Plus Terminals",
         "operator": "Multiple/Unknown",
-        "capacity": "3.2M bbls",
-        "capacity_num": 3234524,
-        "utilization": 81
+        "capacity": "3.0M bbls",
+        "capacity_num": 3037286,
+        "utilization": 85
       }
     },
     {
@@ -2181,9 +2181,9 @@
         "subtype": "gas",
         "name": "Suburban Propane",
         "operator": "Multiple/Unknown",
-        "capacity": "4.0M bbls",
-        "capacity_num": 4033904,
-        "utilization": 95
+        "capacity": "2.1M bbls",
+        "capacity_num": 2063181,
+        "utilization": 82
       }
     },
     {
@@ -2200,8 +2200,8 @@
         "subtype": "oil",
         "name": "Crescent Midstream",
         "operator": "Crescent Midstream, LLC",
-        "capacity": "4.2M bbls",
-        "capacity_num": 4153545,
+        "capacity": "0.7M bbls",
+        "capacity_num": 690279,
         "utilization": 93
       }
     },
@@ -2219,8 +2219,8 @@
         "subtype": "oil",
         "name": "Safety-Kleen Systems",
         "operator": "Multiple/Unknown",
-        "capacity": "69k bbl/d",
-        "capacity_num": 69052,
+        "capacity": "121k bbl/d",
+        "capacity_num": 121256,
         "utilization": 91
       }
     },
@@ -2238,9 +2238,9 @@
         "subtype": "gas",
         "name": "GAS Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "1.0M bbls",
-        "capacity_num": 1032961,
-        "utilization": 94
+        "capacity": "2.2M bbls",
+        "capacity_num": 2168459,
+        "utilization": 88
       }
     },
     {
@@ -2257,9 +2257,9 @@
         "subtype": "gas",
         "name": "Gas Imperial",
         "operator": "Multiple/Unknown",
-        "capacity": "5.1M bbls",
-        "capacity_num": 5053179,
-        "utilization": 76
+        "capacity": "0.6M bbls",
+        "capacity_num": 607395,
+        "utilization": 91
       }
     },
     {
@@ -2276,9 +2276,9 @@
         "subtype": "oil",
         "name": "Sherrod Tank Battery",
         "operator": "XTO Energy Inc",
-        "capacity": "1.8M bbls",
-        "capacity_num": 1804837,
-        "utilization": 77
+        "capacity": "3.4M bbls",
+        "capacity_num": 3432712,
+        "utilization": 91
       }
     },
     {
@@ -2295,9 +2295,9 @@
         "subtype": "gas",
         "name": "Rancho LPG Holdings LLC",
         "operator": "Multiple/Unknown",
-        "capacity": "4.4M bbls",
-        "capacity_num": 4432638,
-        "utilization": 93
+        "capacity": "4.6M bbls",
+        "capacity_num": 4550241,
+        "utilization": 91
       }
     },
     {
@@ -2314,9 +2314,9 @@
         "subtype": "oil",
         "name": "Buckeye Partners Detroit Terminal",
         "operator": "Multiple/Unknown",
-        "capacity": "2.9M bbls",
-        "capacity_num": 2884081,
-        "utilization": 98
+        "capacity": "1.3M bbls",
+        "capacity_num": 1285749,
+        "utilization": 85
       }
     },
     {
@@ -2333,9 +2333,9 @@
         "subtype": "oil",
         "name": "Clearbrook Terminal",
         "operator": "Enbridge",
-        "capacity": "5.2M bbls",
-        "capacity_num": 5215307,
-        "utilization": 86
+        "capacity": "2.0M bbls",
+        "capacity_num": 1982736,
+        "utilization": 91
       }
     },
     {
@@ -2354,7 +2354,7 @@
         "operator": "Mid Valley Pipeline Company LLC",
         "capacity": "934000 barrels",
         "capacity_num": 934000,
-        "utilization": 79
+        "utilization": 85
       }
     },
     {
@@ -2371,9 +2371,9 @@
         "subtype": "oil",
         "name": "OIL Storage",
         "operator": "Multiple/Unknown",
-        "capacity": "2.3M bbls",
-        "capacity_num": 2266679,
-        "utilization": 98
+        "capacity": "4.5M bbls",
+        "capacity_num": 4547465,
+        "utilization": 93
       }
     },
     {
@@ -2392,7 +2392,7 @@
         "operator": "Irving Oil",
         "capacity": "320k bbl/d",
         "capacity_num": 320000,
-        "utilization": 87
+        "utilization": 85
       }
     },
     {
@@ -2411,7 +2411,7 @@
         "operator": "Imperial Oil",
         "capacity": "191k bbl/d",
         "capacity_num": 191000,
-        "utilization": 81
+        "utilization": 88
       }
     },
     {
@@ -2430,7 +2430,7 @@
         "operator": "Shell",
         "capacity": "114k bbl/d",
         "capacity_num": 114000,
-        "utilization": 93
+        "utilization": 88
       }
     },
     {
@@ -2449,7 +2449,7 @@
         "operator": "Imperial Oil",
         "capacity": "119k bbl/d",
         "capacity_num": 119000,
-        "utilization": 91
+        "utilization": 85
       }
     },
     {
@@ -2468,7 +2468,7 @@
         "operator": "Imperial Oil",
         "capacity": "119k bbl/d",
         "capacity_num": 119000,
-        "utilization": 87
+        "utilization": 85
       }
     },
     {
@@ -2487,7 +2487,7 @@
         "operator": "Valero",
         "capacity": "235k bbl/d",
         "capacity_num": 235000,
-        "utilization": 91
+        "utilization": 85
       }
     },
     {
@@ -2506,7 +2506,7 @@
         "operator": "Suncor",
         "capacity": "137k bbl/d",
         "capacity_num": 137000,
-        "utilization": 78
+        "utilization": 85
       }
     },
     {
@@ -2525,7 +2525,7 @@
         "operator": "Federated Co-operatives",
         "capacity": "130k bbl/d",
         "capacity_num": 130000,
-        "utilization": 87
+        "utilization": 88
       }
     },
     {
@@ -2544,7 +2544,7 @@
         "operator": "Parkland",
         "capacity": "55k bbl/d",
         "capacity_num": 55000,
-        "utilization": 87
+        "utilization": 88
       }
     },
     {
@@ -2563,7 +2563,7 @@
         "operator": "Cenovus",
         "capacity": "82k bbl/d",
         "capacity_num": 82000,
-        "utilization": 79
+        "utilization": 88
       }
     },
     {
@@ -2582,7 +2582,7 @@
         "operator": "Tidewater",
         "capacity": "12k bbl/d",
         "capacity_num": 12000,
-        "utilization": 96
+        "utilization": 88
       }
     },
     {
@@ -2601,7 +2601,7 @@
         "operator": "Plains Midstream",
         "capacity": "300 MMcf/d",
         "capacity_num": 300000,
-        "utilization": 95
+        "utilization": 88
       }
     },
     {
@@ -2620,7 +2620,7 @@
         "operator": "Inter Pipeline",
         "capacity": "250 MMcf/d",
         "capacity_num": 250000,
-        "utilization": 80
+        "utilization": 88
       }
     },
     {
@@ -2639,7 +2639,7 @@
         "operator": "Keyera",
         "capacity": "150 MMcf/d",
         "capacity_num": 150000,
-        "utilization": 86
+        "utilization": 88
       }
     },
     {
@@ -2658,7 +2658,7 @@
         "operator": "Keyera",
         "capacity": "120 MMcf/d",
         "capacity_num": 120000,
-        "utilization": 95
+        "utilization": 88
       }
     }
   ]

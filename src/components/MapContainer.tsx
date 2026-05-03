@@ -110,7 +110,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       )}
 
       {activeLayers.refineries && (
-        <Source id="facilities-data" type="geojson" data="/facilities.geojson">
+        <Source id="facilities-data" type="geojson" data="/facilities.geojson?v=2">
           {/* Oil Refineries */}
           <Layer 
             id="facility-refineries-oil" 

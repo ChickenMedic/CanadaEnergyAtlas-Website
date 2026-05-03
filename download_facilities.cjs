@@ -57,8 +57,15 @@ async function downloadFacilities() {
 
     const features = [];
     
-    // Helper to generate a realistic utilization
-    const getUtilization = () => Math.floor(Math.random() * (98 - 75 + 1) + 75);
+    // Helper to generate a realistic utilization based on regional averages
+    const getUtilization = (lon, lat) => {
+      // Very rough bounding boxes for regional estimates based on EIA/CER averages
+      if (lat > 49) return 88; // Canada average ~88%
+      if (lat < 35 && lon > -100 && lon < -85) return 93; // US Gulf Coast (PADD 3) runs hot ~93%
+      if (lon > -85 && lat > 35) return 85; // US East Coast (PADD 1) ~85%
+      if (lon < -100 && lat > 35) return 82; // US West Coast/Rockies (PADD 4/5) ~82%
+      return 91; // US Midwest (PADD 2) ~91%
+    };
 
     // 1. Process OSM Data
     for (const el of data.elements) {
@@ -113,7 +120,7 @@ async function downloadFacilities() {
           operator: el.tags.operator || 'Multiple/Unknown',
           capacity: capacityStr,
           capacity_num: capacityNum,
-          utilization: getUtilization()
+          utilization: getUtilization(lon, lat)
         }
       });
     }
@@ -135,7 +142,7 @@ async function downloadFacilities() {
             operator: item.operator,
             capacity: item.type === 'refinery' && item.subtype === 'oil' ? `${(item.capacity/1000).toFixed(0)}k bbl/d` : `${(item.capacity/1000).toFixed(0)} MMcf/d`,
             capacity_num: item.capacity,
-            utilization: getUtilization()
+            utilization: getUtilization(item.lon, item.lat)
           }
         });
       }
