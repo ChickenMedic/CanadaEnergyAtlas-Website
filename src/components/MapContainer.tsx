@@ -114,25 +114,39 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
           {/* Oil Refineries */}
           <Layer 
             id="facility-refineries-oil" 
-            type="circle" 
+            type="symbol" 
             filter={['all', ['==', 'type', 'refinery'], ['==', 'subtype', 'oil']]} 
+            layout={{
+              'text-field': '■',
+              'text-size': [
+                'interpolate', ['linear'], ['get', 'capacity_num'],
+                50000, 12,
+                300000, 24
+              ]
+            }}
             paint={{ 
-              'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 3, 10, 8], 
-              'circle-color': '#f97316', 
-              'circle-stroke-width': 1, 
-              'circle-stroke-color': '#111' 
+              'text-color': '#f97316', 
+              'text-halo-width': 1, 
+              'text-halo-color': '#111' 
             }} 
           />
           {/* Gas Processing Plants */}
           <Layer 
             id="facility-refineries-gas" 
-            type="circle" 
+            type="symbol" 
             filter={['all', ['==', 'type', 'refinery'], ['==', 'subtype', 'gas']]} 
+            layout={{
+              'text-field': '▲',
+              'text-size': [
+                'interpolate', ['linear'], ['get', 'capacity_num'],
+                50000, 12,
+                500000, 24
+              ]
+            }}
             paint={{ 
-              'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 3, 10, 8], 
-              'circle-color': '#3b82f6', 
-              'circle-stroke-width': 1, 
-              'circle-stroke-color': '#111' 
+              'text-color': '#3b82f6', 
+              'text-halo-width': 1, 
+              'text-halo-color': '#111' 
             }} 
           />
           {/* Oil Storage */}
@@ -141,7 +155,11 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             type="circle" 
             filter={['all', ['==', 'type', 'storage'], ['==', 'subtype', 'oil']]} 
             paint={{ 
-              'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 4, 10, 10], 
+              'circle-radius': [
+                'interpolate', ['linear'], ['get', 'capacity_num'],
+                100000, 4,
+                5000000, 12
+              ], 
               'circle-color': '#111', 
               'circle-stroke-width': 2, 
               'circle-stroke-color': '#f97316' 
@@ -153,7 +171,11 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             type="circle" 
             filter={['all', ['==', 'type', 'storage'], ['==', 'subtype', 'gas']]} 
             paint={{ 
-              'circle-radius': ['interpolate', ['linear'], ['zoom'], 2, 4, 10, 10], 
+              'circle-radius': [
+                'interpolate', ['linear'], ['get', 'capacity_num'],
+                100000, 4,
+                5000000, 12
+              ], 
               'circle-color': '#111', 
               'circle-stroke-width': 2, 
               'circle-stroke-color': '#3b82f6' 
@@ -170,7 +192,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
               'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'], 
               'text-size': 11,
               'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
-              'text-radial-offset': 1.2,
+              'text-radial-offset': 1.5,
               'text-justify': 'auto'
             }} 
             paint={{ 
@@ -229,8 +251,13 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
               </p>
             )}
             {hoverInfo.feature.properties.capacity && hoverInfo.feature.properties.capacity !== 'Unknown' && (
-              <p style={{ margin: '0 0 0 0', fontSize: '0.75rem', color: '#444' }}>
+              <p style={{ margin: '0 0 2px 0', fontSize: '0.75rem', color: '#444' }}>
                 <strong>Capacity:</strong> {hoverInfo.feature.properties.capacity}
+              </p>
+            )}
+            {hoverInfo.feature.properties.utilization && (
+              <p style={{ margin: '0 0 0 0', fontSize: '0.75rem', color: '#444' }}>
+                <strong>Est. Utilization:</strong> {hoverInfo.feature.properties.utilization}%
               </p>
             )}
           </div>
@@ -258,11 +285,11 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
           <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px' }}>
             <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Facilities</h4>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-              <div style={{ width: '12px', height: '12px', backgroundColor: '#f97316', borderRadius: '50%' }}></div>
+              <div style={{ width: '12px', height: '12px', color: '#f97316', fontSize: '14px', lineHeight: '12px', textAlign: 'center' }}>■</div>
               <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Oil Refinery</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-              <div style={{ width: '12px', height: '12px', backgroundColor: '#3b82f6', borderRadius: '50%' }}></div>
+              <div style={{ width: '12px', height: '12px', color: '#3b82f6', fontSize: '14px', lineHeight: '12px', textAlign: 'center' }}>▲</div>
               <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Gas Processing</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
