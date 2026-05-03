@@ -22,49 +22,80 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
 
   const activeLayers = Object.entries(layers).filter(([_, v]) => v).map(([k]) => k);
   let overviewTitle = 'System Status';
-  let overviewStats: { label: string; value: string }[] = [];
+  let canadaStats: { label: string; value: string }[] = [];
+  let usStats: { label: string; value: string }[] = [];
 
   if (activeLayers.length === 0) {
-    overviewTitle = 'National Production';
-    overviewStats = [
+    overviewTitle = 'Continental Production';
+    canadaStats = [
       { label: 'Oil Output', value: '4.8M bbl/d' },
       { label: 'Gas Output', value: '17.5 Bcf/d' },
       { label: 'Electricity', value: '640 TWh/yr' }
     ];
+    usStats = [
+      { label: 'Oil Output', value: '12.9M bbl/d' },
+      { label: 'Gas Output', value: '103 Bcf/d' },
+      { label: 'Electricity', value: '4,240 TWh/yr' }
+    ];
   } else if (activeLayers.includes('refineries')) {
     overviewTitle = 'Refining Infrastructure';
-    overviewStats = [
+    canadaStats = [
       { label: 'Active Facilities', value: '17' },
       { label: 'Total Capacity', value: '2.0M bbl/d' },
       { label: 'Top Product', value: 'Distillate' }
     ];
+    usStats = [
+      { label: 'Active Facilities', value: '130' },
+      { label: 'Total Capacity', value: '18.1M bbl/d' },
+      { label: 'Top Product', value: 'Gasoline' }
+    ];
   } else if (activeLayers.includes('pipelines')) {
     overviewTitle = 'Pipeline Network';
-    overviewStats = [
+    canadaStats = [
       { label: 'Total Length', value: '840k km' },
       { label: 'Transmission', value: '117k km' },
-      { label: 'US Exports', value: '3.8M bbl/d' }
+      { label: 'Exports to US', value: '3.8M bbl/d' }
+    ];
+    usStats = [
+      { label: 'Total Length', value: '4.2M km' },
+      { label: 'Transmission', value: '480k km' },
+      { label: 'Imports from CA', value: '3.8M bbl/d' }
     ];
   } else if (activeLayers.includes('basins')) {
     overviewTitle = 'Geological Resources';
-    overviewStats = [
-      { label: 'WCSB Area', value: '1.4M km²' },
+    canadaStats = [
+      { label: 'Primary Basin', value: 'WCSB' },
       { label: 'Proven Oil', value: '168B bbls' },
       { label: 'Proven Gas', value: '83 Tcf' }
     ];
+    usStats = [
+      { label: 'Primary Basin', value: 'Permian' },
+      { label: 'Proven Oil', value: '44B bbls' },
+      { label: 'Proven Gas', value: '473 Tcf' }
+    ];
   } else if (activeLayers.includes('grid')) {
     overviewTitle = 'The Electrical Grid';
-    overviewStats = [
-      { label: 'Transmission', value: '160k km' },
+    canadaStats = [
       { label: 'Clean Energy', value: '82%' },
+      { label: 'Cross-border Lines', value: '34' },
       { label: 'US Exports', value: '60 TWh' }
+    ];
+    usStats = [
+      { label: 'Clean Energy', value: '40%' },
+      { label: 'Major Interconnects', value: '3' },
+      { label: 'CA Imports', value: '60 TWh' }
     ];
   } else if (activeLayers.includes('renewables')) {
     overviewTitle = 'Renewable Capacity';
-    overviewStats = [
+    canadaStats = [
       { label: 'Hydroelectric', value: '82 GW' },
       { label: 'Wind Power', value: '19 GW' },
       { label: 'Solar Power', value: '5 GW' }
+    ];
+    usStats = [
+      { label: 'Hydroelectric', value: '80 GW' },
+      { label: 'Wind Power', value: '140 GW' },
+      { label: 'Solar Power', value: '110 GW' }
     ];
   }
 
@@ -111,7 +142,7 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
 
         <div>
           <h2 style={{ fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '16px' }}>
-            National Overview
+            Regional Overview
           </h2>
           
           <div className="stats-card" style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '12px', padding: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
@@ -119,12 +150,26 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
               <Activity size={18} color="var(--accent-blue)" />
               <span style={{ fontWeight: 500 }}>{overviewTitle}</span>
             </div>
-            {overviewStats.map((stat, i) => (
-              <div key={i} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: i === overviewStats.length - 1 ? 0 : '12px' }}>
-                <span style={{ color: 'var(--text-muted)' }}>{stat.label}</span>
-                <span style={{ fontWeight: 600 }}>{stat.value}</span>
-              </div>
-            ))}
+            
+            <div style={{ marginBottom: '16px' }}>
+              <h3 style={{ fontSize: '0.85rem', color: '#fff', marginBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '4px' }}>🇨🇦 Canada</h3>
+              {canadaStats.map((stat, i) => (
+                <div key={`ca-${i}`} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: i === canadaStats.length - 1 ? 0 : '8px' }}>
+                  <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>{stat.label}</span>
+                  <span style={{ fontWeight: 600, fontSize: '0.85rem' }}>{stat.value}</span>
+                </div>
+              ))}
+            </div>
+
+            <div>
+              <h3 style={{ fontSize: '0.85rem', color: '#fff', marginBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '4px' }}>🇺🇸 United States</h3>
+              {usStats.map((stat, i) => (
+                <div key={`us-${i}`} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: i === usStats.length - 1 ? 0 : '8px' }}>
+                  <span style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>{stat.label}</span>
+                  <span style={{ fontWeight: 600, fontSize: '0.85rem' }}>{stat.value}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
