@@ -11,13 +11,7 @@ interface MapContainerProps {
   };
 }
 
-// Minimal placeholder data for unused layers
-const dummyData: GeoJSON.FeatureCollection = {
-  type: 'FeatureCollection',
-  features: [
-    { type: 'Feature', geometry: { type: 'Point', coordinates: [-112.8218, 49.6942] }, properties: { type: 'renewable', name: 'Pincher Creek Wind' } }
-  ]
-};
+
 
 export default function MapContainer({ activeLayers }: MapContainerProps) {
   const mapStyle = "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
@@ -37,7 +31,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
     } = event;
     const hoveredFeature = features && features[0];
     
-    if (hoveredFeature && hoveredFeature.layer.id.startsWith('facility-')) {
+    if (hoveredFeature && (hoveredFeature.layer.id.startsWith('facility-') || hoveredFeature.layer.id.startsWith('renewable-'))) {
       setHoverInfo({
         longitude: lng,
         latitude: lat,
@@ -53,7 +47,10 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       initialViewState={mapCenter} 
       mapStyle={mapStyle} 
       style={{ width: '100%', height: '100%' }}
-      interactiveLayerIds={['facility-refineries-oil', 'facility-refineries-gas', 'facility-storage-oil', 'facility-storage-gas']}
+      interactiveLayerIds={[
+        'facility-refineries-oil', 'facility-refineries-gas', 'facility-storage-oil', 'facility-storage-gas',
+        'renewable-hydro', 'renewable-wind', 'renewable-solar'
+      ]}
       onMouseMove={onHover}
       onMouseLeave={() => setHoverInfo(null)}
     >
@@ -219,8 +216,75 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       )}
 
       {activeLayers.renewables && (
-        <Source id="renewables-data" type="geojson" data={dummyData}>
-          <Layer id="renewables-layer" type="circle" filter={['==', 'type', 'renewable']} paint={{ 'circle-radius': 10, 'circle-color': '#10b981', 'circle-stroke-width': 2, 'circle-stroke-color': '#161a21' }} />
+        <Source id="renewables-data" type="geojson" data="/renewables.geojson">
+          {/* Hydro Plants */}
+          <Layer 
+            id="renewable-hydro" 
+            type="circle" 
+            filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'hydro']]} 
+            paint={{ 
+              'circle-radius': [
+                'interpolate', ['linear'], ['get', 'capacity_num'],
+                10, 3,
+                5000, 15
+              ], 
+              'circle-color': '#0ea5e9', // Light Blue for Hydro
+              'circle-stroke-width': 1.5, 
+              'circle-stroke-color': '#ffffff' 
+            }} 
+          />
+          {/* Wind Farms */}
+          <Layer 
+            id="renewable-wind" 
+            type="circle" 
+            filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'wind']]} 
+            paint={{ 
+              'circle-radius': [
+                'interpolate', ['linear'], ['get', 'capacity_num'],
+                10, 3,
+                1000, 10
+              ], 
+              'circle-color': '#8b5cf6', // Purple/Indigo for Wind
+              'circle-stroke-width': 1.5, 
+              'circle-stroke-color': '#ffffff' 
+            }} 
+          />
+          {/* Solar Farms */}
+          <Layer 
+            id="renewable-solar" 
+            type="circle" 
+            filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'solar']]} 
+            paint={{ 
+              'circle-radius': [
+                'interpolate', ['linear'], ['get', 'capacity_num'],
+                10, 3,
+                500, 10
+              ], 
+              'circle-color': '#fbbf24', // Yellow/Gold for Solar
+              'circle-stroke-width': 1.5, 
+              'circle-stroke-color': '#ffffff' 
+            }} 
+          />
+          
+          {/* Name labels (zoom > 5) */}
+          <Layer 
+            id="renewables-labels" 
+            type="symbol" 
+            minzoom={5}
+            layout={{ 
+              'text-field': ['get', 'name'], 
+              'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'], 
+              'text-size': 11,
+              'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+              'text-radial-offset': 1.5,
+              'text-justify': 'auto'
+            }} 
+            paint={{ 
+              'text-color': '#ffffff',
+              'text-halo-color': '#161a21',
+              'text-halo-width': 2
+            }} 
+          />
         </Source>
       )}
 
@@ -311,6 +375,24 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ width: '16px', height: '4px', backgroundColor: '#f43f5e', borderRadius: '2px' }}></div>
               <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>450kV+</span>
+            </div>
+          </div>
+        )}
+
+        {activeLayers.renewables && (
+          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px' }}>
+            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Renewables</h4>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#0ea5e9', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Hydroelectric</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#8b5cf6', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Wind Farm</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#fbbf24', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Solar Farm</span>
             </div>
           </div>
         )}
