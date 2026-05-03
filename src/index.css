@@ -633,31 +633,48 @@ input:checked + .slider:before {
 /* Rankings Section */
 .rankings-container {
   display: flex;
+  flex-direction: column;
   gap: 30px;
-  align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .rankings-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
 }
 
 .rankings-list {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  flex: 1.5;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
+}
+
+@media (max-width: 500px) {
+  .rankings-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .ranking-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 16px 20px;
+  justify-content: center;
+  padding: 16px 8px;
   background: rgba(255,255,255,0.03);
   border: 1px solid var(--border-light);
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s;
+  text-align: center;
+  position: relative;
 }
 
 .ranking-item:hover {
   background: rgba(255,255,255,0.06);
-  transform: translateX(4px);
+  transform: translateY(-4px);
 }
 
 .ranking-item.active {
@@ -667,35 +684,41 @@ input:checked + .slider:before {
 }
 
 .ranking-icon-container {
-  margin-right: 16px;
+  margin-right: 0;
+  margin-bottom: 8px;
   background: rgba(255,255,255,0.05);
-  padding: 12px;
+  padding: 10px;
   border-radius: 12px;
 }
 
 .ranking-info {
-  flex: 1;
+  width: 100%;
 }
 
 .ranking-title {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ranking-subtitle {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
 }
 
 .ranking-number {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 800;
   color: var(--text-main);
+  margin-top: 8px;
+  line-height: 1;
 }
 
 .ranking-suffix {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: var(--text-muted);
 }
 
@@ -758,7 +781,7 @@ input:checked + .slider:before {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .navbar {
     flex-direction: column;
     padding: 12px 16px;
@@ -884,7 +907,7 @@ input:checked + .slider:before {
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%);
     padding: 6px; /* Circle when inactive */
     margin: 0;
     border-radius: 30px;
@@ -893,15 +916,16 @@ input:checked + .slider:before {
     border: 1px solid var(--border-light);
     display: flex;
     align-items: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: bottom 0.3s ease, padding 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0.3s;
     white-space: nowrap;
     cursor: pointer;
+    z-index: 10;
   }
 
   /* Inactive hover moves up slightly */
   @media (hover: hover) {
     .layer-toggle:hover {
-      transform: translateX(-50%) translateY(-8px);
+      bottom: 8px;
     }
   }
 
@@ -909,9 +933,10 @@ input:checked + .slider:before {
   .layer-toggle.active,
   .layer-toggle.active:hover {
     padding: 6px 16px 6px 6px; /* Expand to pill when active */
-    transform: translateX(-50%) translateY(-56px); /* Completely clear inactive circles */
+    bottom: 56px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.7); /* Enhance shadow when popped up */
     z-index: 100;
+    transition: bottom 0.3s ease, padding 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0s;
   }
 
   .toggle-info {

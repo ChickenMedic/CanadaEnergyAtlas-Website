@@ -20,6 +20,54 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
     { key: 'renewables', icon: <Leaf size={20} />, label: 'Renewables', desc: 'Wind, Solar & Hydro', colorClass: 'renewable' },
   ] as const;
 
+  const activeLayers = Object.entries(layers).filter(([_, v]) => v).map(([k]) => k);
+  let overviewTitle = 'System Status';
+  let overviewStats = [];
+
+  if (activeLayers.length === 0) {
+    overviewTitle = 'National Production';
+    overviewStats = [
+      { label: 'Oil Output', value: '4.8M bbl/d' },
+      { label: 'Gas Output', value: '17.5 Bcf/d' },
+      { label: 'Electricity', value: '640 TWh/yr' }
+    ];
+  } else if (activeLayers.includes('refineries')) {
+    overviewTitle = 'Refining Infrastructure';
+    overviewStats = [
+      { label: 'Active Facilities', value: '17' },
+      { label: 'Total Capacity', value: '2.0M bbl/d' },
+      { label: 'Top Product', value: 'Distillate' }
+    ];
+  } else if (activeLayers.includes('pipelines')) {
+    overviewTitle = 'Pipeline Network';
+    overviewStats = [
+      { label: 'Total Length', value: '840k km' },
+      { label: 'Transmission', value: '117k km' },
+      { label: 'US Exports', value: '3.8M bbl/d' }
+    ];
+  } else if (activeLayers.includes('basins')) {
+    overviewTitle = 'Geological Resources';
+    overviewStats = [
+      { label: 'WCSB Area', value: '1.4M km²' },
+      { label: 'Proven Oil', value: '168B bbls' },
+      { label: 'Proven Gas', value: '83 Tcf' }
+    ];
+  } else if (activeLayers.includes('grid')) {
+    overviewTitle = 'The Electrical Grid';
+    overviewStats = [
+      { label: 'Transmission', value: '160k km' },
+      { label: 'Clean Energy', value: '82%' },
+      { label: 'US Exports', value: '60 TWh' }
+    ];
+  } else if (activeLayers.includes('renewables')) {
+    overviewTitle = 'Renewable Capacity';
+    overviewStats = [
+      { label: 'Hydroelectric', value: '82 GW' },
+      { label: 'Wind Power', value: '19 GW' },
+      { label: 'Solar Power', value: '5 GW' }
+    ];
+  }
+
   return (
     <div className="sidebar glass-panel">
       <div className="sidebar-header">
@@ -69,20 +117,14 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
           <div className="stats-card" style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '12px', padding: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
               <Activity size={18} color="var(--accent-blue)" />
-              <span style={{ fontWeight: 500 }}>System Status</span>
+              <span style={{ fontWeight: 500 }}>{overviewTitle}</span>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
-              <span style={{ color: 'var(--text-muted)' }}>Transmission</span>
-              <span style={{ fontWeight: 600 }}>160k km</span>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
-              <span style={{ color: 'var(--text-muted)' }}>Wind Capacity</span>
-              <span style={{ fontWeight: 600 }}>19 GW</span>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span style={{ color: 'var(--text-muted)' }}>Solar Capacity</span>
-              <span style={{ fontWeight: 600 }}>5 GW</span>
-            </div>
+            {overviewStats.map((stat, i) => (
+              <div key={i} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: i === overviewStats.length - 1 ? 0 : '12px' }}>
+                <span style={{ color: 'var(--text-muted)' }}>{stat.label}</span>
+                <span style={{ fontWeight: 600 }}>{stat.value}</span>
+              </div>
+            ))}
           </div>
         </div>
 

@@ -1,64 +1,50 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Globe, Zap, TrendingUp, Activity, Droplet, Wind } from 'lucide-react';
+import { Globe, Zap, TrendingUp, Activity, Droplet, Wind, Flame, Database, Leaf, Sun } from 'lucide-react';
 
 // Data for benchmarks
 const benchmarks = [
-  { id: 'wcs', name: 'WCS (Hardisty)', type: 'oil', price: 75.85, trend: 'up', note: 'Heavy sour crude, narrowed diff', importance: 1 },
-  { id: 'wti', name: 'WTI (Cushing)', type: 'oil', price: 91.38, trend: 'up', note: 'NA light sweet reference', importance: 2 },
-  { id: 'brent', name: 'Brent Crude', type: 'oil', price: 95.12, trend: 'up', note: 'Global light sweet reference', importance: 3 },
-  { id: 'hh', name: 'Henry Hub', type: 'gas', price: 2.85, trend: 'down', note: 'US natural gas benchmark', importance: 4 },
-  { id: 'aeco', name: 'AECO (Alberta)', type: 'gas', price: 2.10, trend: 'down', note: 'Canadian gas benchmark', importance: 5 },
-  { id: 'dawn', name: 'Dawn Hub', type: 'gas', price: 2.45, trend: 'up', note: 'Eastern Canada gas pricing', importance: 6 },
+  // North America
+  { id: 'wcs', name: 'WCS (Hardisty)', type: 'oil', region: 'na', price: 75.85, trend: 'up', note: 'Heavy sour crude', importance: 1, volume: 3.8 },
+  { id: 'wti', name: 'WTI (Cushing)', type: 'oil', region: 'na', price: 91.38, trend: 'up', note: 'NA light sweet reference', importance: 2, volume: 4.5 },
+  { id: 'hh', name: 'Henry Hub', type: 'gas', region: 'na', price: 2.85, trend: 'down', note: 'US natural gas benchmark', importance: 3, volume: 102 },
+  { id: 'aeco', name: 'AECO (Alberta)', type: 'gas', region: 'na', price: 2.10, trend: 'down', note: 'Canadian gas benchmark', importance: 4, volume: 16 },
+  { id: 'dawn', name: 'Dawn Hub', type: 'gas', region: 'na', price: 2.45, trend: 'up', note: 'Eastern Canada gas pricing', importance: 5, volume: 8 },
+  // Europe
+  { id: 'brent', name: 'Brent Crude', type: 'oil', region: 'eu', price: 95.12, trend: 'up', note: 'Global light sweet reference', importance: 1, volume: 5.2 },
+  { id: 'ttf', name: 'TTF (Netherlands)', type: 'gas', region: 'eu', price: 12.50, trend: 'up', note: 'European gas benchmark', importance: 2, volume: 20 },
+  { id: 'urals', name: 'Urals Crude', type: 'oil', region: 'eu', price: 68.40, trend: 'down', note: 'Russian export blend', importance: 6, volume: 2.5 },
+  // Asia
+  { id: 'dubai', name: 'Dubai Crude', type: 'oil', region: 'asia', price: 92.40, trend: 'up', note: 'Middle East/Asia reference', importance: 1, volume: 6.0 },
+  { id: 'jkm', name: 'JKM (Japan/Korea)', type: 'gas', region: 'asia', price: 14.20, trend: 'up', note: 'Asian LNG benchmark', importance: 2, volume: 15 },
+  { id: 'tapis', name: 'Tapis (Malaysia)', type: 'oil', region: 'asia', price: 98.15, trend: 'up', note: 'Light sweet Asian blend', importance: 7, volume: 0.5 },
 ];
 
 const rankings = [
-  { 
-    id: 'hydro', 
-    title: 'Hydroelectricity', 
-    rank: '3',
-    suffix: 'rd',
-    subtitle: 'Largest Producer', 
-    details: 'Canada operates over 500 hydroelectric facilities, generating roughly 60% of the country\'s total electricity. We are a clean energy powerhouse exporting significant surplus to the US.',
-    icon: <Zap size={32} color="var(--accent-blue)" />
-  },
-  { 
-    id: 'oil', 
-    title: 'Crude Oil', 
-    rank: '4',
-    suffix: 'th',
-    subtitle: 'Largest Producer', 
-    details: 'With the world\'s third-largest proven oil reserves, primarily in the oil sands, Canada is a cornerstone of global energy security, supplying over 4 million barrels per day.',
-    icon: <Droplet size={32} color="var(--accent-orange)" />
-  },
-  { 
-    id: 'uranium', 
-    title: 'Uranium', 
-    rank: '2',
-    suffix: 'nd',
-    subtitle: 'Largest Producer', 
-    details: 'Saskatchewan\'s McArthur River and Cigar Lake are among the highest-grade uranium mines globally, fueling zero-emission nuclear power around the world.',
-    icon: <Activity size={32} color="var(--accent-green)" />
-  },
-  { 
-    id: 'wind', 
-    title: 'Wind Energy', 
-    rank: '9',
-    suffix: 'th',
-    subtitle: 'Largest Capacity', 
-    details: 'Canada is rapidly expanding its wind footprint, with over 19 GW of installed capacity, harnessing vast wind resources across the prairies and coastlines.',
-    icon: <Wind size={32} color="var(--text-muted)" />
-  }
+  { id: 'hydro', title: 'Hydroelectricity', rank: '3', suffix: 'rd', subtitle: 'Largest Producer', details: 'Canada operates over 500 hydroelectric facilities, generating roughly 60% of the country\'s total electricity. We are a clean energy powerhouse exporting significant surplus to the US.', icon: <Zap size={28} color="var(--accent-blue)" /> },
+  { id: 'oil', title: 'Crude Oil', rank: '4', suffix: 'th', subtitle: 'Largest Producer', details: 'With the world\'s third-largest proven oil reserves, primarily in the oil sands, Canada is a cornerstone of global energy security, supplying over 4 million barrels per day.', icon: <Droplet size={28} color="var(--accent-orange)" /> },
+  { id: 'uranium', title: 'Uranium', rank: '2', suffix: 'nd', subtitle: 'Largest Producer', details: 'Saskatchewan\'s McArthur River and Cigar Lake are among the highest-grade uranium mines globally, fueling zero-emission nuclear power around the world.', icon: <Activity size={28} color="var(--accent-green)" /> },
+  { id: 'wind', title: 'Wind Energy', rank: '9', suffix: 'th', subtitle: 'Largest Capacity', details: 'Canada is rapidly expanding its wind footprint, with over 19 GW of installed capacity, harnessing vast wind resources across the prairies and coastlines.', icon: <Wind size={28} color="var(--text-muted)" /> },
+  { id: 'gas', title: 'Natural Gas', rank: '6', suffix: 'th', subtitle: 'Largest Producer', details: 'Canada produces over 16 billion cubic feet per day, supporting domestic heating and international exports via LNG.', icon: <Flame size={28} color="var(--accent-orange)" /> },
+  { id: 'reserves', title: 'Proven Reserves', rank: '3', suffix: 'rd', subtitle: 'Largest Globally', details: 'With 168 billion barrels of proven reserves, mostly in the oil sands, Canada represents a massive, stable global energy source.', icon: <Database size={28} color="var(--accent-orange)" /> },
+  { id: 'potash', title: 'Potash', rank: '1', suffix: 'st', subtitle: 'Largest Producer', details: 'Canada is the undisputed global leader in potash production, essential for global agriculture and food security.', icon: <Leaf size={28} color="var(--accent-green)" /> },
+  { id: 'solar', title: 'Solar Energy', rank: '12', suffix: 'th', subtitle: 'Largest Capacity', details: 'Rapidly growing solar capacity, especially in Alberta and Saskatchewan, is diversifying Canada\'s renewable portfolio.', icon: <Sun size={28} color="#fbbf24" /> }
 ];
 
 export default function HomePage() {
+  const [benchmarkRegion, setBenchmarkRegion] = useState<'all' | 'na' | 'eu' | 'asia'>('na');
   const [benchmarkType, setBenchmarkType] = useState<'all' | 'oil' | 'gas'>('all');
-  const [benchmarkSort, setBenchmarkSort] = useState<'importance' | 'price'>('importance');
+  const [benchmarkSort, setBenchmarkSort] = useState<'importance' | 'price' | 'volume'>('importance');
   const [selectedRanking, setSelectedRanking] = useState(rankings[0]);
 
   const filteredBenchmarks = benchmarks
+    .filter(b => benchmarkRegion === 'all' || b.region === benchmarkRegion)
     .filter(b => benchmarkType === 'all' || b.type === benchmarkType)
-    .sort((a, b) => benchmarkSort === 'price' ? b.price - a.price : a.importance - b.importance);
+    .sort((a, b) => {
+      if (benchmarkSort === 'price') return b.price - a.price;
+      if (benchmarkSort === 'volume') return b.volume - a.volume;
+      return a.importance - b.importance;
+    });
 
   return (
     <div className="page-container" style={{ overflowY: 'auto' }}>
@@ -98,6 +84,12 @@ export default function HomePage() {
           
           <div className="benchmark-controls">
             <div className="toggle-group">
+              <button className={`toggle-btn ${benchmarkRegion === 'all' ? 'active' : ''}`} onClick={() => setBenchmarkRegion('all')}>World</button>
+              <button className={`toggle-btn ${benchmarkRegion === 'na' ? 'active' : ''}`} onClick={() => setBenchmarkRegion('na')}>NA</button>
+              <button className={`toggle-btn ${benchmarkRegion === 'eu' ? 'active' : ''}`} onClick={() => setBenchmarkRegion('eu')}>Europe</button>
+              <button className={`toggle-btn ${benchmarkRegion === 'asia' ? 'active' : ''}`} onClick={() => setBenchmarkRegion('asia')}>Asia</button>
+            </div>
+            <div className="toggle-group">
               <button className={`toggle-btn ${benchmarkType === 'all' ? 'active' : ''}`} onClick={() => setBenchmarkType('all')}>All</button>
               <button className={`toggle-btn ${benchmarkType === 'oil' ? 'active' : ''}`} onClick={() => setBenchmarkType('oil')}>Oil</button>
               <button className={`toggle-btn ${benchmarkType === 'gas' ? 'active' : ''}`} onClick={() => setBenchmarkType('gas')}>Gas</button>
@@ -105,6 +97,7 @@ export default function HomePage() {
             <div className="toggle-group">
               <button className={`toggle-btn ${benchmarkSort === 'importance' ? 'active' : ''}`} onClick={() => setBenchmarkSort('importance')}>Importance</button>
               <button className={`toggle-btn ${benchmarkSort === 'price' ? 'active' : ''}`} onClick={() => setBenchmarkSort('price')}>Price</button>
+              <button className={`toggle-btn ${benchmarkSort === 'volume' ? 'active' : ''}`} onClick={() => setBenchmarkSort('volume')}>Volume</button>
             </div>
           </div>
         </div>
