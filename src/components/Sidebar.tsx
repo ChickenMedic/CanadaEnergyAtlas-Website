@@ -3,6 +3,7 @@ import { Database, Route, Factory, Zap, Leaf, Activity } from 'lucide-react';
 interface SidebarProps {
   layers: {
     basins: boolean;
+    minerals: boolean;
     pipelines: boolean;
     refineries: boolean;
     grid: boolean;
@@ -13,7 +14,8 @@ interface SidebarProps {
 
 export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
   const toggleConfigs = [
-    { key: 'basins', icon: <Database size={20} />, label: 'Basins & Resources', desc: 'Geological Formations', colorClass: 'gas' },
+    { key: 'basins', icon: <Database size={20} />, label: 'Basins', desc: 'Geological Formations', colorClass: 'gas' },
+    { key: 'minerals', icon: <Database size={20} />, label: 'Critical Minerals', desc: 'NATO Supply Chain', colorClass: 'copper' },
     { key: 'pipelines', icon: <Route size={20} />, label: 'Pipelines & Flows', desc: 'Liquids & Gas Networks', colorClass: 'gas' },
     { key: 'refineries', icon: <Factory size={20} />, label: 'Refineries & Storage', desc: 'Processing Hubs', colorClass: 'gas' },
     { key: 'grid', icon: <Zap size={20} />, label: 'The Grid', desc: 'Transmission Lines', colorClass: 'renewable' },
@@ -96,6 +98,18 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
       { label: 'Hydroelectric', value: '80 GW' },
       { label: 'Wind Power', value: '140 GW' },
       { label: 'Solar Power', value: '110 GW' }
+    ];
+  } else if (activeLayers.includes('minerals')) {
+    overviewTitle = 'NATO Critical Minerals';
+    canadaStats = [
+      { label: 'Uranium Global Rank', value: '#2' },
+      { label: 'Potash Global Rank', value: '#1' },
+      { label: 'Developing Lithium', value: '15+ sites' }
+    ];
+    usStats = [
+      { label: 'Copper Global Rank', value: '#5' },
+      { label: 'Rare Earth Sites', value: '1 Active' },
+      { label: 'Lithium Reserves', value: '14M Tons' }
     ];
   }
 

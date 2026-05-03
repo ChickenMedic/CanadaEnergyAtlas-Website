@@ -5,6 +5,7 @@ import Sidebar from '../components/Sidebar';
 export default function MapPage() {
   const [layers, setLayers] = useState({
     basins: false,
+    minerals: false,
     pipelines: false,
     refineries: false,
     grid: false,
@@ -17,6 +18,7 @@ export default function MapPage() {
       const isTurningOn = !prev[layer];
       return {
         basins: false,
+        minerals: false,
         pipelines: false,
         refineries: false,
         grid: false,

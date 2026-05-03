@@ -1,0 +1,221 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-105.155, 59.553] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "uranium",
+        "name": "McArthur River Mine",
+        "operator": "Cameco",
+        "description": "World's largest high-grade uranium mine.",
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-104.148, 58.261] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "uranium",
+        "name": "Cigar Lake Mine",
+        "operator": "Cameco",
+        "description": "Highest-grade uranium mine in the world.",
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-81.016, 46.486] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Sudbury Basin",
+        "operator": "Vale / Glencore",
+        "description": "Massive nickel/copper/cobalt mining district.",
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-77.778, 61.688] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Raglan Mine",
+        "operator": "Glencore",
+        "description": "Major nickel-copper mine in Nunavik.",
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-98.115, 55.748] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Thompson Nickel Belt",
+        "operator": "Vale",
+        "description": "Major nickel production hub in Manitoba.",
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-118.067, 50.490] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Highland Valley Copper",
+        "operator": "Teck Resources",
+        "description": "Largest open-pit copper mine in Canada.",
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-112.062, 41.012] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Bingham Canyon Mine",
+        "operator": "Rio Tinto",
+        "description": "Largest open-pit copper mine in the US.",
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-110.871, 33.315] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Morenci Mine",
+        "operator": "Freeport-McMoRan",
+        "description": "Largest copper producer in North America.",
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-115.539, 35.474] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "name": "Mountain Pass Mine",
+        "operator": "MP Materials",
+        "description": "Only active rare earth elements mine in the US.",
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-113.882, 63.585] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "name": "Nechalacho Rare Earth Project",
+        "operator": "Cheetah Resources",
+        "description": "Major rare earth elements project in NWT.",
+        "status": "Active / Developing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-77.712, 48.375] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "North American Lithium (NAL)",
+        "operator": "Sayona Mining",
+        "description": "Major hard-rock lithium operation in Quebec.",
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-94.945, 50.413] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Tanco Mine",
+        "operator": "Sinomine",
+        "description": "Lithium, tantalum, and cesium producer in Manitoba.",
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-117.818, 37.766] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Silver Peak Mine",
+        "operator": "Albemarle",
+        "description": "Only active lithium brine operation in the US.",
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-118.064, 41.696] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Thacker Pass Lithium Project",
+        "operator": "Lithium Americas",
+        "description": "Largest known lithium deposit in the US.",
+        "status": "Developing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-114.398, 45.093] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "cobalt",
+        "name": "Idaho Cobalt Operations",
+        "operator": "Jervois",
+        "description": "Primary cobalt mine in the United States.",
+        "status": "Active / Commissioning"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-75.836, 45.143] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "graphite",
+        "name": "Matawinie Graphite Project",
+        "operator": "Nouveau Monde Graphite",
+        "description": "World-class graphite development in Quebec.",
+        "status": "Developing"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-106.128, 51.688] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "potash",
+        "name": "Allan Potash Mine",
+        "operator": "Nutrien",
+        "description": "Massive potash fertilizer operation.",
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-104.981, 50.510] },
+      "properties": {
+        "type": "mineral",
+        "subtype": "potash",
+        "name": "Bethune Potash Mine",
+        "operator": "K+S",
+        "description": "Major solution potash mine in Saskatchewan.",
+        "status": "Active"
+      }
+    }
+  ]
+}

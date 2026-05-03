@@ -4,6 +4,7 @@ import Map, { NavigationControl, Source, Layer, Popup } from 'react-map-gl/mapli
 interface MapContainerProps {
   activeLayers: {
     basins: boolean;
+    minerals: boolean;
     pipelines: boolean;
     refineries: boolean;
     grid: boolean;
@@ -16,7 +17,13 @@ interface MapContainerProps {
 export default function MapContainer({ activeLayers }: MapContainerProps) {
   const mapStyle = "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
   const [hoverInfo, setHoverInfo] = useState<any>(null);
+  
+  // Legend toggle states
   const [activeRenewables, setActiveRenewables] = useState({ hydro: true, wind: true, solar: true });
+  const [activePipelines, setActivePipelines] = useState({ liquids: true, gas: true });
+  const [activeFacilities, setActiveFacilities] = useState({ oilRefinery: true, gasProcessing: true, oilStorage: true, gasStorage: true });
+  const [activeGrid, setActiveGrid] = useState({ low: true, med: true, high: true });
+  const [activeMinerals, setActiveMinerals] = useState({ uranium: true, nickel: true, copper: true, rareEarth: true, lithium: true });
 
   const mapCenter = {
     longitude: -100.0,
@@ -32,7 +39,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
     } = event;
     const hoveredFeature = features && features[0];
     
-    if (hoveredFeature && (hoveredFeature.layer.id.startsWith('facility-') || hoveredFeature.layer.id.startsWith('renewable-'))) {
+    if (hoveredFeature && (hoveredFeature.layer.id.startsWith('facility-') || hoveredFeature.layer.id.startsWith('renewable-') || hoveredFeature.layer.id.startsWith('minerals-'))) {
       setHoverInfo({
         longitude: lng,
         latitude: lat,
@@ -50,7 +57,8 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       style={{ width: '100%', height: '100%' }}
       interactiveLayerIds={[
         'facility-refineries-oil', 'facility-refineries-gas', 'facility-storage-oil', 'facility-storage-gas',
-        'renewable-hydro', 'renewable-wind', 'renewable-solar'
+        'renewable-hydro', 'renewable-wind', 'renewable-solar',
+        'minerals-uranium', 'minerals-nickel', 'minerals-copper', 'minerals-rareEarth', 'minerals-lithium'
       ]}
       onMouseMove={onHover}
       onMouseLeave={() => setHoverInfo(null)}
@@ -87,92 +95,107 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
 
       {activeLayers.pipelines && (
         <Source id="pipelines-data" type="geojson" data="/pipelines.geojson?v=10">
-          <Layer 
-            id="pipelines-layer" 
-            type="line" 
-            paint={{ 
-              'line-color': [
-                'match',
-                ['get', 'Commodity'],
-                'Gas', '#3b82f6', // Blue for gas
-                'Liquid', '#f97316', // Orange for oil/liquids
-                'crude', '#f97316',
-                'natural gas', '#3b82f6',
-                '#f59e0b' // Fallback
-              ], 
-              'line-width': 1.5, 
-              'line-opacity': 0.8 
-            }} 
-          />
+          {activePipelines.liquids && (
+            <Layer 
+              id="pipelines-layer-liquids" 
+              type="line" 
+              filter={['in', ['get', 'Commodity'], ['literal', ['Liquid', 'crude']]]}
+              paint={{ 
+                'line-color': '#f97316', // Orange for oil/liquids
+                'line-width': 1.5, 
+                'line-opacity': 0.8 
+              }} 
+            />
+          )}
+          {activePipelines.gas && (
+            <Layer 
+              id="pipelines-layer-gas" 
+              type="line" 
+              filter={['in', ['get', 'Commodity'], ['literal', ['Gas', 'natural gas']]]}
+              paint={{ 
+                'line-color': '#3b82f6', // Blue for gas
+                'line-width': 1.5, 
+                'line-opacity': 0.8 
+              }} 
+            />
+          )}
         </Source>
       )}
 
       {activeLayers.refineries && (
         <Source id="facilities-data" type="geojson" data="/facilities.geojson?v=2">
           {/* Oil Refineries */}
-          <Layer 
-            id="facility-refineries-oil" 
-            type="circle" 
-            filter={['all', ['==', 'type', 'refinery'], ['==', 'subtype', 'oil']]} 
-            paint={{ 
-              'circle-radius': [
-                'interpolate', ['linear'], ['get', 'capacity_num'],
-                50000, 5,
-                300000, 12
-              ], 
-              'circle-color': '#f97316', 
-              'circle-stroke-width': 1.5, 
-              'circle-stroke-color': '#ffffff' 
-            }} 
-          />
+          {activeFacilities.oilRefinery && (
+            <Layer 
+              id="facility-refineries-oil" 
+              type="circle" 
+              filter={['all', ['==', 'type', 'refinery'], ['==', 'subtype', 'oil']]} 
+              paint={{ 
+                'circle-radius': [
+                  'interpolate', ['linear'], ['get', 'capacity_num'],
+                  50000, 5,
+                  300000, 12
+                ], 
+                'circle-color': '#f97316', 
+                'circle-stroke-width': 1.5, 
+                'circle-stroke-color': '#ffffff' 
+              }} 
+            />
+          )}
           {/* Gas Processing Plants */}
-          <Layer 
-            id="facility-refineries-gas" 
-            type="circle" 
-            filter={['all', ['==', 'type', 'refinery'], ['==', 'subtype', 'gas']]} 
-            paint={{ 
-              'circle-radius': [
-                'interpolate', ['linear'], ['get', 'capacity_num'],
-                50000, 5,
-                500000, 12
-              ], 
-              'circle-color': '#3b82f6', 
-              'circle-stroke-width': 1.5, 
-              'circle-stroke-color': '#ffffff' 
-            }} 
-          />
+          {activeFacilities.gasProcessing && (
+            <Layer 
+              id="facility-refineries-gas" 
+              type="circle" 
+              filter={['all', ['==', 'type', 'refinery'], ['==', 'subtype', 'gas']]} 
+              paint={{ 
+                'circle-radius': [
+                  'interpolate', ['linear'], ['get', 'capacity_num'],
+                  50000, 5,
+                  500000, 12
+                ], 
+                'circle-color': '#3b82f6', 
+                'circle-stroke-width': 1.5, 
+                'circle-stroke-color': '#ffffff' 
+              }} 
+            />
+          )}
           {/* Oil Storage */}
-          <Layer 
-            id="facility-storage-oil" 
-            type="circle" 
-            filter={['all', ['==', 'type', 'storage'], ['==', 'subtype', 'oil']]} 
-            paint={{ 
-              'circle-radius': [
-                'interpolate', ['linear'], ['get', 'capacity_num'],
-                100000, 4,
-                5000000, 12
-              ], 
-              'circle-color': 'transparent', 
-              'circle-stroke-width': 2, 
-              'circle-stroke-color': '#f97316' 
-            }} 
-          />
+          {activeFacilities.oilStorage && (
+            <Layer 
+              id="facility-storage-oil" 
+              type="circle" 
+              filter={['all', ['==', 'type', 'storage'], ['==', 'subtype', 'oil']]} 
+              paint={{ 
+                'circle-radius': [
+                  'interpolate', ['linear'], ['get', 'capacity_num'],
+                  100000, 4,
+                  5000000, 12
+                ], 
+                'circle-color': 'transparent', 
+                'circle-stroke-width': 2, 
+                'circle-stroke-color': '#f97316' 
+              }} 
+            />
+          )}
           {/* Gas Storage */}
-          <Layer 
-            id="facility-storage-gas" 
-            type="circle" 
-            filter={['all', ['==', 'type', 'storage'], ['==', 'subtype', 'gas']]} 
-            paint={{ 
-              'circle-radius': [
-                'interpolate', ['linear'], ['get', 'capacity_num'],
-                100000, 4,
-                5000000, 12
-              ], 
-              'circle-color': 'transparent', 
-              'circle-stroke-width': 2, 
-              'circle-stroke-color': '#3b82f6' 
-            }} 
-          />
+          {activeFacilities.gasStorage && (
+            <Layer 
+              id="facility-storage-gas" 
+              type="circle" 
+              filter={['all', ['==', 'type', 'storage'], ['==', 'subtype', 'gas']]} 
+              paint={{ 
+                'circle-radius': [
+                  'interpolate', ['linear'], ['get', 'capacity_num'],
+                  100000, 4,
+                  5000000, 12
+                ], 
+                'circle-color': 'transparent', 
+                'circle-stroke-width': 2, 
+                'circle-stroke-color': '#3b82f6' 
+              }} 
+            />
+          )}
           
           {/* Labels appear only when zoomed in > 5 */}
           <Layer 
@@ -198,19 +221,78 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
 
       {activeLayers.grid && (
         <Source id="grid-data" type="geojson" data="/canada_grid.geojson">
+          {activeGrid.low && (
+            <Layer 
+              id="grid-line-low" 
+              type="line" 
+              filter={['<', ['to-number', ['get', 'voltage'], 0], 230]}
+              paint={{ 
+                'line-color': '#2dd4bf', // Teal for < 230
+                'line-width': 1.5, 
+                'line-opacity': 0.8 
+              }} 
+            />
+          )}
+          {activeGrid.med && (
+            <Layer 
+              id="grid-line-med" 
+              type="line" 
+              filter={['all', ['>=', ['to-number', ['get', 'voltage'], 0], 230], ['<', ['to-number', ['get', 'voltage'], 0], 450]]}
+              paint={{ 
+                'line-color': '#facc15', // Yellow for >= 230 and < 450
+                'line-width': 1.5, 
+                'line-opacity': 0.8 
+              }} 
+            />
+          )}
+          {activeGrid.high && (
+            <Layer 
+              id="grid-line-high" 
+              type="line" 
+              filter={['>=', ['to-number', ['get', 'voltage'], 0], 450]}
+              paint={{ 
+                'line-color': '#f43f5e', // Rose for >= 450
+                'line-width': 1.5, 
+                'line-opacity': 0.8 
+              }} 
+            />
+          )}
+        </Source>
+      )}
+
+      {activeLayers.minerals && (
+        <Source id="minerals-data" type="geojson" data="/minerals.geojson">
+          {activeMinerals.uranium && (
+            <Layer id="minerals-uranium" type="circle" filter={['==', 'subtype', 'uranium']} paint={{ 'circle-radius': 6, 'circle-color': '#a855f7', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
+          )}
+          {activeMinerals.nickel && (
+            <Layer id="minerals-nickel" type="circle" filter={['==', 'subtype', 'nickel']} paint={{ 'circle-radius': 6, 'circle-color': '#64748b', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
+          )}
+          {activeMinerals.copper && (
+            <Layer id="minerals-copper" type="circle" filter={['==', 'subtype', 'copper']} paint={{ 'circle-radius': 6, 'circle-color': '#d97706', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
+          )}
+          {activeMinerals.rareEarth && (
+            <Layer id="minerals-rareEarth" type="circle" filter={['==', 'subtype', 'rare_earth']} paint={{ 'circle-radius': 6, 'circle-color': '#ec4899', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
+          )}
+          {activeMinerals.lithium && (
+            <Layer id="minerals-lithium" type="circle" filter={['==', 'subtype', 'lithium']} paint={{ 'circle-radius': 6, 'circle-color': '#ef4444', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
+          )}
           <Layer 
-            id="grid-line" 
-            type="line" 
+            id="minerals-labels" 
+            type="symbol" 
+            minzoom={4}
+            layout={{ 
+              'text-field': ['get', 'name'], 
+              'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'], 
+              'text-size': 11,
+              'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+              'text-radial-offset': 1.2,
+              'text-justify': 'auto'
+            }} 
             paint={{ 
-              'line-color': [
-                'step',
-                ['to-number', ['get', 'voltage'], 0],
-                '#2dd4bf', // Default / < 230 (~150kV) - Teal
-                230, '#facc15', // >= 230 (~300kV) - Yellow
-                450, '#f43f5e'  // >= 450 (450+kV) - Rose
-              ], 
-              'line-width': 1.5, 
-              'line-opacity': 0.8 
+              'text-color': '#ffffff',
+              'text-halo-color': '#111',
+              'text-halo-width': 2
             }} 
           />
         </Source>
@@ -296,8 +378,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       )}
 
       {/* Popups */}
-      {/* Popups */}
-      {hoverInfo && (hoverInfo.feature.layer.id.startsWith('facility-') || hoverInfo.feature.layer.id.startsWith('renewable-')) && (
+      {hoverInfo && (hoverInfo.feature.layer.id.startsWith('facility-') || hoverInfo.feature.layer.id.startsWith('renewable-') || hoverInfo.feature.layer.id.startsWith('minerals-')) && (
         <Popup
           longitude={hoverInfo.longitude}
           latitude={hoverInfo.latitude}
@@ -309,7 +390,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
           <div style={{ color: '#111', padding: '4px', minWidth: '150px' }}>
             <h3 style={{ margin: '0 0 4px 0', fontSize: '0.9rem', fontWeight: 600 }}>{hoverInfo.feature.properties.name}</h3>
             <p style={{ margin: '0 0 2px 0', fontSize: '0.75rem', color: '#444' }}>
-              <strong>Type:</strong> {hoverInfo.feature.properties.subtype.charAt(0).toUpperCase() + hoverInfo.feature.properties.subtype.slice(1)} {hoverInfo.feature.properties.type.charAt(0).toUpperCase() + hoverInfo.feature.properties.type.slice(1)}
+              <strong>Type:</strong> {hoverInfo.feature.properties.subtype.charAt(0).toUpperCase() + hoverInfo.feature.properties.subtype.replace('_', ' ').slice(1)} {hoverInfo.feature.properties.type.charAt(0).toUpperCase() + hoverInfo.feature.properties.type.slice(1)}
             </p>
             {hoverInfo.feature.properties.operator && hoverInfo.feature.properties.operator !== 'Unknown' && (
               <p style={{ margin: '0 0 2px 0', fontSize: '0.75rem', color: '#444' }}>
@@ -326,6 +407,16 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
                 <strong>Est. Utilization:</strong> {hoverInfo.feature.properties.utilization}%
               </p>
             )}
+            {hoverInfo.feature.properties.status && (
+              <p style={{ margin: '0 0 2px 0', fontSize: '0.75rem', color: '#444' }}>
+                <strong>Status:</strong> {hoverInfo.feature.properties.status}
+              </p>
+            )}
+            {hoverInfo.feature.properties.description && (
+              <p style={{ margin: '4px 0 0 0', fontSize: '0.75rem', color: '#666', fontStyle: 'italic', maxWidth: '200px' }}>
+                {hoverInfo.feature.properties.description}
+              </p>
+            )}
           </div>
         </Popup>
       )}
@@ -334,55 +425,170 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       <div style={{ position: 'absolute', top: 20, right: 20, display: 'flex', flexDirection: 'column', gap: '12px', zIndex: 10 }}>
         
         {activeLayers.pipelines && (
-          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px' }}>
+          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
             <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Pipelines</h4>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activePipelines.liquids ? 1 : 0.6 }}
+              onClick={() => setActivePipelines(prev => ({ ...prev, liquids: !prev.liquids }))}
+            >
               <div style={{ width: '16px', height: '4px', backgroundColor: '#f97316', borderRadius: '2px' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Oil / Liquids</span>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Oil / Liquids</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activePipelines.liquids ? '#f97316' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activePipelines.liquids ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', opacity: activePipelines.gas ? 1 : 0.6 }}
+              onClick={() => setActivePipelines(prev => ({ ...prev, gas: !prev.gas }))}
+            >
               <div style={{ width: '16px', height: '4px', backgroundColor: '#3b82f6', borderRadius: '2px' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Natural Gas</span>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Natural Gas</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activePipelines.gas ? '#3b82f6' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activePipelines.gas ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
             </div>
           </div>
         )}
 
         {activeLayers.refineries && (
-          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px' }}>
+          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
             <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Facilities</h4>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFacilities.oilRefinery ? 1 : 0.6 }}
+              onClick={() => setActiveFacilities(prev => ({ ...prev, oilRefinery: !prev.oilRefinery }))}
+            >
               <div style={{ width: '12px', height: '12px', backgroundColor: '#f97316', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Oil Refinery</span>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Oil Refinery</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeFacilities.oilRefinery ? '#f97316' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFacilities.oilRefinery ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFacilities.gasProcessing ? 1 : 0.6 }}
+              onClick={() => setActiveFacilities(prev => ({ ...prev, gasProcessing: !prev.gasProcessing }))}
+            >
               <div style={{ width: '12px', height: '12px', backgroundColor: '#3b82f6', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Gas Processing</span>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Gas Processing</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeFacilities.gasProcessing ? '#3b82f6' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFacilities.gasProcessing ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFacilities.oilStorage ? 1 : 0.6 }}
+              onClick={() => setActiveFacilities(prev => ({ ...prev, oilStorage: !prev.oilStorage }))}
+            >
               <div style={{ width: '10px', height: '10px', backgroundColor: '#111', border: '2px solid #f97316', borderRadius: '50%' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Oil Storage</span>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Oil Storage</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeFacilities.oilStorage ? '#f97316' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFacilities.oilStorage ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', opacity: activeFacilities.gasStorage ? 1 : 0.6 }}
+              onClick={() => setActiveFacilities(prev => ({ ...prev, gasStorage: !prev.gasStorage }))}
+            >
               <div style={{ width: '10px', height: '10px', backgroundColor: '#111', border: '2px solid #3b82f6', borderRadius: '50%' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Gas Storage</span>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Gas Storage</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeFacilities.gasStorage ? '#3b82f6' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFacilities.gasStorage ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
             </div>
           </div>
         )}
 
         {activeLayers.grid && (
-          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px' }}>
+          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
             <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Grid Voltage</h4>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeGrid.low ? 1 : 0.6 }}
+              onClick={() => setActiveGrid(prev => ({ ...prev, low: !prev.low }))}
+            >
               <div style={{ width: '16px', height: '4px', backgroundColor: '#2dd4bf', borderRadius: '2px' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>~150kV class</span>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>~150kV class</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeGrid.low ? '#2dd4bf' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeGrid.low ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeGrid.med ? 1 : 0.6 }}
+              onClick={() => setActiveGrid(prev => ({ ...prev, med: !prev.med }))}
+            >
               <div style={{ width: '16px', height: '4px', backgroundColor: '#facc15', borderRadius: '2px' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>~300kV class</span>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>~300kV class</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeGrid.med ? '#facc15' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeGrid.med ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', opacity: activeGrid.high ? 1 : 0.6 }}
+              onClick={() => setActiveGrid(prev => ({ ...prev, high: !prev.high }))}
+            >
               <div style={{ width: '16px', height: '4px', backgroundColor: '#f43f5e', borderRadius: '2px' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>450kV+</span>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>450kV+</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeGrid.high ? '#f43f5e' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeGrid.high ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {activeLayers.minerals && (
+          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
+            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Critical Minerals</h4>
+            
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeMinerals.uranium ? 1 : 0.6 }}
+              onClick={() => setActiveMinerals(prev => ({ ...prev, uranium: !prev.uranium }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#a855f7', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Uranium</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeMinerals.uranium ? '#a855f7' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeMinerals.uranium ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeMinerals.nickel ? 1 : 0.6 }}
+              onClick={() => setActiveMinerals(prev => ({ ...prev, nickel: !prev.nickel }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#64748b', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Nickel / Cobalt</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeMinerals.nickel ? '#64748b' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeMinerals.nickel ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeMinerals.copper ? 1 : 0.6 }}
+              onClick={() => setActiveMinerals(prev => ({ ...prev, copper: !prev.copper }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#d97706', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Copper</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeMinerals.copper ? '#d97706' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeMinerals.copper ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeMinerals.lithium ? 1 : 0.6 }}
+              onClick={() => setActiveMinerals(prev => ({ ...prev, lithium: !prev.lithium }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#ef4444', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Lithium</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeMinerals.lithium ? '#ef4444' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeMinerals.lithium ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', opacity: activeMinerals.rareEarth ? 1 : 0.6 }}
+              onClick={() => setActiveMinerals(prev => ({ ...prev, rareEarth: !prev.rareEarth }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#ec4899', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Rare Earth</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeMinerals.rareEarth ? '#ec4899' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeMinerals.rareEarth ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
             </div>
           </div>
         )}
