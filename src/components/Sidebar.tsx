@@ -22,7 +22,7 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
 
   const activeLayers = Object.entries(layers).filter(([_, v]) => v).map(([k]) => k);
   let overviewTitle = 'System Status';
-  let overviewStats = [];
+  let overviewStats: { label: string; value: string }[] = [];
 
   if (activeLayers.length === 0) {
     overviewTitle = 'National Production';
