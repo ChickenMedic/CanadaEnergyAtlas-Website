@@ -67,7 +67,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
 
       {activeLayers.pipelines && (
         <>
-          <Source id="pipelines-data" type="geojson" data="/pipelines.geojson?v=9">
+          <Source id="pipelines-data" type="geojson" data="/pipelines.geojson?v=10">
             <Layer 
               id="pipelines-layer" 
               type="line" 
