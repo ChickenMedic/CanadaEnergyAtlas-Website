@@ -118,6 +118,8 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             filter={['all', ['==', 'type', 'refinery'], ['==', 'subtype', 'oil']]} 
             layout={{
               'text-field': '■',
+              'text-allow-overlap': true,
+              'text-ignore-placement': true,
               'text-size': [
                 'interpolate', ['linear'], ['get', 'capacity_num'],
                 50000, 12,
@@ -137,6 +139,8 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             filter={['all', ['==', 'type', 'refinery'], ['==', 'subtype', 'gas']]} 
             layout={{
               'text-field': '▲',
+              'text-allow-overlap': true,
+              'text-ignore-placement': true,
               'text-size': [
                 'interpolate', ['linear'], ['get', 'capacity_num'],
                 50000, 12,
