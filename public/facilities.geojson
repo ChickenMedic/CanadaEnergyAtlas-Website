@@ -1,0 +1,2130 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.9308654,
+          40.8059765
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.2819086,
+          29.7951985
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.1169256,
+          29.6235204
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Clear Lake Gas Storage",
+        "operator": "Kinder Morgan",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1002008,
+          44.8005622
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Wescott Gas Plant",
+        "operator": "Xcel Energy",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.9102945,
+          48.3969568
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.9594456,
+          48.394532
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.9561963,
+          35.6473818
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.038924,
+          51.8762756
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8323567,
+          33.2888935
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Colonial Pipeline Tank Farm",
+        "operator": "Products (SE) Pipe Line Corporation",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.4347983,
+          33.6522179
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Atlanta Airport Tank Farm",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -107.4329772,
+          24.7730227
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "PEMEX",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -72.6443402,
+          40.975792
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.6818574,
+          31.8822456
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Pemex",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.5850095,
+          45.9071841
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.2826869,
+          47.0936411
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.970022,
+          42.2232879
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Freedom Station",
+        "operator": "Marathon Pipe Line LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.0731426,
+          42.3989061
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Sterling Services",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1226747,
+          42.2742774
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Michigan Marine Terminal",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1638688,
+          42.2751945
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Marathon Melvindale Tank Farm",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.4722767,
+          32.0708225
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.3827708,
+          41.0671627
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1642513,
+          42.3276028
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Wolverine Oil and Supply Company",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.8323429,
+          32.4845419
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Mid-Valley Pipeline Company",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.8387845,
+          32.483134
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Sunoco Pipeline",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.8358749,
+          32.4822524
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Permian Express Partners",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.8368992,
+          32.4802096
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Delek Crude Logistics",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.837394,
+          32.4782407
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Plains Marketing",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1436066,
+          42.2886809
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Marathon Petroleum Rouge Terminal",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.9256283,
+          41.1239418
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1675843,
+          32.9502182
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Haynesville Tank Farm",
+        "operator": "Mid Valley Pipeline Company LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.1830011,
+          29.6148824
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.405289,
+          29.9993379
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "West Hackberry Strategic Petroleum Reserve",
+        "operator": "US Department of Energy",
+        "capacity": "220400000 barrels"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.0143794,
+          41.018426
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.1723879,
+          34.6201638
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.7882944,
+          29.2603761
+        ]
+      },
+      "properties": {
+        "type": "refinery",
+        "subtype": "oil",
+        "name": "Nixon Refinery",
+        "operator": "Lazarus Energy;Blue Dolphin",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.6607284,
+          33.7455388
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Muldon Gas Storage",
+        "operator": "Southern Natural Gas",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.8375202,
+          32.4866129
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Plains Marketing",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.6002179,
+          32.6796113
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "West Unionville Gas Storage",
+        "operator": "Enable Mississippi River Transmission, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.239463,
+          42.508954
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.014781,
+          31.2560624
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Bay Gas Storage",
+        "operator": "Bay Gas Storage Company, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.2781262,
+          30.6351934
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Port Hudson Tank Farm",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.7673188,
+          36.8587463
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Saltville Gas Storage",
+        "operator": "Saltville Gas Storage Company L.L.C.",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.6447978,
+          34.9816056
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Valero Collierville Terminal",
+        "operator": "Unknown",
+        "capacity": "975691 barrels"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.8788265,
+          37.6441154
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Creal Springs Terminal",
+        "operator": "Enterprise Products Operating LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4727127,
+          38.885774
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Oaktown Gas Storage",
+        "operator": "Texas Gas Transmission, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.5458165,
+          27.6268451
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.2001947,
+          30.5502111
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Ergon Oil Purchasing",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.8508463,
+          30.03602
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Ergon St. James Terminal",
+        "operator": "Ergon Terminaling, Inc.",
+        "capacity": "2000000 barrels"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.6268117,
+          32.799188
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.5860305,
+          32.6232099
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Fuel Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.4168413,
+          33.6528085
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.7412546,
+          35.2441323
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Stephenson Oil Company",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.4881134,
+          38.9732307
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Balloon Inflation Building",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.6976658,
+          42.4771104
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.2186261,
+          30.4783265
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Anchorage Tank Farm",
+        "operator": "Exxon Mobil Corporation",
+        "capacity": "4000000 barrels"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.3256747,
+          31.8720815
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Leaf River Gas Storage",
+        "operator": "Leaf River Energy Center LLC",
+        "capacity": "39239700 Mcf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.4172297,
+          31.5955433
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Eminence Gas Storage",
+        "operator": "Transcontinental Gas Pipeline Company",
+        "capacity": "15025000 Mcf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.7036063,
+          31.2247105
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Southern Pines Energy Center",
+        "operator": "SG Resources Mississippi LLC",
+        "capacity": "51200000 Mcf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.5557924,
+          32.4445524
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Delhi Crude Station",
+        "operator": "Mid Valley Pipeline Company LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1111327,
+          34.0247365
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Freebird Gas Storage",
+        "operator": "Freebird Gas Storage, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.4573164,
+          34.0138074
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Monroe Gas Storage",
+        "operator": "Monroe Gas Storage Company, LLC",
+        "capacity": "19000000 Mcf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.3109344,
+          33.6984989
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Caledonia Gas Storage",
+        "operator": "Caledonia Energy Partners, L.L.C.",
+        "capacity": "23200000 Mcf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.7490058,
+          30.5289025
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Krotz Springs Breakout Tanks",
+        "operator": "Colonial Pipeline Company",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.7634499,
+          31.781796
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Mississippi Hub Gas Storage",
+        "operator": "Mississippi Hub, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.9335457,
+          29.2933053
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Wilson Gas Storage",
+        "operator": "Enterprise Products Operating, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.2622016,
+          31.3729623
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Petal Gas Storage",
+        "operator": "Petal Gas Storage LLC",
+        "capacity": "46008000 Mcf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.056248,
+          32.8752434
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Mayersville Tank Farm",
+        "operator": "Mid Valley Pipeline Company LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.8784934,
+          34.9265038
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Spartanburg Tank Farm",
+        "operator": "Products (SE) Pipe Line Corporation",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.280558,
+          30.7148962
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Baton Rogue Junction Storage Facility",
+        "operator": "Colonial Pipeline Company",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.2811583,
+          30.7114356
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Bengal Pipeline Company",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.8569199,
+          30.0244158
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "NuStar St. James Terminal",
+        "operator": "NuStar Logistics, L.P.",
+        "capacity": "9738000 barrels"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.8549653,
+          30.0158468
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Capline Crude Station",
+        "operator": "Shell Pipeline Company LP",
+        "capacity": "6700000 barrels"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.8542715,
+          30.0099637
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Sugarland Crude Station",
+        "operator": "Shell Pipeline Company LP",
+        "capacity": "3992000 barrels"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.8548316,
+          29.9990714
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Plains St. James Terminal",
+        "operator": "Plains Marketing, L.P.",
+        "capacity": "5960000 barrels"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.8419722,
+          29.9909467
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Koch Methanol Terminal",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.3084313,
+          30.3162691
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Bayou Choctaw Strategic Petroleum Reserve",
+        "operator": "US Department of Energy",
+        "capacity": "76000000 barrels"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.2512294,
+          29.4750885
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Clovelly Dome Oil Storage",
+        "operator": "Loop LLC",
+        "capacity": "60000000 barrels"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.7416169,
+          30.5253993
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Cabot Marine Feedstock Terminal",
+        "operator": "Cabot Corporation",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.9150722,
+          30.5441998
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Bobcat Gas Storage",
+        "operator": "Bobcat Gas Storage, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.4432388,
+          30.7494754
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Pine Prairie Energy Center",
+        "operator": "Pine Prairie Energy Center, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.5751341,
+          30.2582943
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Egan Gas Storage Dome",
+        "operator": "Egan Hub Storage, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.9426086,
+          32.374728
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Bear Creek Gas Storage",
+        "operator": "Bear Creek Storage Company, L.L.C.",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.5313564,
+          34.0861098
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Goodwin Gas Storage",
+        "operator": "Atmos Energy Corporation",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.6229866,
+          32.2929412
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Perryville Gas Storage",
+        "operator": "Perryville Gas Storage LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.1707391,
+          37.795862
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Bon Harbour Gas Storage",
+        "operator": "Atmos Energy Corporation",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.0227689,
+          30.6716392
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Washington Gas Storage Field",
+        "operator": "Transcontinental Gas Pipe Line Company, LLC",
+        "capacity": "790000 Mcf"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.1376451,
+          30.0162415
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Napoleonville Gas Storage",
+        "operator": "Bridgeline Storage Company, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.1006089,
+          30.0122263
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Napoleonville Gas Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.359023,
+          32.3779914
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Bistineau Gas Storage",
+        "operator": "Gulf South Pipeline Company, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.3073129,
+          30.3103314
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Bayou Choctaw Gas Storage",
+        "operator": "Boardwalk Storage Company, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.2847366,
+          32.4126965
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Cadeville Gas Storage",
+        "operator": "Cadeville Gas Storage, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.5367868,
+          32.649433
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "East Unionville Gas Storage",
+        "operator": "Enable Mississippi River Transmission, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.6114472,
+          32.6254479
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Ruston Gas Storage",
+        "operator": "Enable Gas Transmission, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.161849,
+          33.2358305
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Magnolia Tank Farm",
+        "operator": "Mid Valley Pipeline Company LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.4642966,
+          32.730124
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Tinsley Gathering Facility",
+        "operator": "Unknown",
+        "capacity": "90000 barrels"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.6915298,
+          39.0353403
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Hebron Pump Station",
+        "operator": "Mid Valley Pipeline Company LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.6444054,
+          41.2201665
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Cygnet Tank Farm",
+        "operator": "Mid Valley Pipeline Company LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.6784013,
+          32.3520116
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Finney Tank Farm",
+        "operator": "Permian Express Partners LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -92.22058,
+          31.6992866
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Searcy Gathering Facility",
+        "operator": "Central Louisiana Energy Pipeline Co., L.L.C.",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.3007069,
+          36.6512365
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Saltville Gas Storage",
+        "operator": "Saltville Gas Storage Company, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4886225,
+          37.2493271
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Barnsley Gas Storage",
+        "operator": "Atmos Energy Corporation",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.2081367,
+          37.2101722
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "West Greenville Gas Storage",
+        "operator": "Texas Gas Transmission, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.2500596,
+          37.2595628
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Graham Lake Gas Storage",
+        "operator": "Texas Gas Transmission, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4132129,
+          37.4183363
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Hanson Gas Storage Field",
+        "operator": "Texas Gas Transmission, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.3151613,
+          37.2968276
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Midland Gas Storage",
+        "operator": "Texas Gas Transmission, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.6691029,
+          37.6711876
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Dixie Gas Storage",
+        "operator": "Texas Gas Transmission, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.1732009,
+          38.0035601
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Midway Gas Storage Field",
+        "operator": "Southern Indiana Gas & Electric",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.225835,
+          38.5067184
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Alford Gas Storage Field",
+        "operator": "Texas Gas Transmission, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.3685034,
+          38.6080929
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Monroe City Gas Storage",
+        "operator": "Ohio Valley Hub LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.9937921,
+          41.8703304
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Hebron Gas Storage Field",
+        "operator": "Tennessee Gas Pipeline Company, L.L.C.",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.6070562,
+          44.764096
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Rhymes Propane",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.728742,
+          36.6691271
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Canada Mountain Gas Storage",
+        "operator": "Delta Natural Gas Company, Inc.",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4839424,
+          40.6454315
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "LHT - Fullerton Terminal",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.4811712,
+          40.6438013
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "United Energy Plus Terminals",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.3293099,
+          39.7379735
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Suburban Propane",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.5308673,
+          29.6318781
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Crescent Midstream",
+        "operator": "Crescent Midstream, LLC",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.4760907,
+          41.6485693
+        ]
+      },
+      "properties": {
+        "type": "refinery",
+        "subtype": "oil",
+        "name": "Safety-Kleen Systems",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.0114544,
+          49.7475977
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "GAS Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.7317808,
+          25.3444101
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Gas Imperial",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.7637661,
+          31.5264847
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Sherrod Tank Battery",
+        "operator": "XTO Energy Inc",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.2916549,
+          33.7652432
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "gas",
+        "name": "Rancho LPG Holdings LLC",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.1399914,
+          42.2822145
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Buckeye Partners Detroit Terminal",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.4151574,
+          47.688526
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Clearbrook Terminal",
+        "operator": "Enbridge",
+        "capacity": "Unknown"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.1205378,
+          40.7049114
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "Lima Tank Farm",
+        "operator": "Mid Valley Pipeline Company LLC",
+        "capacity": "934000 barrels"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.1278887,
+          30.5501019
+        ]
+      },
+      "properties": {
+        "type": "storage",
+        "subtype": "oil",
+        "name": "OIL Storage",
+        "operator": "Unknown",
+        "capacity": "Unknown"
+      }
+    }
+  ]
+}
