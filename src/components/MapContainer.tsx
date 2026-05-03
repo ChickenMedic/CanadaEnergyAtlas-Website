@@ -78,9 +78,42 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       )}
 
       {activeLayers.grid && (
-        <Source id="grid-data" type="geojson" data="/canada_grid.geojson">
-          <Layer id="grid-line" type="line" paint={{ 'line-color': '#38bdf8', 'line-width': 1.5, 'line-opacity': 0.8 }} />
-        </Source>
+        <>
+          <Source id="grid-data" type="geojson" data="/canada_grid.geojson">
+            <Layer 
+              id="grid-line" 
+              type="line" 
+              paint={{ 
+                'line-color': [
+                  'step',
+                  ['to-number', ['get', 'voltage'], 0],
+                  '#38bdf8', // Default / < 230 (~150kV)
+                  230, '#818cf8', // >= 230 (~300kV)
+                  450, '#c084fc'  // >= 450 (450+kV)
+                ], 
+                'line-width': 1.5, 
+                'line-opacity': 0.8 
+              }} 
+            />
+          </Source>
+          
+          {/* Grid Legend */}
+          <div className="glass-panel" style={{ position: 'absolute', top: 20, right: 20, padding: '12px 16px', zIndex: 10, borderRadius: '8px' }}>
+            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Grid Voltage</h4>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <div style={{ width: '16px', height: '4px', backgroundColor: '#38bdf8', borderRadius: '2px' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>~150kV class</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+              <div style={{ width: '16px', height: '4px', backgroundColor: '#818cf8', borderRadius: '2px' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>~300kV class</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div style={{ width: '16px', height: '4px', backgroundColor: '#c084fc', borderRadius: '2px' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>450kV+</span>
+            </div>
+          </div>
+        </>
       )}
 
       {activeLayers.renewables && (

@@ -41,7 +41,7 @@ export default function Navigation() {
           className="ar-btn"
           onClick={() => setIsOpen(false)}
         >
-          Launch AR Experience
+          Launch AR Map
         </a>
       </div>
     </nav>
