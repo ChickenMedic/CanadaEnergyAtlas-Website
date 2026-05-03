@@ -230,7 +230,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
                   10, 3,
                   5000, 15
                 ], 
-                'circle-color': '#0ea5e9', // Light Blue for Hydro
+                'circle-color': '#0ea5e9', // Blue for Hydro
                 'circle-stroke-width': 1.5, 
                 'circle-stroke-color': '#ffffff' 
               }} 
@@ -248,7 +248,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
                   10, 3,
                   1000, 10
                 ], 
-                'circle-color': '#8b5cf6', // Purple/Indigo for Wind
+                'circle-color': '#22c55e', // Green for Wind
                 'circle-stroke-width': 1.5, 
                 'circle-stroke-color': '#ffffff' 
               }} 
@@ -266,7 +266,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
                   10, 3,
                   500, 10
                 ], 
-                'circle-color': '#fbbf24', // Yellow/Gold for Solar
+                'circle-color': '#fbbf24', // Yellow for Solar
                 'circle-stroke-width': 1.5, 
                 'circle-stroke-color': '#ffffff' 
               }} 
@@ -388,28 +388,41 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
         )}
 
         {activeLayers.renewables && (
-          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px' }}>
-            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Renewables (Toggle)</h4>
+          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
+            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Renewables</h4>
+            
             <div 
-              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeRenewables.hydro ? 1 : 0.4 }}
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeRenewables.hydro ? 1 : 0.6 }}
               onClick={() => setActiveRenewables(prev => ({ ...prev, hydro: !prev.hydro }))}
             >
               <div style={{ width: '12px', height: '12px', backgroundColor: '#0ea5e9', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Hydroelectric</span>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Hydroelectric</span>
+              {/* Toggle Switch UI */}
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeRenewables.hydro ? '#0ea5e9' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeRenewables.hydro ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
             </div>
+
             <div 
-              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeRenewables.wind ? 1 : 0.4 }}
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeRenewables.wind ? 1 : 0.6 }}
               onClick={() => setActiveRenewables(prev => ({ ...prev, wind: !prev.wind }))}
             >
-              <div style={{ width: '12px', height: '12px', backgroundColor: '#8b5cf6', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Wind Farm</span>
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#22c55e', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Wind Farm</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeRenewables.wind ? '#22c55e' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeRenewables.wind ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
             </div>
+
             <div 
-              style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', opacity: activeRenewables.solar ? 1 : 0.4 }}
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', opacity: activeRenewables.solar ? 1 : 0.6 }}
               onClick={() => setActiveRenewables(prev => ({ ...prev, solar: !prev.solar }))}
             >
               <div style={{ width: '12px', height: '12px', backgroundColor: '#fbbf24', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb' }}>Solar Farm</span>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Solar Farm</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeRenewables.solar ? '#fbbf24' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeRenewables.solar ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
             </div>
           </div>
         )}
