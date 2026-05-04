@@ -7,7 +7,9 @@ export default function MapPage() {
     basins: false,
     minerals: false,
     pipelines: false,
-    refineries: false,
+    refining: false,
+    storage: false,
+    fossil: false,
     grid: false,
     renewables: false
   });
@@ -20,7 +22,9 @@ export default function MapPage() {
         basins: false,
         minerals: false,
         pipelines: false,
-        refineries: false,
+        refining: false,
+        storage: false,
+        fossil: false,
         grid: false,
         renewables: false,
         [layer]: isTurningOn

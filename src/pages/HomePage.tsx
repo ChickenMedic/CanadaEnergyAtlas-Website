@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Globe, Zap, TrendingUp, Activity, Droplet, Wind, Flame, Database, Leaf, Sun } from 'lucide-react';
+import { Globe, Zap, TrendingUp, Activity, Droplet, Wind, Flame, Database, Leaf, Sun, Cylinder } from 'lucide-react';
 
 // Data for benchmarks
 const benchmarks = [
@@ -34,7 +34,7 @@ const rankings = [
 export default function HomePage() {
   const [benchmarkRegion, setBenchmarkRegion] = useState<'all' | 'na' | 'eu' | 'asia'>('na');
   const [benchmarkType, setBenchmarkType] = useState<'all' | 'oil' | 'gas'>('all');
-  const [benchmarkSort, setBenchmarkSort] = useState<'importance' | 'price' | 'volume'>('importance');
+  const [benchmarkSort, setBenchmarkSort] = useState<'price' | 'volume'>('volume');
   const [selectedRanking, setSelectedRanking] = useState(rankings[0]);
 
   const filteredBenchmarks = benchmarks
@@ -42,8 +42,7 @@ export default function HomePage() {
     .filter(b => benchmarkType === 'all' || b.type === benchmarkType)
     .sort((a, b) => {
       if (benchmarkSort === 'price') return b.price - a.price;
-      if (benchmarkSort === 'volume') return b.volume - a.volume;
-      return a.importance - b.importance;
+      return b.volume - a.volume;
     });
 
   return (
@@ -90,12 +89,11 @@ export default function HomePage() {
               <button className={`toggle-btn ${benchmarkRegion === 'asia' ? 'active' : ''}`} onClick={() => setBenchmarkRegion('asia')}>Asia</button>
             </div>
             <div className="toggle-group">
-              <button className={`toggle-btn ${benchmarkType === 'all' ? 'active' : ''}`} onClick={() => setBenchmarkType('all')}>All</button>
+              <button className={`toggle-btn ${benchmarkType === 'all' ? 'active' : ''}`} onClick={() => setBenchmarkType('all')}>Both</button>
               <button className={`toggle-btn ${benchmarkType === 'oil' ? 'active' : ''}`} onClick={() => setBenchmarkType('oil')}>Oil</button>
               <button className={`toggle-btn ${benchmarkType === 'gas' ? 'active' : ''}`} onClick={() => setBenchmarkType('gas')}>Gas</button>
             </div>
             <div className="toggle-group">
-              <button className={`toggle-btn ${benchmarkSort === 'importance' ? 'active' : ''}`} onClick={() => setBenchmarkSort('importance')}>Importance</button>
               <button className={`toggle-btn ${benchmarkSort === 'price' ? 'active' : ''}`} onClick={() => setBenchmarkSort('price')}>Price</button>
               <button className={`toggle-btn ${benchmarkSort === 'volume' ? 'active' : ''}`} onClick={() => setBenchmarkSort('volume')}>Volume</button>
             </div>
@@ -107,7 +105,7 @@ export default function HomePage() {
             <div key={b.id} className="stat-card">
               <div className="stat-header">
                 <span>{b.name}</span>
-                {b.type === 'oil' ? <Droplet size={18} color="var(--accent-orange)" /> : <Activity size={18} color="var(--accent-blue)" />}
+                {b.type === 'oil' ? <Cylinder size={18} color="#ef4444" /> : <Flame size={18} color="#3b82f6" />}
               </div>
               <div className="stat-value">${b.price.toFixed(2)}</div>
               <div className={`stat-trend ${b.trend === 'up' ? 'trend-up' : 'trend-down'}`}>
@@ -120,8 +118,8 @@ export default function HomePage() {
 
         {/* Global Rankings */}
         <div className="dashboard-header" style={{ marginTop: '80px', marginBottom: '40px' }}>
-          <h2>Global Leadership</h2>
-          <p style={{ color: 'var(--text-muted)' }}>Canada's position on the world stage</p>
+          <h2>US & Canada Global Leadership</h2>
+          <p style={{ color: 'var(--text-muted)' }}>North America sets the benchmark for energy security and innovation.</p>
         </div>
 
         <div className="rankings-container">

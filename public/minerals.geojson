@@ -3,7 +3,13 @@
   "features": [
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-105.155, 59.553] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.155,
+          59.553
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "uranium",
@@ -15,7 +21,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-104.148, 58.261] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.148,
+          58.261
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "uranium",
@@ -27,7 +39,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-81.016, 46.486] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.016,
+          46.486
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "nickel",
@@ -39,7 +57,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-77.778, 61.688] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.778,
+          61.688
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "nickel",
@@ -51,7 +75,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-98.115, 55.748] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.115,
+          55.748
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "nickel",
@@ -63,7 +93,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-118.067, 50.490] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.067,
+          50.49
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "copper",
@@ -75,7 +111,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-112.062, 41.012] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.062,
+          41.012
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "copper",
@@ -87,7 +129,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-110.871, 33.315] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.871,
+          33.315
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "copper",
@@ -99,7 +147,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-115.539, 35.474] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.539,
+          35.474
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "rare_earth",
@@ -111,7 +165,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-113.882, 63.585] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.882,
+          63.585
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "rare_earth",
@@ -123,7 +183,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-77.712, 48.375] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.712,
+          48.375
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "lithium",
@@ -135,7 +201,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-94.945, 50.413] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.945,
+          50.413
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "lithium",
@@ -147,7 +219,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-117.818, 37.766] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.818,
+          37.766
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "lithium",
@@ -159,7 +237,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-118.064, 41.696] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.064,
+          41.696
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "lithium",
@@ -171,7 +255,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-114.398, 45.093] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.398,
+          45.093
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "cobalt",
@@ -183,7 +273,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-75.836, 45.143] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.836,
+          45.143
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "graphite",
@@ -195,7 +291,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-106.128, 51.688] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.128,
+          51.688
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "potash",
@@ -207,7 +309,13 @@
     },
     {
       "type": "Feature",
-      "geometry": { "type": "Point", "coordinates": [-104.981, 50.510] },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.981,
+          50.51
+        ]
+      },
       "properties": {
         "type": "mineral",
         "subtype": "potash",
@@ -215,6 +323,1392 @@
         "operator": "K+S",
         "description": "Major solution potash mine in Saskatchewan.",
         "status": "Active"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -101.37197061225326,
+          52.77045094313538
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "uranium",
+        "name": "Synthetic Uranium Project 170",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.29159419084667,
+          56.682953454997644
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "uranium",
+        "name": "Synthetic Uranium Project 357",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -107.33526651066803,
+          53.80070655227239
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "uranium",
+        "name": "Synthetic Uranium Project 595",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.72776197852295,
+          56.62301304375879
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "uranium",
+        "name": "Synthetic Uranium Project 665",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.73989969138033,
+          55.37872991382358
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "uranium",
+        "name": "Synthetic Uranium Project 616",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.11843093218451,
+          53.62212057749983
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "uranium",
+        "name": "Synthetic Uranium Project 784",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.1823323824165,
+          51.1605541299722
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "uranium",
+        "name": "Synthetic Uranium Project 931",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.60191379535897,
+          55.7762911549364
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "uranium",
+        "name": "Synthetic Uranium Project 532",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.90624515383902,
+          43.06439912458894
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "uranium",
+        "name": "Synthetic Uranium Project 622",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -108.02558735927522,
+          39.754513398747136
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "uranium",
+        "name": "Synthetic Uranium Project 136",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.65320776934739,
+          37.20397134154793
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "uranium",
+        "name": "Synthetic Uranium Project 98",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.78986745333165,
+          43.99462237834661
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "uranium",
+        "name": "Synthetic Uranium Project 902",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.94017585823026,
+          53.275353444972794
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 235",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.34872856037757,
+          47.89316919739448
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 795",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.59057700136518,
+          47.475297244411856
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 778",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.6052255768521,
+          51.44087673926255
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 47",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.67168105284577,
+          48.50910432498465
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 571",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -84.05272101527572,
+          48.841485539443255
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 560",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.08417304614092,
+          50.51891397771509
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 188",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.82973162097626,
+          54.049987574567496
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 705",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -82.39894360345558,
+          48.9865358096562
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 597",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.064011488588,
+          46.71836353660037
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 160",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.66112669455141,
+          48.00683679384074
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 498",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.65735644239713,
+          45.95893775898602
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 681",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.69445043167687,
+          48.00914846267243
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 566",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.85369453931501,
+          47.19867370496692
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 689",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -91.78491857925593,
+          46.3133334889563
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "nickel",
+        "name": "Synthetic Nickel Project 402",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.49376070335498,
+          37.826613015616886
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 938",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.7084285752412,
+          34.937997930770095
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 400",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.40785814869861,
+          41.00301325283223
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 653",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.96770248851541,
+          41.49183659901473
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 780",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.06613956671929,
+          54.84596217305372
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 248",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.35060874616937,
+          38.948074599615104
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 458",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.79212875592549,
+          32.48544068234656
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 885",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.53484301499388,
+          52.140731735388904
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 124",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.49774489950875,
+          42.47987367317
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 275",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.346992549479,
+          54.553496989796884
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 41",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.9858109870891,
+          54.40373881971993
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 689",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.64953456918185,
+          50.38537419811421
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 223",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.70338581446453,
+          47.847011368707044
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 45",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -83.21364358145337,
+          48.08343131981328
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 389",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.33235385445212,
+          47.87527418348131
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 829",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.66638688656798,
+          49.01722656529662
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 603",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -88.04365888615962,
+          47.521463976077506
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 127",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -89.78803199373228,
+          47.28569169210883
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "copper",
+        "name": "Synthetic Copper Project 135",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.28222427266722,
+          39.621726537749346
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "name": "Synthetic Rare_earth Project 50",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.92596659959332,
+          49.60200428340015
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "name": "Synthetic Rare_earth Project 118",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.10396409756358,
+          48.982520370237125
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "name": "Synthetic Rare_earth Project 969",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.67612325493755,
+          38.78534592716579
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "name": "Synthetic Rare_earth Project 505",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.26949683190439,
+          43.117025551309474
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "name": "Synthetic Rare_earth Project 167",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.46350983276332,
+          44.934029399892125
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "name": "Synthetic Rare_earth Project 234",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.94083596042759,
+          46.35827067682794
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "name": "Synthetic Rare_earth Project 512",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.89890373742196,
+          56.71047305060818
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "name": "Synthetic Rare_earth Project 878",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.03386618569502,
+          56.75433423210847
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "name": "Synthetic Rare_earth Project 43",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.90002181707192,
+          59.800876484218975
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "name": "Synthetic Rare_earth Project 636",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.21941041811391,
+          58.907963181214605
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "name": "Synthetic Rare_earth Project 95",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.74732152065705,
+          63.38651023586019
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "name": "Synthetic Rare_earth Project 372",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.61112751383234,
+          42.6093315657651
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 241",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.4313949608934,
+          38.07639713545772
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 211",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.49720303705274,
+          36.84147851012392
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 304",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.76478897108206,
+          43.297486865287496
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 751",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.46323859629602,
+          36.67677796364894
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 155",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.04067992754713,
+          44.118201798632505
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 833",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.73141032882754,
+          39.35972339044403
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 561",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.24630745347486,
+          43.801338436397415
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 3",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.36683193915688,
+          38.840222552483375
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 383",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.50870239248584,
+          41.851858097774006
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 730",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.77024887932747,
+          42.064648210620255
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 670",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.8110526325394,
+          35.12843880357201
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 85",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.2331137058645,
+          51.4134179401058
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 637",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.78388611353294,
+          45.137271942814245
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 895",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.42485771691766,
+          47.33407683429427
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 434",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.60820465841093,
+          47.7829937434879
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 290",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.3287796787648,
+          52.63115179722093
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 176",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.51144656328532,
+          51.17557941558288
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 270",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.17281333944176,
+          52.958578507069106
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 635",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -78.11959383257869,
+          51.476632859220956
+        ]
+      },
+      "properties": {
+        "type": "mineral",
+        "subtype": "lithium",
+        "name": "Synthetic Lithium Project 992",
+        "operator": "Unknown",
+        "description": "Exploration or developing phase resource.",
+        "status": "Exploration"
       }
     }
   ]

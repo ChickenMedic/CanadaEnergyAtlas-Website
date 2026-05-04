@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Map, { NavigationControl, Source, Layer, Popup } from 'react-map-gl/maplibre';
 
 interface MapContainerProps {
@@ -6,17 +6,18 @@ interface MapContainerProps {
     basins: boolean;
     minerals: boolean;
     pipelines: boolean;
-    refineries: boolean;
+    refining: boolean;
+    storage: boolean;
+    fossil: boolean;
     grid: boolean;
     renewables: boolean;
   };
 }
 
-
-
 export default function MapContainer({ activeLayers }: MapContainerProps) {
   const mapStyle = "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
   const [hoverInfo, setHoverInfo] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(false);
   
   // Legend toggle states
   const [activeRenewables, setActiveRenewables] = useState({ hydro: true, wind: true, solar: true });
@@ -24,6 +25,16 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
   const [activeFacilities, setActiveFacilities] = useState({ oilRefinery: true, gasProcessing: true, oilStorage: true, gasStorage: true });
   const [activeGrid, setActiveGrid] = useState({ low: true, med: true, high: true });
   const [activeMinerals, setActiveMinerals] = useState({ uranium: true, nickel: true, copper: true, rareEarth: true, lithium: true });
+  const [activeFossil, setActiveFossil] = useState({ coal: true, gas: true, oil: true });
+
+  useEffect(() => {
+    // Show a loading spinner briefly when heavy layers toggle
+    if (activeLayers.pipelines || activeLayers.grid || activeLayers.renewables || activeLayers.fossil) {
+      setIsLoading(true);
+      const timer = setTimeout(() => setIsLoading(false), 800);
+      return () => clearTimeout(timer);
+    }
+  }, [activeLayers]);
 
   const mapCenter = {
     longitude: -100.0,
@@ -39,7 +50,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
     } = event;
     const hoveredFeature = features && features[0];
     
-    if (hoveredFeature && (hoveredFeature.layer.id.startsWith('facility-') || hoveredFeature.layer.id.startsWith('renewable-') || hoveredFeature.layer.id.startsWith('minerals-'))) {
+    if (hoveredFeature && (hoveredFeature.layer.id.startsWith('facility-') || hoveredFeature.layer.id.startsWith('renewable-') || hoveredFeature.layer.id.startsWith('minerals-') || hoveredFeature.layer.id.startsWith('fossil-'))) {
       setHoverInfo({
         longitude: lng,
         latitude: lat,
@@ -51,15 +62,24 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
   };
 
   return (
-    <Map 
-      initialViewState={mapCenter} 
-      mapStyle={mapStyle} 
-      style={{ width: '100%', height: '100%' }}
-      interactiveLayerIds={[
-        'facility-refineries-oil', 'facility-refineries-gas', 'facility-storage-oil', 'facility-storage-gas',
-        'renewable-hydro', 'renewable-wind', 'renewable-solar',
-        'minerals-uranium', 'minerals-nickel', 'minerals-copper', 'minerals-rareEarth', 'minerals-lithium'
-      ]}
+    <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+      {isLoading && (
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 100, background: 'rgba(0,0,0,0.7)', padding: '16px 24px', borderRadius: '8px', color: '#fff', display: 'flex', alignItems: 'center', gap: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div className="spinner" style={{ width: '20px', height: '20px', border: '3px solid rgba(255,255,255,0.3)', borderTop: '3px solid #fff', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
+          <span style={{ fontSize: '0.9rem', fontWeight: 500 }}>Loading map data...</span>
+          <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+        </div>
+      )}
+      <Map 
+        initialViewState={mapCenter} 
+        mapStyle={mapStyle} 
+        style={{ width: '100%', height: '100%' }}
+        interactiveLayerIds={[
+          'facility-refineries-oil', 'facility-refineries-gas', 'facility-storage-oil', 'facility-storage-gas',
+          'renewable-hydro', 'renewable-wind', 'renewable-solar',
+          'fossil-coal', 'fossil-gas', 'fossil-oil',
+          'minerals-uranium', 'minerals-nickel', 'minerals-copper', 'minerals-rareEarth', 'minerals-lithium'
+        ]}
       onMouseMove={onHover}
       onMouseLeave={() => setHoverInfo(null)}
     >
@@ -122,10 +142,10 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
         </Source>
       )}
 
-      {activeLayers.refineries && (
+      {(activeLayers.refining || activeLayers.storage) && (
         <Source id="facilities-data" type="geojson" data="/facilities.geojson?v=2">
           {/* Oil Refineries */}
-          {activeFacilities.oilRefinery && (
+          {activeLayers.refining && activeFacilities.oilRefinery && (
             <Layer 
               id="facility-refineries-oil" 
               type="circle" 
@@ -143,7 +163,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             />
           )}
           {/* Gas Processing Plants */}
-          {activeFacilities.gasProcessing && (
+          {activeLayers.refining && activeFacilities.gasProcessing && (
             <Layer 
               id="facility-refineries-gas" 
               type="circle" 
@@ -161,7 +181,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             />
           )}
           {/* Oil Storage */}
-          {activeFacilities.oilStorage && (
+          {activeLayers.storage && activeFacilities.oilStorage && (
             <Layer 
               id="facility-storage-oil" 
               type="circle" 
@@ -179,7 +199,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             />
           )}
           {/* Gas Storage */}
-          {activeFacilities.gasStorage && (
+          {activeLayers.storage && activeFacilities.gasStorage && (
             <Layer 
               id="facility-storage-gas" 
               type="circle" 
@@ -295,6 +315,20 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
               'text-halo-width': 2
             }} 
           />
+        </Source>
+      )}
+
+      {activeLayers.fossil && (
+        <Source id="fossil-data" type="geojson" data="/fossil_plants.geojson">
+          {activeFossil.coal && (
+            <Layer id="fossil-coal" type="circle" filter={['all', ['==', 'type', 'fossil'], ['==', 'subtype', 'coal']]} paint={{ 'circle-radius': ['interpolate', ['linear'], ['get', 'capacity_num'], 10, 3, 2000, 12], 'circle-color': '#6b7280', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
+          )}
+          {activeFossil.gas && (
+            <Layer id="fossil-gas" type="circle" filter={['all', ['==', 'type', 'fossil'], ['==', 'subtype', 'gas']]} paint={{ 'circle-radius': ['interpolate', ['linear'], ['get', 'capacity_num'], 10, 3, 1000, 10], 'circle-color': '#3b82f6', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
+          )}
+          {activeFossil.oil && (
+            <Layer id="fossil-oil" type="circle" filter={['all', ['==', 'type', 'fossil'], ['==', 'subtype', 'oil']]} paint={{ 'circle-radius': ['interpolate', ['linear'], ['get', 'capacity_num'], 10, 3, 1000, 10], 'circle-color': '#111827', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
+          )}
         </Source>
       )}
 
@@ -593,6 +627,42 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
           </div>
         )}
 
+        {activeLayers.fossil && (
+          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
+            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Fossil Generation</h4>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFossil.gas ? 1 : 0.6 }}
+              onClick={() => setActiveFossil(prev => ({ ...prev, gas: !prev.gas }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#3b82f6', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Natural Gas</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeFossil.gas ? '#3b82f6' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFossil.gas ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFossil.coal ? 1 : 0.6 }}
+              onClick={() => setActiveFossil(prev => ({ ...prev, coal: !prev.coal }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#6b7280', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Coal Power</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeFossil.coal ? '#6b7280' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFossil.coal ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', opacity: activeFossil.oil ? 1 : 0.6 }}
+              onClick={() => setActiveFossil(prev => ({ ...prev, oil: !prev.oil }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#111827', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Diesel / Oil</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeFossil.oil ? '#111827' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFossil.oil ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {activeLayers.renewables && (
           <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
             <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Renewables</h4>
@@ -635,5 +705,6 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
         
       </div>
     </Map>
+    </div>
   );
 }

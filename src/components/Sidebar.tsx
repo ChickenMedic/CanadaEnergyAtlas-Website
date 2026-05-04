@@ -1,11 +1,13 @@
-import { Database, Route, Factory, Zap, Leaf, Activity } from 'lucide-react';
+import { Database, Route, Factory, Zap, Leaf, Activity, Compass, Cylinder, Flame } from 'lucide-react';
 
 interface SidebarProps {
   layers: {
     basins: boolean;
     minerals: boolean;
     pipelines: boolean;
-    refineries: boolean;
+    refining: boolean;
+    storage: boolean;
+    fossil: boolean;
     grid: boolean;
     renewables: boolean;
   };
@@ -15,11 +17,13 @@ interface SidebarProps {
 export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
   const toggleConfigs = [
     { key: 'basins', icon: <Database size={20} />, label: 'Basins', desc: 'Geological Formations', colorClass: 'gas' },
-    { key: 'minerals', icon: <Database size={20} />, label: 'Critical Minerals', desc: 'NATO Supply Chain', colorClass: 'copper' },
+    { key: 'minerals', icon: <Compass size={20} />, label: 'Critical Minerals', desc: 'NATO Supply Chain', colorClass: 'copper' },
     { key: 'pipelines', icon: <Route size={20} />, label: 'Pipelines & Flows', desc: 'Liquids & Gas Networks', colorClass: 'gas' },
-    { key: 'refineries', icon: <Factory size={20} />, label: 'Refineries & Storage', desc: 'Processing Hubs', colorClass: 'gas' },
+    { key: 'refining', icon: <Factory size={20} />, label: 'Refineries', desc: 'Processing Hubs', colorClass: 'gas' },
+    { key: 'storage', icon: <Cylinder size={20} />, label: 'Storage', desc: 'Tank Farms & Caverns', colorClass: 'gas' },
     { key: 'grid', icon: <Zap size={20} />, label: 'The Grid', desc: 'Transmission Lines', colorClass: 'renewable' },
     { key: 'renewables', icon: <Leaf size={20} />, label: 'Renewables', desc: 'Wind, Solar & Hydro', colorClass: 'renewable' },
+    { key: 'fossil', icon: <Flame size={20} />, label: 'Fossil Generation', desc: 'Coal, Gas & Oil Plants', colorClass: 'gas' },
   ] as const;
 
   const activeLayers = Object.entries(layers).filter(([_, v]) => v).map(([k]) => k);
@@ -39,29 +43,31 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
       { label: 'Gas Output', value: '103 Bcf/d' },
       { label: 'Electricity', value: '4,240 TWh/yr' }
     ];
-  } else if (activeLayers.includes('refineries')) {
-    overviewTitle = 'Refining Infrastructure';
+  } else if (activeLayers.includes('refining') || activeLayers.includes('storage')) {
+    overviewTitle = 'Downstream Operations';
     canadaStats = [
-      { label: 'Active Facilities', value: '17' },
-      { label: 'Total Capacity', value: '2.0M bbl/d' },
-      { label: 'Top Product', value: 'Distillate' }
+      { label: 'Refining Cap', value: '2.0M bbl/d' },
+      { label: 'Usage: Transport', value: '55%' },
+      { label: 'Usage: Industrial', value: '25%' }
     ];
     usStats = [
-      { label: 'Active Facilities', value: '130' },
-      { label: 'Total Capacity', value: '18.1M bbl/d' },
-      { label: 'Top Product', value: 'Gasoline' }
+      { label: 'Refining Cap', value: '18.1M bbl/d' },
+      { label: 'Usage: Transport', value: '68%' },
+      { label: 'Usage: Industrial', value: '26%' }
     ];
   } else if (activeLayers.includes('pipelines')) {
-    overviewTitle = 'Pipeline Network';
+    overviewTitle = 'Network Flows & Usage';
     canadaStats = [
       { label: 'Total Length', value: '840k km' },
-      { label: 'Transmission', value: '117k km' },
-      { label: 'Exports to US', value: '3.8M bbl/d' }
+      { label: 'Usage: Industrial', value: '52%' },
+      { label: 'Usage: Transport', value: '23%' },
+      { label: 'Usage: Residential', value: '13%' }
     ];
     usStats = [
       { label: 'Total Length', value: '4.2M km' },
-      { label: 'Transmission', value: '480k km' },
-      { label: 'Imports from CA', value: '3.8M bbl/d' }
+      { label: 'Usage: Industrial', value: '33%' },
+      { label: 'Usage: Transport', value: '28%' },
+      { label: 'Usage: Residential', value: '16%' }
     ];
   } else if (activeLayers.includes('basins')) {
     overviewTitle = 'Geological Resources';
@@ -78,14 +84,14 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
   } else if (activeLayers.includes('grid')) {
     overviewTitle = 'The Electrical Grid';
     canadaStats = [
-      { label: 'Clean Energy', value: '82%' },
-      { label: 'Cross-border Lines', value: '34' },
-      { label: 'US Exports', value: '60 TWh' }
+      { label: 'Usage: Industrial', value: '40%' },
+      { label: 'Usage: Residential', value: '33%' },
+      { label: 'Usage: Commercial', value: '24%' }
     ];
     usStats = [
-      { label: 'Clean Energy', value: '40%' },
-      { label: 'Major Interconnects', value: '3' },
-      { label: 'CA Imports', value: '60 TWh' }
+      { label: 'Usage: Residential', value: '39%' },
+      { label: 'Usage: Commercial', value: '35%' },
+      { label: 'Usage: Industrial', value: '26%' }
     ];
   } else if (activeLayers.includes('renewables')) {
     overviewTitle = 'Renewable Capacity';
@@ -98,6 +104,18 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
       { label: 'Hydroelectric', value: '80 GW' },
       { label: 'Wind Power', value: '140 GW' },
       { label: 'Solar Power', value: '110 GW' }
+    ];
+  } else if (activeLayers.includes('fossil')) {
+    overviewTitle = 'Fossil Generation';
+    canadaStats = [
+      { label: 'Natural Gas', value: '25 GW' },
+      { label: 'Coal Power', value: '6 GW' },
+      { label: 'Diesel/Oil', value: '2 GW' }
+    ];
+    usStats = [
+      { label: 'Natural Gas', value: '550 GW' },
+      { label: 'Coal Power', value: '210 GW' },
+      { label: 'Petroleum/Oil', value: '30 GW' }
     ];
   } else if (activeLayers.includes('minerals')) {
     overviewTitle = 'NATO Critical Minerals';
