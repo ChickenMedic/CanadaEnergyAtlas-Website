@@ -68,7 +68,7 @@ const rankings = [
 
 export default function HomePage() {
   const [benchmarkRegion, setBenchmarkRegion] = useState<'all' | 'na' | 'eu' | 'asia'>('na');
-  const [benchmarkType, setBenchmarkType] = useState<'all' | 'oil' | 'gas'>('all');
+  const [benchmarkType, setBenchmarkType] = useState<'all' | 'oil' | 'gas'>('oil');
   const [benchmarkSort, setBenchmarkSort] = useState<'price' | 'volume'>('volume');
   const [selectedRanking, setSelectedRanking] = useState(rankings[0]);
 
@@ -153,8 +153,8 @@ export default function HomePage() {
 
         {/* Global Rankings */}
         <div className="dashboard-header" style={{ marginTop: '80px', marginBottom: '40px' }}>
-          <h2>US & Canada Global Leadership</h2>
-          <p style={{ color: 'var(--text-muted)' }}>North America sets the benchmark for energy security and innovation.</p>
+          <h2>Canada's Global Leadership</h2>
+          <p style={{ color: 'var(--text-muted)' }}>Canada is uniquely positioned to provide the world with secure, sustainable, and reliable energy products.</p>
         </div>
 
         <div className="rankings-container">
@@ -191,6 +191,27 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+
+      <footer style={{ marginTop: 'auto', borderTop: '1px solid rgba(255, 255, 255, 0.1)', padding: '60px 20px 40px', background: 'var(--bg-panel-solid)' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+            <Globe size={24} color="var(--accent-blue)" />
+            <h2 style={{ fontSize: '1.2rem', fontWeight: 600 }}>Canada Energy Atlas</h2>
+          </div>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', maxWidth: '600px', marginBottom: '24px', lineHeight: 1.6 }}>
+            An interactive exploration of North America's energy architecture and resources. Built to educate and highlight the critical role of energy infrastructure in powering the modern world.
+          </p>
+          <div style={{ display: 'flex', gap: '24px', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+            <Link to="/map" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Map Dashboard</Link>
+            <Link to="/deep-dives" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Deep Dives</Link>
+            <a href="#" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Data Sources</a>
+            <a href="#" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Privacy Policy</a>
+          </div>
+          <div style={{ marginTop: '32px', color: '#666', fontSize: '0.8rem' }}>
+            &copy; {new Date().getFullYear()} Canada Energy Atlas. All rights reserved.
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
