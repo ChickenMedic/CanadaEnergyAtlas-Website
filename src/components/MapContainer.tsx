@@ -721,8 +721,8 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
               <input 
                 type="range" 
                 min="0" 
-                max="500" 
-                step="10" 
+                max="100" 
+                step="5" 
                 value={minRenewableCapacity} 
                 onChange={(e) => setMinRenewableCapacity(Number(e.target.value))}
                 style={{ width: '100%', accentColor: '#22c55e', cursor: 'pointer' }}
