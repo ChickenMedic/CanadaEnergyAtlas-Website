@@ -1,23 +1,58 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Globe, Zap, TrendingUp, Activity, Droplet, Wind, Flame, Database, Leaf, Sun, Cylinder } from 'lucide-react';
+import { Globe, Zap, TrendingUp, Activity, Droplet, Wind, Flame, Database, Leaf, Sun } from 'lucide-react';
 
-// Data for benchmarks
+const BarrelIcon = ({ size = 18, color = "#ef4444" }: { size?: number, color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <ellipse cx="12" cy="5" rx="7" ry="3" />
+    <path d="M5 5v14c0 1.66 3.13 3 7 3s7-1.34 7-3V5" />
+    <path d="M5 12c0 1.66 3.13 3 7 3s7-1.34 7-3" />
+    <path d="M5 19c0 1.66 3.13 3 7 3s7-1.34 7-3" />
+  </svg>
+);
+
 const benchmarks = [
-  // North America
-  { id: 'wcs', name: 'WCS (Hardisty)', type: 'oil', region: 'na', price: 75.85, trend: 'up', note: 'Heavy sour crude', importance: 1, volume: 3.8 },
-  { id: 'wti', name: 'WTI (Cushing)', type: 'oil', region: 'na', price: 91.38, trend: 'up', note: 'NA light sweet reference', importance: 2, volume: 4.5 },
-  { id: 'hh', name: 'Henry Hub', type: 'gas', region: 'na', price: 2.85, trend: 'down', note: 'US natural gas benchmark', importance: 3, volume: 102 },
-  { id: 'aeco', name: 'AECO (Alberta)', type: 'gas', region: 'na', price: 2.10, trend: 'down', note: 'Canadian gas benchmark', importance: 4, volume: 16 },
-  { id: 'dawn', name: 'Dawn Hub', type: 'gas', region: 'na', price: 2.45, trend: 'up', note: 'Eastern Canada gas pricing', importance: 5, volume: 8 },
-  // Europe
-  { id: 'brent', name: 'Brent Crude', type: 'oil', region: 'eu', price: 95.12, trend: 'up', note: 'Global light sweet reference', importance: 1, volume: 5.2 },
-  { id: 'ttf', name: 'TTF (Netherlands)', type: 'gas', region: 'eu', price: 12.50, trend: 'up', note: 'European gas benchmark', importance: 2, volume: 20 },
-  { id: 'urals', name: 'Urals Crude', type: 'oil', region: 'eu', price: 68.40, trend: 'down', note: 'Russian export blend', importance: 6, volume: 2.5 },
-  // Asia
-  { id: 'dubai', name: 'Dubai Crude', type: 'oil', region: 'asia', price: 92.40, trend: 'up', note: 'Middle East/Asia reference', importance: 1, volume: 6.0 },
-  { id: 'jkm', name: 'JKM (Japan/Korea)', type: 'gas', region: 'asia', price: 14.20, trend: 'up', note: 'Asian LNG benchmark', importance: 2, volume: 15 },
-  { id: 'tapis', name: 'Tapis (Malaysia)', type: 'oil', region: 'asia', price: 98.15, trend: 'up', note: 'Light sweet Asian blend', importance: 7, volume: 0.5 },
+  // North America Oil
+  { id: 'wcs', name: 'WCS (Hardisty)', type: 'oil', region: 'na', price: 75.85, trend: 'up', note: 'Heavy sour crude', volume: 3.8 },
+  { id: 'wti', name: 'WTI (Cushing)', type: 'oil', region: 'na', price: 91.38, trend: 'up', note: 'NA light sweet reference', volume: 4.5 },
+  { id: 'lls', name: 'LLS (Louisiana)', type: 'oil', region: 'na', price: 93.10, trend: 'up', note: 'Light Louisiana Sweet', volume: 1.2 },
+  { id: 'mars', name: 'Mars Blend', type: 'oil', region: 'na', price: 88.40, trend: 'down', note: 'Gulf Coast medium sour', volume: 0.9 },
+  { id: 'syncrude', name: 'Syncrude Sweet', type: 'oil', region: 'na', price: 89.20, trend: 'up', note: 'Synthetic crude (Alberta)', volume: 1.1 },
+  { id: 'bakken', name: 'Bakken Clearbrook', type: 'oil', region: 'na', price: 87.50, trend: 'up', note: 'North Dakota light sweet', volume: 1.4 },
+  { id: 'ans', name: 'ANS (Alaska)', type: 'oil', region: 'na', price: 94.20, trend: 'up', note: 'Alaskan North Slope', volume: 0.5 },
+  { id: 'wti-midland', name: 'WTI Midland', type: 'oil', region: 'na', price: 92.15, trend: 'up', note: 'Permian light sweet', volume: 5.8 },
+  { id: 'bow-river', name: 'Bow River', type: 'oil', region: 'na', price: 74.30, trend: 'down', note: 'Canadian heavy blend', volume: 0.7 },
+  { id: 'western-canadian-select', name: 'Cold Lake Blend', type: 'oil', region: 'na', price: 73.10, trend: 'down', note: 'Dilbit heavy sour', volume: 0.6 },
+  
+  // North America Gas
+  { id: 'hh', name: 'Henry Hub', type: 'gas', region: 'na', price: 2.85, trend: 'down', note: 'US natural gas benchmark', volume: 102 },
+  { id: 'aeco', name: 'AECO (Alberta)', type: 'gas', region: 'na', price: 2.10, trend: 'down', note: 'Canadian gas benchmark', volume: 16 },
+  { id: 'dawn', name: 'Dawn Hub', type: 'gas', region: 'na', price: 2.45, trend: 'up', note: 'Eastern Canada gas pricing', volume: 8 },
+  { id: 'station2', name: 'Station 2 (BC)', type: 'gas', region: 'na', price: 1.85, trend: 'down', note: 'Western Canada reference', volume: 5 },
+  { id: 'chicago-cg', name: 'Chicago Citygate', type: 'gas', region: 'na', price: 2.65, trend: 'up', note: 'Midwest reference', volume: 14 },
+  { id: 'socal-border', name: 'SoCal Border', type: 'gas', region: 'na', price: 4.10, trend: 'down', note: 'Southern California index', volume: 7 },
+  { id: 'pg-and-e', name: 'PG&E Citygate', type: 'gas', region: 'na', price: 4.80, trend: 'down', note: 'Northern California', volume: 6 },
+  { id: 'transco-z6', name: 'Transco Z6 (NY)', type: 'gas', region: 'na', price: 2.90, trend: 'up', note: 'Northeast reference', volume: 12 },
+  { id: 'waha', name: 'Waha Hub', type: 'gas', region: 'na', price: 1.10, trend: 'down', note: 'Permian Basin gas', volume: 18 },
+  
+  // Europe Oil & Gas
+  { id: 'brent', name: 'Brent Crude', type: 'oil', region: 'eu', price: 95.12, trend: 'up', note: 'Global light sweet reference', volume: 5.2 },
+  { id: 'ttf', name: 'TTF (Netherlands)', type: 'gas', region: 'eu', price: 12.50, trend: 'up', note: 'European gas benchmark', volume: 20 },
+  { id: 'urals', name: 'Urals Crude', type: 'oil', region: 'eu', price: 68.40, trend: 'down', note: 'Russian export blend', volume: 2.5 },
+  { id: 'nbp', name: 'NBP (UK)', type: 'gas', region: 'eu', price: 11.90, trend: 'up', note: 'UK gas benchmark', volume: 8.5 },
+  { id: 'forties', name: 'Forties', type: 'oil', region: 'eu', price: 94.80, trend: 'up', note: 'North Sea crude', volume: 0.8 },
+  { id: 'ekofisk', name: 'Ekofisk', type: 'oil', region: 'eu', price: 96.00, trend: 'up', note: 'North Sea light sweet', volume: 0.4 },
+  { id: 'oseberg', name: 'Oseberg', type: 'oil', region: 'eu', price: 96.50, trend: 'up', note: 'Norwegian crude', volume: 0.3 },
+  { id: 'peg', name: 'PEG (France)', type: 'gas', region: 'eu', price: 12.10, trend: 'up', note: 'French gas benchmark', volume: 4 },
+
+  // Asia Oil & Gas
+  { id: 'dubai', name: 'Dubai Crude', type: 'oil', region: 'asia', price: 92.40, trend: 'up', note: 'Middle East/Asia reference', volume: 6.0 },
+  { id: 'jkm', name: 'JKM (Japan/Korea)', type: 'gas', region: 'asia', price: 14.20, trend: 'up', note: 'Asian LNG benchmark', volume: 15 },
+  { id: 'tapis', name: 'Tapis (Malaysia)', type: 'oil', region: 'asia', price: 98.15, trend: 'up', note: 'Light sweet Asian blend', volume: 0.5 },
+  { id: 'oman', name: 'Oman Crude', type: 'oil', region: 'asia', price: 91.80, trend: 'up', note: 'Middle East sour reference', volume: 1.1 },
+  { id: 'minat', name: 'Minas (Indonesia)', type: 'oil', region: 'asia', price: 93.50, trend: 'down', note: 'Heavy sweet reference', volume: 0.3 },
+  { id: 'murban', name: 'Murban', type: 'oil', region: 'asia', price: 94.10, trend: 'up', note: 'Abu Dhabi light', volume: 1.5 },
+  { id: 'espo', name: 'ESPO', type: 'oil', region: 'asia', price: 74.20, trend: 'down', note: 'Russian Pacific blend', volume: 1.2 }
 ];
 
 const rankings = [
@@ -78,7 +113,7 @@ export default function HomePage() {
         
         {/* Market Pricing Benchmarks */}
         <div className="dashboard-header" style={{ marginBottom: '40px' }}>
-          <h2>North American Benchmarks</h2>
+          <h2>Oil and Gas Benchmarks</h2>
           <p style={{ color: 'var(--text-muted)' }}>Current market prices across key hubs</p>
           
           <div className="benchmark-controls">
@@ -105,7 +140,7 @@ export default function HomePage() {
             <div key={b.id} className="stat-card">
               <div className="stat-header">
                 <span>{b.name}</span>
-                {b.type === 'oil' ? <Cylinder size={18} color="#ef4444" /> : <Flame size={18} color="#3b82f6" />}
+                {b.type === 'oil' ? <BarrelIcon size={18} color="#ef4444" /> : <Flame size={18} color="#3b82f6" />}
               </div>
               <div className="stat-value">${b.price.toFixed(2)}</div>
               <div className={`stat-trend ${b.trend === 'up' ? 'trend-up' : 'trend-down'}`}>

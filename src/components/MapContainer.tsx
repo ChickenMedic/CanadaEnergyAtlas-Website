@@ -484,6 +484,42 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
           </div>
         )}
 
+        {activeLayers.fossil && (
+          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
+            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Hydrocarbons</h4>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFossil.gas ? 1 : 0.6 }}
+              onClick={() => setActiveFossil(prev => ({ ...prev, gas: !prev.gas }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#3b82f6', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Natural Gas</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeFossil.gas ? '#3b82f6' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFossil.gas ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFossil.coal ? 1 : 0.6 }}
+              onClick={() => setActiveFossil(prev => ({ ...prev, coal: !prev.coal }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#6b7280', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Coal Power</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeFossil.coal ? '#6b7280' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFossil.coal ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', opacity: activeFossil.oil ? 1 : 0.6 }}
+              onClick={() => setActiveFossil(prev => ({ ...prev, oil: !prev.oil }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#111827', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Diesel / Oil</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeFossil.oil ? '#111827' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFossil.oil ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {(activeLayers.refining || activeLayers.storage) && (
           <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
             <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Facilities</h4>
@@ -630,42 +666,6 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
               <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Rare Earth</span>
               <div style={{ width: '28px', height: '14px', backgroundColor: activeMinerals.rareEarth ? '#ec4899' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
                 <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeMinerals.rareEarth ? '16px' : '2px', transition: 'left 0.2s' }}></div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {activeLayers.fossil && (
-          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
-            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Fossil Generation</h4>
-            <div 
-              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFossil.gas ? 1 : 0.6 }}
-              onClick={() => setActiveFossil(prev => ({ ...prev, gas: !prev.gas }))}
-            >
-              <div style={{ width: '12px', height: '12px', backgroundColor: '#3b82f6', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Natural Gas</span>
-              <div style={{ width: '28px', height: '14px', backgroundColor: activeFossil.gas ? '#3b82f6' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
-                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFossil.gas ? '16px' : '2px', transition: 'left 0.2s' }}></div>
-              </div>
-            </div>
-            <div 
-              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFossil.coal ? 1 : 0.6 }}
-              onClick={() => setActiveFossil(prev => ({ ...prev, coal: !prev.coal }))}
-            >
-              <div style={{ width: '12px', height: '12px', backgroundColor: '#6b7280', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Coal Power</span>
-              <div style={{ width: '28px', height: '14px', backgroundColor: activeFossil.coal ? '#6b7280' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
-                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFossil.coal ? '16px' : '2px', transition: 'left 0.2s' }}></div>
-              </div>
-            </div>
-            <div 
-              style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', opacity: activeFossil.oil ? 1 : 0.6 }}
-              onClick={() => setActiveFossil(prev => ({ ...prev, oil: !prev.oil }))}
-            >
-              <div style={{ width: '12px', height: '12px', backgroundColor: '#111827', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Diesel / Oil</span>
-              <div style={{ width: '28px', height: '14px', backgroundColor: activeFossil.oil ? '#111827' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
-                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFossil.oil ? '16px' : '2px', transition: 'left 0.2s' }}></div>
               </div>
             </div>
           </div>
