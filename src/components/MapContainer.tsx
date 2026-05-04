@@ -436,9 +436,9 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
                 <strong>Capacity:</strong> {hoverInfo.feature.properties.capacity}
               </p>
             )}
-            {hoverInfo.feature.properties.utilization && (
-              <p style={{ margin: '0 0 0 0', fontSize: '0.75rem', color: '#444' }}>
-                <strong>Est. Utilization:</strong> {hoverInfo.feature.properties.utilization}%
+            {hoverInfo.feature.properties.capacity_num && (hoverInfo.feature.layer.id.startsWith('renewable-') || hoverInfo.feature.layer.id.startsWith('fossil-')) && (
+              <p style={{ margin: '0 0 2px 0', fontSize: '0.75rem', color: '#444' }}>
+                <strong>Powers:</strong> {Math.round(hoverInfo.feature.properties.capacity_num * 800).toLocaleString()} Homes
               </p>
             )}
             {hoverInfo.feature.properties.status && (
@@ -484,11 +484,13 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
           </div>
         )}
 
-        {activeLayers.refineries && (
+        {(activeLayers.refining || activeLayers.storage) && (
           <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
             <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Facilities</h4>
-            <div 
-              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFacilities.oilRefinery ? 1 : 0.6 }}
+            {activeLayers.refining && (
+              <>
+                <div 
+                  style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFacilities.oilRefinery ? 1 : 0.6 }}
               onClick={() => setActiveFacilities(prev => ({ ...prev, oilRefinery: !prev.oilRefinery }))}
             >
               <div style={{ width: '12px', height: '12px', backgroundColor: '#f97316', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
@@ -507,8 +509,12 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
                 <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFacilities.gasProcessing ? '16px' : '2px', transition: 'left 0.2s' }}></div>
               </div>
             </div>
-            <div 
-              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFacilities.oilStorage ? 1 : 0.6 }}
+              </>
+            )}
+            {activeLayers.storage && (
+              <>
+                <div 
+                  style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFacilities.oilStorage ? 1 : 0.6 }}
               onClick={() => setActiveFacilities(prev => ({ ...prev, oilStorage: !prev.oilStorage }))}
             >
               <div style={{ width: '10px', height: '10px', backgroundColor: '#111', border: '2px solid #f97316', borderRadius: '50%' }}></div>
@@ -527,6 +533,8 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
                 <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFacilities.gasStorage ? '16px' : '2px', transition: 'left 0.2s' }}></div>
               </div>
             </div>
+              </>
+            )}
           </div>
         )}
 
