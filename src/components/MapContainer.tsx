@@ -26,14 +26,18 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
   const [activeGrid, setActiveGrid] = useState({ low: true, med: true, high: true });
   const [activeMinerals, setActiveMinerals] = useState({ uranium: true, nickel: true, copper: true, rareEarth: true, lithium: true });
   const [activeFossil, setActiveFossil] = useState({ coal: true, gas: true, oil: true });
+  const [minRenewableCapacity, setMinRenewableCapacity] = useState(0);
 
   useEffect(() => {
     // Show a loading spinner briefly when heavy layers toggle
-    if (activeLayers.pipelines || activeLayers.grid || activeLayers.renewables || activeLayers.fossil) {
+    let timer: ReturnType<typeof setTimeout>;
+    if (Object.values(activeLayers).some(v => v)) {
       setIsLoading(true);
-      const timer = setTimeout(() => setIsLoading(false), 800);
-      return () => clearTimeout(timer);
+      timer = setTimeout(() => setIsLoading(false), 500);
+    } else {
+      setIsLoading(false);
     }
+    return () => clearTimeout(timer);
   }, [activeLayers]);
 
   const mapCenter = {
@@ -339,7 +343,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             <Layer 
               id="renewable-hydro" 
               type="circle" 
-              filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'hydro']]} 
+              filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'hydro'], ['>=', ['get', 'capacity_num'], minRenewableCapacity]]} 
               paint={{ 
                 'circle-radius': [
                   'interpolate', ['linear'], ['get', 'capacity_num'],
@@ -357,7 +361,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             <Layer 
               id="renewable-wind" 
               type="circle" 
-              filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'wind']]} 
+              filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'wind'], ['>=', ['get', 'capacity_num'], minRenewableCapacity]]} 
               paint={{ 
                 'circle-radius': [
                   'interpolate', ['linear'], ['get', 'capacity_num'],
@@ -375,7 +379,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             <Layer 
               id="renewable-solar" 
               type="circle" 
-              filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'solar']]} 
+              filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'solar'], ['>=', ['get', 'capacity_num'], minRenewableCapacity]]} 
               paint={{ 
                 'circle-radius': [
                   'interpolate', ['linear'], ['get', 'capacity_num'],
@@ -707,6 +711,22 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
               <div style={{ width: '28px', height: '14px', backgroundColor: activeRenewables.solar ? '#fbbf24' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
                 <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeRenewables.solar ? '16px' : '2px', transition: 'left 0.2s' }}></div>
               </div>
+            </div>
+
+            <div style={{ marginTop: '16px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#e5e7eb', marginBottom: '8px' }}>
+                <span>Min Capacity</span>
+                <span style={{ fontWeight: 600 }}>{minRenewableCapacity} MW</span>
+              </div>
+              <input 
+                type="range" 
+                min="0" 
+                max="500" 
+                step="10" 
+                value={minRenewableCapacity} 
+                onChange={(e) => setMinRenewableCapacity(Number(e.target.value))}
+                style={{ width: '100%', accentColor: '#22c55e', cursor: 'pointer' }}
+              />
             </div>
           </div>
         )}
