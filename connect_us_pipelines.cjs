@@ -79,6 +79,18 @@ const usPipelines = [
   {
     name: 'Trans-Alaska Pipeline System (TAPS)', commodity: 'Liquid',
     coords: [[-148.3, 70.2], [-147.7, 64.8], [-146.3, 61.1]]
+  },
+  {
+    name: 'El Paso Natural Gas Pipeline', commodity: 'Gas',
+    coords: [[-103.1, 31.7], [-106.4, 31.7], [-111.9, 33.4], [-114.6, 34.8], [-118.2, 34.0]]
+  },
+  {
+    name: 'Pacific Gas and Electric (PG&E)', commodity: 'Gas',
+    coords: [[-114.6, 34.8], [-118.9, 35.3], [-121.4, 38.5], [-122.4, 37.7]]
+  },
+  {
+    name: 'Northern Natural Gas', commodity: 'Gas',
+    coords: [[-103.0, 31.5], [-100.8, 37.7], [-95.9, 41.2], [-93.2, 44.8], [-92.0, 46.7]]
   }
 ];
 
