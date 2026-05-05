@@ -53,7 +53,6 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       lngLat: { lng, lat }
     } = event;
     const hoveredFeature = features && features[0];
-    
     if (hoveredFeature && (hoveredFeature.layer.id.startsWith('facility-') || hoveredFeature.layer.id.startsWith('renewable-') || hoveredFeature.layer.id.startsWith('minerals-') || hoveredFeature.layer.id.startsWith('fossil-'))) {
       setHoverInfo({
         longitude: lng,
@@ -153,7 +152,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             <Layer 
               id="facility-refineries-oil" 
               type="circle" 
-              filter={['all', ['==', 'type', 'refinery'], ['==', 'subtype', 'oil']]} 
+              filter={['all', ['==', ['get', 'type'], 'refinery'], ['==', ['get', 'subtype'], 'oil']]} 
               paint={{ 
                 'circle-radius': [
                   'interpolate', ['linear'], ['get', 'capacity_num'],
@@ -171,7 +170,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             <Layer 
               id="facility-refineries-gas" 
               type="circle" 
-              filter={['all', ['==', 'type', 'refinery'], ['==', 'subtype', 'gas']]} 
+              filter={['all', ['==', ['get', 'type'], 'refinery'], ['==', ['get', 'subtype'], 'gas']]} 
               paint={{ 
                 'circle-radius': [
                   'interpolate', ['linear'], ['get', 'capacity_num'],
@@ -189,7 +188,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             <Layer 
               id="facility-storage-oil" 
               type="circle" 
-              filter={['all', ['==', 'type', 'storage'], ['==', 'subtype', 'oil']]} 
+              filter={['all', ['==', ['get', 'type'], 'storage'], ['==', ['get', 'subtype'], 'oil']]} 
               paint={{ 
                 'circle-radius': [
                   'interpolate', ['linear'], ['get', 'capacity_num'],
@@ -207,7 +206,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             <Layer 
               id="facility-storage-gas" 
               type="circle" 
-              filter={['all', ['==', 'type', 'storage'], ['==', 'subtype', 'gas']]} 
+              filter={['all', ['==', ['get', 'type'], 'storage'], ['==', ['get', 'subtype'], 'gas']]} 
               paint={{ 
                 'circle-radius': [
                   'interpolate', ['linear'], ['get', 'capacity_num'],
@@ -325,13 +324,13 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       {activeLayers.fossil && (
         <Source id="fossil-data" type="geojson" data="/fossil_plants.geojson">
           {activeFossil.coal && (
-            <Layer id="fossil-coal" type="circle" filter={['all', ['==', 'type', 'fossil'], ['==', 'subtype', 'coal']]} paint={{ 'circle-radius': ['interpolate', ['linear'], ['get', 'capacity_num'], 10, 3, 2000, 12], 'circle-color': '#6b7280', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
+            <Layer id="fossil-coal" type="circle" filter={['all', ['==', ['get', 'type'], 'fossil'], ['==', ['get', 'subtype'], 'coal']]} paint={{ 'circle-radius': ['interpolate', ['linear'], ['get', 'capacity_num'], 10, 3, 2000, 12], 'circle-color': '#6b7280', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
           )}
           {activeFossil.gas && (
-            <Layer id="fossil-gas" type="circle" filter={['all', ['==', 'type', 'fossil'], ['==', 'subtype', 'gas']]} paint={{ 'circle-radius': ['interpolate', ['linear'], ['get', 'capacity_num'], 10, 3, 1000, 10], 'circle-color': '#3b82f6', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
+            <Layer id="fossil-gas" type="circle" filter={['all', ['==', ['get', 'type'], 'fossil'], ['==', ['get', 'subtype'], 'gas']]} paint={{ 'circle-radius': ['interpolate', ['linear'], ['get', 'capacity_num'], 10, 3, 1000, 10], 'circle-color': '#3b82f6', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
           )}
           {activeFossil.oil && (
-            <Layer id="fossil-oil" type="circle" filter={['all', ['==', 'type', 'fossil'], ['==', 'subtype', 'oil']]} paint={{ 'circle-radius': ['interpolate', ['linear'], ['get', 'capacity_num'], 10, 3, 1000, 10], 'circle-color': '#111827', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
+            <Layer id="fossil-oil" type="circle" filter={['all', ['==', ['get', 'type'], 'fossil'], ['==', ['get', 'subtype'], 'oil']]} paint={{ 'circle-radius': ['interpolate', ['linear'], ['get', 'capacity_num'], 10, 3, 1000, 10], 'circle-color': '#111827', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
           )}
         </Source>
       )}
@@ -343,7 +342,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             <Layer 
               id="renewable-hydro" 
               type="circle" 
-              filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'hydro'], ['>=', ['get', 'capacity_num'], minRenewableCapacity]]} 
+              filter={['all', ['==', ['get', 'type'], 'renewable'], ['==', ['get', 'subtype'], 'hydro'], ['>=', ['get', 'capacity_num'], minRenewableCapacity]]} 
               paint={{ 
                 'circle-radius': [
                   'interpolate', ['linear'], ['get', 'capacity_num'],
@@ -361,7 +360,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             <Layer 
               id="renewable-wind" 
               type="circle" 
-              filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'wind'], ['>=', ['get', 'capacity_num'], minRenewableCapacity]]} 
+              filter={['all', ['==', ['get', 'type'], 'renewable'], ['==', ['get', 'subtype'], 'wind'], ['>=', ['get', 'capacity_num'], minRenewableCapacity]]} 
               paint={{ 
                 'circle-radius': [
                   'interpolate', ['linear'], ['get', 'capacity_num'],
@@ -379,7 +378,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             <Layer 
               id="renewable-solar" 
               type="circle" 
-              filter={['all', ['==', 'type', 'renewable'], ['==', 'subtype', 'solar'], ['>=', ['get', 'capacity_num'], minRenewableCapacity]]} 
+              filter={['all', ['==', ['get', 'type'], 'renewable'], ['==', ['get', 'subtype'], 'solar'], ['>=', ['get', 'capacity_num'], minRenewableCapacity]]} 
               paint={{ 
                 'circle-radius': [
                   'interpolate', ['linear'], ['get', 'capacity_num'],
@@ -416,7 +415,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       )}
 
       {/* Popups */}
-      {hoverInfo && (hoverInfo.feature.layer.id.startsWith('facility-') || hoverInfo.feature.layer.id.startsWith('renewable-') || hoverInfo.feature.layer.id.startsWith('minerals-')) && (
+      {hoverInfo && (hoverInfo.feature.layer.id.startsWith('facility-') || hoverInfo.feature.layer.id.startsWith('renewable-') || hoverInfo.feature.layer.id.startsWith('minerals-') || hoverInfo.feature.layer.id.startsWith('fossil-')) && (
         <Popup
           longitude={hoverInfo.longitude}
           latitude={hoverInfo.latitude}
