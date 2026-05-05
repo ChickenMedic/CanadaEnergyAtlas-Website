@@ -716,17 +716,21 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             <div style={{ marginTop: '16px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#e5e7eb', marginBottom: '8px' }}>
                 <span>Min Capacity</span>
-                <span style={{ fontWeight: 600 }}>{minRenewableCapacity} MW</span>
               </div>
-              <input 
-                type="range" 
-                min="0" 
-                max="100" 
-                step="5" 
-                value={minRenewableCapacity} 
-                onChange={(e) => setMinRenewableCapacity(Number(e.target.value))}
-                style={{ width: '100%', accentColor: '#22c55e', cursor: 'pointer' }}
-              />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '0.8rem', color: '#e5e7eb' }}>
+                  <input type="radio" name="renewable-capacity" checked={minRenewableCapacity === 0} onChange={() => setMinRenewableCapacity(0)} /> All
+                </label>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '0.8rem', color: '#e5e7eb' }}>
+                  <input type="radio" name="renewable-capacity" checked={minRenewableCapacity === 100} onChange={() => setMinRenewableCapacity(100)} /> Over 100MW
+                </label>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '0.8rem', color: '#e5e7eb' }}>
+                  <input type="radio" name="renewable-capacity" checked={minRenewableCapacity === 250} onChange={() => setMinRenewableCapacity(250)} /> Over 250MW
+                </label>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '0.8rem', color: '#e5e7eb' }}>
+                  <input type="radio" name="renewable-capacity" checked={minRenewableCapacity === 400} onChange={() => setMinRenewableCapacity(400)} /> 400MW+
+                </label>
+              </div>
             </div>
           </div>
         )}
