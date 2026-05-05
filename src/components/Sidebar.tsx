@@ -1,4 +1,4 @@
-import { Database, Route, Factory, Zap, Leaf, Activity, Cylinder } from 'lucide-react';
+import { Database, Route, Factory, Zap, Leaf, Activity, Compass, Cylinder, Flame } from 'lucide-react';
 
 interface SidebarProps {
   layers: {
@@ -17,8 +17,10 @@ interface SidebarProps {
 export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
   const toggleConfigs = [
     { key: 'basins', icon: <Database size={20} />, label: 'Basins', desc: 'Geological Formations', colorClass: 'gas' },
+    { key: 'minerals', icon: <Compass size={20} />, label: 'Critical Minerals', desc: 'NATO Supply Chain', colorClass: 'copper' },
     { key: 'pipelines', icon: <Route size={20} />, label: 'Pipelines & Flows', desc: 'Liquids & Gas Networks', colorClass: 'gas' },
     { key: 'refining', icon: <Factory size={20} />, label: 'Refineries', desc: 'Processing Hubs', colorClass: 'gas' },
+    { key: 'fossil', icon: <Flame size={20} />, label: 'Hydrocarbons', desc: 'Coal, Gas & Oil Plants', colorClass: 'gas' },
     { key: 'storage', icon: <Cylinder size={20} />, label: 'Storage', desc: 'Tank Farms & Caverns', colorClass: 'gas' },
     { key: 'grid', icon: <Zap size={20} />, label: 'The Grid', desc: 'Transmission Lines', colorClass: 'renewable' },
     { key: 'renewables', icon: <Leaf size={20} />, label: 'Renewables', desc: 'Wind, Solar & Hydro', colorClass: 'renewable' }

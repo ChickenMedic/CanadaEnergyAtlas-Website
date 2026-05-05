@@ -1,0 +1,527 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50000,
+        "name": "McArthur River Uranium Mine",
+        "type": "mineral",
+        "subtype": "uranium",
+        "operator": "Cameco",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.05,
+          57.766
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50001,
+        "name": "Cigar Lake Uranium Mine",
+        "type": "mineral",
+        "subtype": "uranium",
+        "operator": "Cameco",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.533,
+          58.066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50002,
+        "name": "Key Lake Uranium Mill",
+        "type": "mineral",
+        "subtype": "uranium",
+        "operator": "Cameco",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.633,
+          57.2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50003,
+        "name": "McClean Lake Uranium Mill",
+        "type": "mineral",
+        "subtype": "uranium",
+        "operator": "Orano",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.8,
+          58.266
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50004,
+        "name": "Smith Ranch-Highland",
+        "type": "mineral",
+        "subtype": "uranium",
+        "operator": "Cameco",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.65,
+          43.05
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50005,
+        "name": "Crow Butte",
+        "type": "mineral",
+        "subtype": "uranium",
+        "operator": "Cameco",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -103.4,
+          42.666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50006,
+        "name": "White Mesa Mill",
+        "type": "mineral",
+        "subtype": "uranium",
+        "operator": "Energy Fuels",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.483,
+          37.45
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50007,
+        "name": "Sudbury Basin Nickel Mines",
+        "type": "mineral",
+        "subtype": "nickel",
+        "operator": "Vale / Glencore",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81,
+          46.5
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50008,
+        "name": "Voisey's Bay Nickel Mine",
+        "type": "mineral",
+        "subtype": "nickel",
+        "operator": "Vale",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -62.1,
+          56.333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50009,
+        "name": "Raglan Mine",
+        "type": "mineral",
+        "subtype": "nickel",
+        "operator": "Glencore",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.666,
+          61.683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50010,
+        "name": "Thompson Nickel Mine",
+        "type": "mineral",
+        "subtype": "nickel",
+        "operator": "Vale",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.866,
+          55.733
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50011,
+        "name": "Eagle Mine",
+        "type": "mineral",
+        "subtype": "nickel",
+        "operator": "Lundin Mining",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -87.883,
+          46.75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50012,
+        "name": "Highland Valley Copper",
+        "type": "mineral",
+        "subtype": "copper",
+        "operator": "Teck Resources",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -120.983,
+          50.483
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50013,
+        "name": "Red Chris Mine",
+        "type": "mineral",
+        "subtype": "copper",
+        "operator": "Newcrest / Imperial Metals",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -129.783,
+          57.7
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50014,
+        "name": "Mount Milligan",
+        "type": "mineral",
+        "subtype": "copper",
+        "operator": "Centerra Gold",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -123.866,
+          55.066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50015,
+        "name": "Morenci Copper Mine",
+        "type": "mineral",
+        "subtype": "copper",
+        "operator": "Freeport-McMoRan",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -109.366,
+          33.083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50016,
+        "name": "Bingham Canyon Mine",
+        "type": "mineral",
+        "subtype": "copper",
+        "operator": "Rio Tinto",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.15,
+          40.533
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50017,
+        "name": "Ray Mine",
+        "type": "mineral",
+        "subtype": "copper",
+        "operator": "ASARCO",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -110.983,
+          33.15
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50018,
+        "name": "Sierrita Mine",
+        "type": "mineral",
+        "subtype": "copper",
+        "operator": "Freeport-McMoRan",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.133,
+          31.866
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50019,
+        "name": "Resolution Copper (Project)",
+        "type": "mineral",
+        "subtype": "copper",
+        "operator": "Rio Tinto / BHP",
+        "status": "Development"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -111.1,
+          33.3
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50020,
+        "name": "Mountain Pass Rare Earth Mine",
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "operator": "MP Materials",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.533,
+          35.483
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50021,
+        "name": "Nechalacho Rare Earth Project",
+        "type": "mineral",
+        "subtype": "rare_earth",
+        "operator": "Vital Metals",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -112.95,
+          62.1
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50022,
+        "name": "Tanco Mine",
+        "type": "mineral",
+        "subtype": "lithium",
+        "operator": "Sinomine",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.35,
+          50.433
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50023,
+        "name": "Whabouchi Lithium Project",
+        "type": "mineral",
+        "subtype": "lithium",
+        "operator": "Nemaska Lithium",
+        "status": "Development"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.866,
+          51.683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50024,
+        "name": "Rose Lithium-Tantalum",
+        "type": "mineral",
+        "subtype": "lithium",
+        "operator": "Critical Elements",
+        "status": "Development"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.816,
+          52.033
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50025,
+        "name": "Silver Peak Lithium Facility",
+        "type": "mineral",
+        "subtype": "lithium",
+        "operator": "Albemarle",
+        "status": "Active"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.633,
+          37.75
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50026,
+        "name": "Thacker Pass Lithium",
+        "type": "mineral",
+        "subtype": "lithium",
+        "operator": "Lithium Americas",
+        "status": "Development"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.066,
+          41.716
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50027,
+        "name": "Salton Sea Lithium Project",
+        "type": "mineral",
+        "subtype": "lithium",
+        "operator": "EnergySource",
+        "status": "Development"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.6,
+          33.2
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "OBJECTID": 50028,
+        "name": "Piedmont Lithium Project",
+        "type": "mineral",
+        "subtype": "lithium",
+        "operator": "Piedmont Lithium",
+        "status": "Development"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -81.25,
+          35.383
+        ]
+      }
+    }
+  ]
+}
