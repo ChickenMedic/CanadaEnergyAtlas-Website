@@ -1,4 +1,4 @@
-import { Database, Route, Factory, Zap, Leaf, Activity, Compass, Cylinder, Flame } from 'lucide-react';
+import { Database, Route, Factory, Zap, Leaf, Activity, Cylinder } from 'lucide-react';
 
 interface SidebarProps {
   layers: {
