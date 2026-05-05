@@ -4,7 +4,7 @@ import Sidebar from '../components/Sidebar';
 
 export default function MapPage() {
   const [layers, setLayers] = useState({
-    basins: false,
+    basins: true,
     minerals: false,
     pipelines: false,
     refining: false,
