@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Database, Route, Factory, Box, Zap, Leaf, Globe } from 'lucide-react';
+import { Globe } from 'lucide-react';
 import { deepDiveSections as sections } from './DeepDivesContent';
 
 export default function DeepDivesPage() {
