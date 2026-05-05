@@ -51,22 +51,7 @@ const usPipelines = [
 
 // Add noise to make the lines look like real pipeline paths instead of perfectly straight segments
 function addPipelineJitter(coords) {
-  const result = [];
-  for (let i = 0; i < coords.length - 1; i++) {
-    const p1 = coords[i];
-    const p2 = coords[i + 1];
-    result.push(p1);
-    
-    // Insert 3 noisy midpoints
-    for (let j = 1; j <= 3; j++) {
-      const t = j / 4;
-      const x = p1[0] * (1 - t) + p2[0] * t + (Math.random() - 0.5) * 0.5;
-      const y = p1[1] * (1 - t) + p2[1] * t + (Math.random() - 0.5) * 0.5;
-      result.push([x, y]);
-    }
-  }
-  result.push(coords[coords.length - 1]);
-  return result;
+  return coords;
 }
 
 usPipelines.forEach((pipe, i) => {
