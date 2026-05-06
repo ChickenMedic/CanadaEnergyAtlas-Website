@@ -1,4 +1,4 @@
-import { Database, Route, Factory, Box, Zap, Leaf, Flame, Gem } from 'lucide-react';
+import { Database, Route, Factory, Box, Zap, Leaf } from 'lucide-react';
 
 export const deepDiveSections = [
   {
