@@ -1,4 +1,4 @@
-import { Database, Route, Factory, Box, Zap, Leaf } from 'lucide-react';
+import { Database, Route, Factory, Box, Zap, Leaf, Flame, Gem } from 'lucide-react';
 
 export const deepDiveSections = [
   {
@@ -618,10 +618,10 @@ export const deepDiveSections = [
     )
   },
   {
-    id: 'green',
+    id: 'renewables',
     icon: <Leaf size={20} />,
-    title: "Green Energy",
-    fullTitle: "Green Energy Initiatives",
+    title: "Renewables",
+    fullTitle: "Renewable Energy Initiatives",
     color: "var(--accent-green)",
     content: (
 <>

@@ -9,7 +9,7 @@ export default function MapPage() {
     pipelines: false,
     refining: false,
     storage: false,
-    fossil: false,
+    nonRenewable: false,
     grid: false,
     renewables: false
   });
@@ -24,7 +24,7 @@ export default function MapPage() {
         pipelines: false,
         refining: false,
         storage: false,
-        fossil: false,
+        nonRenewable: false,
         grid: false,
         renewables: false,
         [layer]: isTurningOn

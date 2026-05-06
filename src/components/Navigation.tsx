@@ -32,6 +32,9 @@ export default function Navigation() {
         <Link to="/deep-dives" className={`nav-link ${location.pathname === '/deep-dives' ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
           Deep Dives
         </Link>
+        <Link to="/data-sources" className={`nav-link ${location.pathname === '/data-sources' ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
+          Data Sources
+        </Link>
         
         {/* Button linking out to the AR project */}
         <a 

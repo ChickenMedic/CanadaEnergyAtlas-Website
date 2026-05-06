@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Globe, Zap, TrendingUp, Activity, Droplet, Wind, Flame, Database, Leaf, Sun } from 'lucide-react';
 
@@ -13,46 +13,46 @@ const BarrelIcon = ({ size = 18, color = "#ef4444" }: { size?: number, color?: s
 
 const benchmarks = [
   // North America Oil
-  { id: 'wcs', name: 'WCS (Hardisty)', type: 'oil', region: 'na', price: 75.85, trend: 'up', note: 'Heavy sour crude', volume: 3.8 },
-  { id: 'wti', name: 'WTI (Cushing)', type: 'oil', region: 'na', price: 91.38, trend: 'up', note: 'NA light sweet reference', volume: 4.5 },
-  { id: 'lls', name: 'LLS (Louisiana)', type: 'oil', region: 'na', price: 93.10, trend: 'up', note: 'Light Louisiana Sweet', volume: 1.2 },
-  { id: 'mars', name: 'Mars Blend', type: 'oil', region: 'na', price: 88.40, trend: 'down', note: 'Gulf Coast medium sour', volume: 0.9 },
-  { id: 'syncrude', name: 'Syncrude Sweet', type: 'oil', region: 'na', price: 89.20, trend: 'up', note: 'Synthetic crude (Alberta)', volume: 1.1 },
-  { id: 'bakken', name: 'Bakken Clearbrook', type: 'oil', region: 'na', price: 87.50, trend: 'up', note: 'North Dakota light sweet', volume: 1.4 },
-  { id: 'ans', name: 'ANS (Alaska)', type: 'oil', region: 'na', price: 94.20, trend: 'up', note: 'Alaskan North Slope', volume: 0.5 },
-  { id: 'wti-midland', name: 'WTI Midland', type: 'oil', region: 'na', price: 92.15, trend: 'up', note: 'Permian light sweet', volume: 5.8 },
-  { id: 'bow-river', name: 'Bow River', type: 'oil', region: 'na', price: 74.30, trend: 'down', note: 'Canadian heavy blend', volume: 0.7 },
-  { id: 'western-canadian-select', name: 'Cold Lake Blend', type: 'oil', region: 'na', price: 73.10, trend: 'down', note: 'Dilbit heavy sour', volume: 0.6 },
+  { id: 'wcs', name: 'WCS (Hardisty)', type: 'oil', region: 'na', price: 75.85, change: 1.25, pctChange: 1.68, trend: 'up', note: 'Heavy sour crude', volume: 3.8 },
+  { id: 'wti', name: 'WTI (Cushing)', type: 'oil', region: 'na', price: 91.38, change: 0.85, pctChange: 0.94, trend: 'up', note: 'NA light sweet reference', volume: 4.5 },
+  { id: 'lls', name: 'LLS (Louisiana)', type: 'oil', region: 'na', price: 93.10, change: 1.05, pctChange: 1.14, trend: 'up', note: 'Light Louisiana Sweet', volume: 1.2 },
+  { id: 'mars', name: 'Mars Blend', type: 'oil', region: 'na', price: 88.40, change: -0.45, pctChange: -0.51, trend: 'down', note: 'Gulf Coast medium sour', volume: 0.9 },
+  { id: 'syncrude', name: 'Syncrude Sweet', type: 'oil', region: 'na', price: 89.20, change: 0.60, pctChange: 0.68, trend: 'up', note: 'Synthetic crude (Alberta)', volume: 1.1 },
+  { id: 'bakken', name: 'Bakken Clearbrook', type: 'oil', region: 'na', price: 87.50, change: 0.90, pctChange: 1.04, trend: 'up', note: 'North Dakota light sweet', volume: 1.4 },
+  { id: 'ans', name: 'ANS (Alaska)', type: 'oil', region: 'na', price: 94.20, change: 0.30, pctChange: 0.32, trend: 'up', note: 'Alaskan North Slope', volume: 0.5 },
+  { id: 'wti-midland', name: 'WTI Midland', type: 'oil', region: 'na', price: 92.15, change: 1.10, pctChange: 1.21, trend: 'up', note: 'Permian light sweet', volume: 5.8 },
+  { id: 'bow-river', name: 'Bow River', type: 'oil', region: 'na', price: 74.30, change: -1.20, pctChange: -1.59, trend: 'down', note: 'Canadian heavy blend', volume: 0.7 },
+  { id: 'western-canadian-select', name: 'Cold Lake Blend', type: 'oil', region: 'na', price: 73.10, change: -0.80, pctChange: -1.08, trend: 'down', note: 'Dilbit heavy sour', volume: 0.6 },
   
   // North America Gas
-  { id: 'hh', name: 'Henry Hub', type: 'gas', region: 'na', price: 2.85, trend: 'down', note: 'US natural gas benchmark', volume: 102 },
-  { id: 'aeco', name: 'AECO (Alberta)', type: 'gas', region: 'na', price: 2.10, trend: 'down', note: 'Canadian gas benchmark', volume: 16 },
-  { id: 'dawn', name: 'Dawn Hub', type: 'gas', region: 'na', price: 2.45, trend: 'up', note: 'Eastern Canada gas pricing', volume: 8 },
-  { id: 'station2', name: 'Station 2 (BC)', type: 'gas', region: 'na', price: 1.85, trend: 'down', note: 'Western Canada reference', volume: 5 },
-  { id: 'chicago-cg', name: 'Chicago Citygate', type: 'gas', region: 'na', price: 2.65, trend: 'up', note: 'Midwest reference', volume: 14 },
-  { id: 'socal-border', name: 'SoCal Border', type: 'gas', region: 'na', price: 4.10, trend: 'down', note: 'Southern California index', volume: 7 },
-  { id: 'pg-and-e', name: 'PG&E Citygate', type: 'gas', region: 'na', price: 4.80, trend: 'down', note: 'Northern California', volume: 6 },
-  { id: 'transco-z6', name: 'Transco Z6 (NY)', type: 'gas', region: 'na', price: 2.90, trend: 'up', note: 'Northeast reference', volume: 12 },
-  { id: 'waha', name: 'Waha Hub', type: 'gas', region: 'na', price: 1.10, trend: 'down', note: 'Permian Basin gas', volume: 18 },
+  { id: 'hh', name: 'Henry Hub', type: 'gas', region: 'na', price: 2.85, change: -0.15, pctChange: -5.00, trend: 'down', note: 'US natural gas benchmark', volume: 102 },
+  { id: 'aeco', name: 'AECO (Alberta)', type: 'gas', region: 'na', price: 2.10, change: -0.05, pctChange: -2.33, trend: 'down', note: 'Canadian gas benchmark', volume: 16 },
+  { id: 'dawn', name: 'Dawn Hub', type: 'gas', region: 'na', price: 2.45, change: 0.10, pctChange: 4.26, trend: 'up', note: 'Eastern Canada gas pricing', volume: 8 },
+  { id: 'station2', name: 'Station 2 (BC)', type: 'gas', region: 'na', price: 1.85, change: -0.08, pctChange: -4.15, trend: 'down', note: 'Western Canada reference', volume: 5 },
+  { id: 'chicago-cg', name: 'Chicago Citygate', type: 'gas', region: 'na', price: 2.65, change: 0.12, pctChange: 4.74, trend: 'up', note: 'Midwest reference', volume: 14 },
+  { id: 'socal-border', name: 'SoCal Border', type: 'gas', region: 'na', price: 4.10, change: -0.25, pctChange: -5.75, trend: 'down', note: 'Southern California index', volume: 7 },
+  { id: 'pg-and-e', name: 'PG&E Citygate', type: 'gas', region: 'na', price: 4.80, change: -0.30, pctChange: -5.88, trend: 'down', note: 'Northern California', volume: 6 },
+  { id: 'transco-z6', name: 'Transco Z6 (NY)', type: 'gas', region: 'na', price: 2.90, change: 0.18, pctChange: 6.62, trend: 'up', note: 'Northeast reference', volume: 12 },
+  { id: 'waha', name: 'Waha Hub', type: 'gas', region: 'na', price: 1.10, change: -0.40, pctChange: -26.67, trend: 'down', note: 'Permian Basin gas', volume: 18 },
   
   // Europe Oil & Gas
-  { id: 'brent', name: 'Brent Crude', type: 'oil', region: 'eu', price: 95.12, trend: 'up', note: 'Global light sweet reference', volume: 5.2 },
-  { id: 'ttf', name: 'TTF (Netherlands)', type: 'gas', region: 'eu', price: 12.50, trend: 'up', note: 'European gas benchmark', volume: 20 },
-  { id: 'urals', name: 'Urals Crude', type: 'oil', region: 'eu', price: 68.40, trend: 'down', note: 'Russian export blend', volume: 2.5 },
-  { id: 'nbp', name: 'NBP (UK)', type: 'gas', region: 'eu', price: 11.90, trend: 'up', note: 'UK gas benchmark', volume: 8.5 },
-  { id: 'forties', name: 'Forties', type: 'oil', region: 'eu', price: 94.80, trend: 'up', note: 'North Sea crude', volume: 0.8 },
-  { id: 'ekofisk', name: 'Ekofisk', type: 'oil', region: 'eu', price: 96.00, trend: 'up', note: 'North Sea light sweet', volume: 0.4 },
-  { id: 'oseberg', name: 'Oseberg', type: 'oil', region: 'eu', price: 96.50, trend: 'up', note: 'Norwegian crude', volume: 0.3 },
-  { id: 'peg', name: 'PEG (France)', type: 'gas', region: 'eu', price: 12.10, trend: 'up', note: 'French gas benchmark', volume: 4 },
+  { id: 'brent', name: 'Brent Crude', type: 'oil', region: 'eu', price: 95.12, change: 1.40, pctChange: 1.49, trend: 'up', note: 'Global light sweet reference', volume: 5.2 },
+  { id: 'ttf', name: 'TTF (Netherlands)', type: 'gas', region: 'eu', price: 12.50, change: 0.80, pctChange: 6.84, trend: 'up', note: 'European gas benchmark', volume: 20 },
+  { id: 'urals', name: 'Urals Crude', type: 'oil', region: 'eu', price: 68.40, change: -0.50, pctChange: -0.73, trend: 'down', note: 'Russian export blend', volume: 2.5 },
+  { id: 'nbp', name: 'NBP (UK)', type: 'gas', region: 'eu', price: 11.90, change: 0.60, pctChange: 5.31, trend: 'up', note: 'UK gas benchmark', volume: 8.5 },
+  { id: 'forties', name: 'Forties', type: 'oil', region: 'eu', price: 94.80, change: 1.10, pctChange: 1.17, trend: 'up', note: 'North Sea crude', volume: 0.8 },
+  { id: 'ekofisk', name: 'Ekofisk', type: 'oil', region: 'eu', price: 96.00, change: 1.25, pctChange: 1.32, trend: 'up', note: 'North Sea light sweet', volume: 0.4 },
+  { id: 'oseberg', name: 'Oseberg', type: 'oil', region: 'eu', price: 96.50, change: 1.30, pctChange: 1.37, trend: 'up', note: 'Norwegian crude', volume: 0.3 },
+  { id: 'peg', name: 'PEG (France)', type: 'gas', region: 'eu', price: 12.10, change: 0.70, pctChange: 6.14, trend: 'up', note: 'French gas benchmark', volume: 4 },
 
   // Asia Oil & Gas
-  { id: 'dubai', name: 'Dubai Crude', type: 'oil', region: 'asia', price: 92.40, trend: 'up', note: 'Middle East/Asia reference', volume: 6.0 },
-  { id: 'jkm', name: 'JKM (Japan/Korea)', type: 'gas', region: 'asia', price: 14.20, trend: 'up', note: 'Asian LNG benchmark', volume: 15 },
-  { id: 'tapis', name: 'Tapis (Malaysia)', type: 'oil', region: 'asia', price: 98.15, trend: 'up', note: 'Light sweet Asian blend', volume: 0.5 },
-  { id: 'oman', name: 'Oman Crude', type: 'oil', region: 'asia', price: 91.80, trend: 'up', note: 'Middle East sour reference', volume: 1.1 },
-  { id: 'minat', name: 'Minas (Indonesia)', type: 'oil', region: 'asia', price: 93.50, trend: 'down', note: 'Heavy sweet reference', volume: 0.3 },
-  { id: 'murban', name: 'Murban', type: 'oil', region: 'asia', price: 94.10, trend: 'up', note: 'Abu Dhabi light', volume: 1.5 },
-  { id: 'espo', name: 'ESPO', type: 'oil', region: 'asia', price: 74.20, trend: 'down', note: 'Russian Pacific blend', volume: 1.2 }
+  { id: 'dubai', name: 'Dubai Crude', type: 'oil', region: 'asia', price: 92.40, change: 0.85, pctChange: 0.93, trend: 'up', note: 'Middle East/Asia reference', volume: 6.0 },
+  { id: 'jkm', name: 'JKM (Japan/Korea)', type: 'gas', region: 'asia', price: 14.20, change: 1.10, pctChange: 8.40, trend: 'up', note: 'Asian LNG benchmark', volume: 15 },
+  { id: 'tapis', name: 'Tapis (Malaysia)', type: 'oil', region: 'asia', price: 98.15, change: 1.50, pctChange: 1.55, trend: 'up', note: 'Light sweet Asian blend', volume: 0.5 },
+  { id: 'oman', name: 'Oman Crude', type: 'oil', region: 'asia', price: 91.80, change: 0.75, pctChange: 0.82, trend: 'up', note: 'Middle East sour reference', volume: 1.1 },
+  { id: 'minat', name: 'Minas (Indonesia)', type: 'oil', region: 'asia', price: 93.50, change: -0.60, pctChange: -0.64, trend: 'down', note: 'Heavy sweet reference', volume: 0.3 },
+  { id: 'murban', name: 'Murban', type: 'oil', region: 'asia', price: 94.10, change: 0.90, pctChange: 0.97, trend: 'up', note: 'Abu Dhabi light', volume: 1.5 },
+  { id: 'espo', name: 'ESPO', type: 'oil', region: 'asia', price: 74.20, change: -1.10, pctChange: -1.46, trend: 'down', note: 'Russian Pacific blend', volume: 1.2 }
 ];
 
 const rankings = [
@@ -69,16 +69,67 @@ const rankings = [
 export default function HomePage() {
   const [benchmarkRegion, setBenchmarkRegion] = useState<'all' | 'na' | 'eu' | 'asia'>('na');
   const [benchmarkType, setBenchmarkType] = useState<'all' | 'oil' | 'gas'>('oil');
-  const [benchmarkSort, setBenchmarkSort] = useState<'price' | 'volume'>('volume');
   const [selectedRanking, setSelectedRanking] = useState(rankings[0]);
+  const [benchmarksData, setBenchmarksData] = useState(benchmarks);
 
-  const filteredBenchmarks = benchmarks
+  useEffect(() => {
+    const fetchEIAData = async () => {
+      const apiKey = import.meta.env.VITE_EIA_API_KEY;
+      if (!apiKey) return;
+
+      try {
+        const wtiUrl = `https://api.eia.gov/v2/petroleum/pri/spt/data/?api_key=${apiKey}&frequency=daily&data[0]=value&facets[series][]=RWTC&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=2`;
+        const brentUrl = `https://api.eia.gov/v2/petroleum/pri/spt/data/?api_key=${apiKey}&frequency=daily&data[0]=value&facets[series][]=RBRTE&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=2`;
+        const hhUrl = `https://api.eia.gov/v2/natural-gas/pri/spt/data/?api_key=${apiKey}&frequency=daily&data[0]=value&facets[series][]=RNGWHHD&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=2`;
+
+        const [wtiRes, brentRes, hhRes] = await Promise.all([
+          fetch(wtiUrl), fetch(brentUrl), fetch(hhUrl)
+        ]);
+
+        const wtiData = await wtiRes.json();
+        const brentData = await brentRes.json();
+        const hhData = await hhRes.json();
+
+        setBenchmarksData(prev => prev.map(b => {
+          let updated = { ...b };
+          if (b.id === 'wti' && wtiData.response?.data?.length >= 2) {
+            const today = parseFloat(wtiData.response.data[0].value);
+            const yesterday = parseFloat(wtiData.response.data[1].value);
+            updated.price = today;
+            updated.change = +(today - yesterday).toFixed(2);
+            updated.pctChange = +((updated.change / yesterday) * 100).toFixed(2);
+            updated.trend = updated.change >= 0 ? 'up' : 'down';
+          }
+          if (b.id === 'brent' && brentData.response?.data?.length >= 2) {
+            const today = parseFloat(brentData.response.data[0].value);
+            const yesterday = parseFloat(brentData.response.data[1].value);
+            updated.price = today;
+            updated.change = +(today - yesterday).toFixed(2);
+            updated.pctChange = +((updated.change / yesterday) * 100).toFixed(2);
+            updated.trend = updated.change >= 0 ? 'up' : 'down';
+          }
+          if (b.id === 'hh' && hhData.response?.data?.length >= 2) {
+            const today = parseFloat(hhData.response.data[0].value);
+            const yesterday = parseFloat(hhData.response.data[1].value);
+            updated.price = today;
+            updated.change = +(today - yesterday).toFixed(2);
+            updated.pctChange = +((updated.change / yesterday) * 100).toFixed(2);
+            updated.trend = updated.change >= 0 ? 'up' : 'down';
+          }
+          return updated;
+        }));
+      } catch (err) {
+        console.error("Failed to fetch EIA data", err);
+      }
+    };
+
+    fetchEIAData();
+  }, []);
+
+  const filteredBenchmarks = benchmarksData
     .filter(b => benchmarkRegion === 'all' || b.region === benchmarkRegion)
     .filter(b => benchmarkType === 'all' || b.type === benchmarkType)
-    .sort((a, b) => {
-      if (benchmarkSort === 'price') return b.price - a.price;
-      return b.volume - a.volume;
-    });
+    .sort((a, b) => b.price - a.price);
 
   return (
     <div className="page-container" style={{ overflowY: 'auto' }}>
@@ -128,10 +179,9 @@ export default function HomePage() {
               <button className={`toggle-btn ${benchmarkType === 'oil' ? 'active' : ''}`} onClick={() => setBenchmarkType('oil')}>Oil</button>
               <button className={`toggle-btn ${benchmarkType === 'gas' ? 'active' : ''}`} onClick={() => setBenchmarkType('gas')}>Gas</button>
             </div>
-            <div className="toggle-group">
-              <button className={`toggle-btn ${benchmarkSort === 'price' ? 'active' : ''}`} onClick={() => setBenchmarkSort('price')}>Price</button>
-              <button className={`toggle-btn ${benchmarkSort === 'volume' ? 'active' : ''}`} onClick={() => setBenchmarkSort('volume')}>Volume</button>
-            </div>
+          </div>
+          <div style={{ textAlign: 'center', fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '12px' }}>
+            *All prices in USD. Data represents previous day's spot market close.
           </div>
         </div>
 
@@ -142,9 +192,21 @@ export default function HomePage() {
                 <span>{b.name}</span>
                 {b.type === 'oil' ? <BarrelIcon size={18} color="#ef4444" /> : <Flame size={18} color="#3b82f6" />}
               </div>
-              <div className="stat-value">${b.price.toFixed(2)}</div>
-              <div className={`stat-trend ${b.trend === 'up' ? 'trend-up' : 'trend-down'}`}>
-                {b.trend === 'up' ? <TrendingUp size={16} /> : <TrendingUp size={16} style={{transform: 'scaleY(-1)'}} />}
+              <div className="stat-value" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+                <div style={{ display: 'flex', alignItems: 'baseline' }}>
+                  ${b.price.toFixed(2)}
+                </div>
+                <div className={`stat-change ${b.trend === 'up' ? 'trend-up' : 'trend-down'}`} style={{ display: 'grid', gridTemplateColumns: 'auto 1fr auto', columnGap: '2px', rowGap: '2px', fontSize: '1.05rem', fontWeight: 600, fontVariantNumeric: 'tabular-nums', textAlign: 'right', lineHeight: 1.2 }}>
+                  <span style={{ textAlign: 'right' }}>{b.trend === 'up' ? '+$' : '-$'}</span>
+                  <span>{Math.abs(b.change).toFixed(2)}</span>
+                  <span></span>
+                  
+                  <span style={{ textAlign: 'right' }}>{b.trend === 'up' ? '+' : ''}</span>
+                  <span>{b.pctChange.toFixed(2)}</span>
+                  <span style={{ textAlign: 'left' }}>%</span>
+                </div>
+              </div>
+              <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span>{b.note}</span>
               </div>
             </div>
@@ -202,6 +264,7 @@ export default function HomePage() {
             An interactive exploration of North America's energy architecture and resources. Built to educate and highlight the critical role of energy infrastructure in powering the modern world.
           </p>
           <div style={{ display: 'flex', gap: '24px', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+            <Link to="/" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Home</Link>
             <Link to="/map" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Map Dashboard</Link>
             <Link to="/deep-dives" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Deep Dives</Link>
             <Link to="/data-sources" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Data Sources</Link>

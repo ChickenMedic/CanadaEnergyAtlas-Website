@@ -46,6 +46,34 @@ const usPipelines = [
   {
     name: 'Northern Natural Gas', commodity: 'Gas',
     coords: [[-103.0, 31.5], [-100.8, 37.7], [-95.9, 41.2], [-93.2, 44.8], [-92.0, 46.7]]
+  },
+  {
+    name: 'Transwestern Pipeline', commodity: 'Gas',
+    coords: [[-103.0, 31.5], [-106.0, 34.0], [-108.0, 35.0], [-111.0, 35.0], [-114.0, 34.5]]
+  },
+  {
+    name: 'Kern River Gas Transmission', commodity: 'Gas',
+    coords: [[-110.0, 41.5], [-112.0, 40.5], [-113.0, 39.0], [-115.0, 36.0], [-117.0, 35.0]]
+  },
+  {
+    name: 'Southern Natural Gas', commodity: 'Gas',
+    coords: [[-94.0, 32.0], [-90.0, 32.5], [-86.0, 33.0], [-84.0, 33.5]]
+  },
+  {
+    name: 'Northwest Pipeline', commodity: 'Gas',
+    coords: [[-122.0, 48.0], [-122.0, 45.0], [-118.0, 45.0], [-116.0, 43.0], [-112.0, 42.0], [-110.0, 41.0]]
+  },
+  {
+    name: 'Permian Express', commodity: 'Liquid',
+    coords: [[-103.0, 32.0], [-100.0, 32.0], [-97.0, 30.0], [-94.0, 30.0]]
+  },
+  {
+    name: 'Cactus Pipeline', commodity: 'Liquid',
+    coords: [[-102.0, 31.5], [-100.0, 30.5], [-98.0, 28.5], [-97.0, 27.5]]
+  },
+  {
+    name: 'Gray Oak Pipeline', commodity: 'Liquid',
+    coords: [[-104.0, 31.5], [-101.0, 31.0], [-98.0, 29.0], [-95.0, 29.0]]
   }
 ];
 

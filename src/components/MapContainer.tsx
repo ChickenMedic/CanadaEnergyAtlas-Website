@@ -8,7 +8,7 @@ interface MapContainerProps {
     pipelines: boolean;
     refining: boolean;
     storage: boolean;
-    fossil: boolean;
+    nonRenewable: boolean;
     grid: boolean;
     renewables: boolean;
   };
@@ -25,7 +25,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
   const [activeFacilities, setActiveFacilities] = useState({ oilRefinery: true, gasProcessing: true, oilStorage: true, gasStorage: true });
   const [activeGrid, setActiveGrid] = useState({ low: true, med: true, high: true });
   const [activeMinerals, setActiveMinerals] = useState({ uranium: true, nickel: true, copper: true, rareEarth: true, lithium: true });
-  const [activeFossil, setActiveFossil] = useState({ coal: true, gas: true, oil: true });
+  const [activeNonRenewable, setActiveNonRenewable] = useState({ coal: true, gas: true, oil: true, nuclear: true });
   const [minRenewableCapacity, setMinRenewableCapacity] = useState(0);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       lngLat: { lng, lat }
     } = event;
     const hoveredFeature = features && features[0];
-    if (hoveredFeature && (hoveredFeature.layer.id.startsWith('facility-') || hoveredFeature.layer.id.startsWith('renewable-') || hoveredFeature.layer.id.startsWith('minerals-') || hoveredFeature.layer.id.startsWith('fossil-'))) {
+    if (hoveredFeature && (hoveredFeature.layer.id.startsWith('facility-') || hoveredFeature.layer.id.startsWith('renewable-') || hoveredFeature.layer.id.startsWith('minerals-') || hoveredFeature.layer.id.startsWith('nonRenewable-') || hoveredFeature.layer.id.startsWith('pipelines-'))) {
       setHoverInfo({
         longitude: lng,
         latitude: lat,
@@ -80,8 +80,9 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
         interactiveLayerIds={[
           'facility-refineries-oil', 'facility-refineries-gas', 'facility-storage-oil', 'facility-storage-gas',
           'renewable-hydro', 'renewable-wind', 'renewable-solar',
-          'fossil-coal', 'fossil-gas', 'fossil-oil',
-          'minerals-uranium', 'minerals-nickel', 'minerals-copper', 'minerals-rareEarth', 'minerals-lithium'
+          'nonRenewable-coal', 'nonRenewable-gas', 'nonRenewable-oil', 'nonRenewable-nuclear',
+          'minerals-uranium', 'minerals-nickel', 'minerals-copper', 'minerals-rareEarth', 'minerals-lithium',
+          'pipelines-layer-liquids', 'pipelines-layer-gas'
         ]}
       onMouseMove={onHover}
       onMouseLeave={() => setHoverInfo(null)}
@@ -321,19 +322,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
         </Source>
       )}
 
-      {activeLayers.fossil && (
-        <Source id="fossil-data" type="geojson" data="/fossil_plants.geojson">
-          {activeFossil.coal && (
-            <Layer id="fossil-coal" type="circle" filter={['all', ['==', ['get', 'type'], 'fossil'], ['==', ['get', 'subtype'], 'coal']]} paint={{ 'circle-radius': ['interpolate', ['linear'], ['get', 'capacity_num'], 10, 3, 2000, 12], 'circle-color': '#6b7280', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
-          )}
-          {activeFossil.gas && (
-            <Layer id="fossil-gas" type="circle" filter={['all', ['==', ['get', 'type'], 'fossil'], ['==', ['get', 'subtype'], 'gas']]} paint={{ 'circle-radius': ['interpolate', ['linear'], ['get', 'capacity_num'], 10, 3, 1000, 10], 'circle-color': '#3b82f6', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
-          )}
-          {activeFossil.oil && (
-            <Layer id="fossil-oil" type="circle" filter={['all', ['==', ['get', 'type'], 'fossil'], ['==', ['get', 'subtype'], 'oil']]} paint={{ 'circle-radius': ['interpolate', ['linear'], ['get', 'capacity_num'], 10, 3, 1000, 10], 'circle-color': '#111827', 'circle-stroke-width': 1.5, 'circle-stroke-color': '#ffffff' }} />
-          )}
-        </Source>
-      )}
+
 
       {activeLayers.renewables && (
         <Source id="renewables-data" type="geojson" data="/renewables.geojson">
@@ -414,8 +403,104 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
         </Source>
       )}
 
+      {activeLayers.nonRenewable && (
+        <Source id="nonRenewable-data" type="geojson" data="/non_renewable.geojson?v=5">
+          {/* Coal Plants */}
+          {activeNonRenewable.coal && (
+            <Layer 
+              id="nonRenewable-coal" 
+              type="circle" 
+              filter={['all', ['==', ['get', 'type'], 'non-renewable'], ['==', ['get', 'subtype'], 'coal']]} 
+              paint={{ 
+                'circle-radius': [
+                  'interpolate', ['linear'], ['get', 'capacity_num'],
+                  50, 4,
+                  2000, 12
+                ], 
+                'circle-color': '#57534e', // Stone/Dark Gray for Coal
+                'circle-stroke-width': 1.5, 
+                'circle-stroke-color': '#ffffff' 
+              }} 
+            />
+          )}
+          {/* Gas Plants */}
+          {activeNonRenewable.gas && (
+            <Layer 
+              id="nonRenewable-gas" 
+              type="circle" 
+              filter={['all', ['==', ['get', 'type'], 'non-renewable'], ['==', ['get', 'subtype'], 'gas']]} 
+              paint={{ 
+                'circle-radius': [
+                  'interpolate', ['linear'], ['get', 'capacity_num'],
+                  50, 3,
+                  1500, 10
+                ], 
+                'circle-color': '#3b82f6', // Blue for Gas
+                'circle-stroke-width': 1.5, 
+                'circle-stroke-color': '#ffffff' 
+              }} 
+            />
+          )}
+          {/* Oil Plants */}
+          {activeNonRenewable.oil && (
+            <Layer 
+              id="nonRenewable-oil" 
+              type="circle" 
+              filter={['all', ['==', ['get', 'type'], 'non-renewable'], ['==', ['get', 'subtype'], 'oil']]} 
+              paint={{ 
+                'circle-radius': [
+                  'interpolate', ['linear'], ['get', 'capacity_num'],
+                  50, 3,
+                  1000, 10
+                ], 
+                'circle-color': '#f97316', // Orange for Oil
+                'circle-stroke-width': 1.5, 
+                'circle-stroke-color': '#ffffff' 
+              }} 
+            />
+          )}
+          {/* Nuclear Plants */}
+          {activeNonRenewable.nuclear && (
+            <Layer 
+              id="nonRenewable-nuclear" 
+              type="circle" 
+              filter={['==', ['get', 'type'], 'nuclear']} 
+              paint={{ 
+                'circle-radius': [
+                  'interpolate', ['linear'], ['get', 'capacity_num'],
+                  500, 6,
+                  4000, 16
+                ], 
+                'circle-color': '#8b5cf6', // Violet for Nuclear
+                'circle-stroke-width': 2, 
+                'circle-stroke-color': '#ffffff' 
+              }} 
+            />
+          )}
+          
+          <Layer 
+            id="nonRenewable-labels" 
+            type="symbol" 
+            minzoom={5}
+            layout={{ 
+              'text-field': ['get', 'name'], 
+              'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'], 
+              'text-size': 11,
+              'text-variable-anchor': ['top', 'bottom', 'left', 'right'],
+              'text-radial-offset': 1.5,
+              'text-justify': 'auto'
+            }} 
+            paint={{ 
+              'text-color': '#ffffff',
+              'text-halo-color': '#161a21',
+              'text-halo-width': 2
+            }} 
+          />
+        </Source>
+      )}
+
       {/* Popups */}
-      {hoverInfo && (hoverInfo.feature.layer.id.startsWith('facility-') || hoverInfo.feature.layer.id.startsWith('renewable-') || hoverInfo.feature.layer.id.startsWith('minerals-') || hoverInfo.feature.layer.id.startsWith('fossil-')) && (
+      {hoverInfo && (hoverInfo.feature.layer.id.startsWith('facility-') || hoverInfo.feature.layer.id.startsWith('renewable-') || hoverInfo.feature.layer.id.startsWith('minerals-') || hoverInfo.feature.layer.id.startsWith('nonRenewable-')) && (
         <Popup
           longitude={hoverInfo.longitude}
           latitude={hoverInfo.latitude}
@@ -423,36 +508,59 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
           closeOnClick={false}
           anchor="bottom"
           offset={15}
+          className="dark-popup"
         >
-          <div style={{ color: '#111', padding: '4px', minWidth: '150px' }}>
-            <h3 style={{ margin: '0 0 4px 0', fontSize: '0.9rem', fontWeight: 600 }}>{hoverInfo.feature.properties.name}</h3>
-            <p style={{ margin: '0 0 2px 0', fontSize: '0.75rem', color: '#444' }}>
-              <strong>Type:</strong> {hoverInfo.feature.properties.subtype.charAt(0).toUpperCase() + hoverInfo.feature.properties.subtype.replace('_', ' ').slice(1)} {hoverInfo.feature.properties.type.charAt(0).toUpperCase() + hoverInfo.feature.properties.type.slice(1)}
-            </p>
-            {hoverInfo.feature.properties.operator && hoverInfo.feature.properties.operator !== 'Unknown' && (
-              <p style={{ margin: '0 0 2px 0', fontSize: '0.75rem', color: '#444' }}>
-                <strong>Operator:</strong> {hoverInfo.feature.properties.operator}
-              </p>
-            )}
-            {hoverInfo.feature.properties.capacity && hoverInfo.feature.properties.capacity !== 'Unknown' && (
-              <p style={{ margin: '0 0 2px 0', fontSize: '0.75rem', color: '#444' }}>
-                <strong>Capacity:</strong> {hoverInfo.feature.properties.capacity}
-              </p>
-            )}
-            {hoverInfo.feature.properties.capacity_num && (hoverInfo.feature.layer.id.startsWith('renewable-') || hoverInfo.feature.layer.id.startsWith('fossil-')) && (
-              <p style={{ margin: '0 0 2px 0', fontSize: '0.75rem', color: '#444' }}>
-                <strong>Powers:</strong> {Math.round(hoverInfo.feature.properties.capacity_num * 800).toLocaleString()} Homes
-              </p>
-            )}
-            {hoverInfo.feature.properties.status && (
-              <p style={{ margin: '0 0 2px 0', fontSize: '0.75rem', color: '#444' }}>
-                <strong>Status:</strong> {hoverInfo.feature.properties.status}
-              </p>
-            )}
-            {hoverInfo.feature.properties.description && (
-              <p style={{ margin: '4px 0 0 0', fontSize: '0.75rem', color: '#666', fontStyle: 'italic', maxWidth: '200px' }}>
-                {hoverInfo.feature.properties.description}
-              </p>
+          <div style={{ padding: '2px', minWidth: '160px' }}>
+            <h3 style={{ margin: '0 0 8px 0', fontSize: '0.95rem', fontWeight: 600, borderBottom: '1px solid var(--border-light)', paddingBottom: '6px' }}>
+              {hoverInfo.feature.properties.Pipeline_Name || hoverInfo.feature.properties.name || hoverInfo.feature.properties.Name || 'Energy Asset'}
+            </h3>
+            
+            {hoverInfo.feature.layer.id.startsWith('pipelines-') ? (
+              <>
+                <p style={{ margin: '0 0 4px 0', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                  <strong>Commodity:</strong> {hoverInfo.feature.properties.Commodity}
+                </p>
+                {hoverInfo.feature.properties.Operator && hoverInfo.feature.properties.Operator !== 'Unknown' && (
+                  <p style={{ margin: '0 0 4px 0', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                    <strong>Operator:</strong> {hoverInfo.feature.properties.Operator}
+                  </p>
+                )}
+              </>
+            ) : (
+              <>
+                <p style={{ margin: '0 0 4px 0', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                  <strong>Type:</strong> {
+                    (hoverInfo.feature.properties.type === 'non-renewable' || hoverInfo.feature.properties.type === 'nuclear' || hoverInfo.feature.properties.type === 'renewable')
+                    ? ((hoverInfo.feature.properties.subtype || '').charAt(0).toUpperCase() + (hoverInfo.feature.properties.subtype || '').replace('_', ' ').slice(1) + ' Power Plant')
+                    : ((hoverInfo.feature.properties.subtype || '').charAt(0).toUpperCase() + (hoverInfo.feature.properties.subtype || '').replace('_', ' ').slice(1) + ' ' + (hoverInfo.feature.properties.type || '').charAt(0).toUpperCase() + (hoverInfo.feature.properties.type || '').slice(1))
+                  }
+                </p>
+                {hoverInfo.feature.properties.operator && hoverInfo.feature.properties.operator !== 'Unknown' && (
+                  <p style={{ margin: '0 0 4px 0', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                    <strong>Operator:</strong> {hoverInfo.feature.properties.operator}
+                  </p>
+                )}
+                {hoverInfo.feature.properties.capacity && hoverInfo.feature.properties.capacity !== 'Unknown' && (
+                  <p style={{ margin: '0 0 4px 0', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                    <strong>Capacity:</strong> {hoverInfo.feature.properties.capacity}
+                  </p>
+                )}
+                {hoverInfo.feature.properties.capacity_num && (hoverInfo.feature.layer.id.startsWith('renewable-') || hoverInfo.feature.layer.id.startsWith('nonRenewable-')) && (
+                  <p style={{ margin: '0 0 4px 0', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                    <strong>Powers:</strong> {Math.round(hoverInfo.feature.properties.capacity_num * 800).toLocaleString()} Homes
+                  </p>
+                )}
+                {hoverInfo.feature.properties.status && (
+                  <p style={{ margin: '0 0 4px 0', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                    <strong>Status:</strong> {hoverInfo.feature.properties.status}
+                  </p>
+                )}
+                {hoverInfo.feature.properties.description && (
+                  <p style={{ margin: '4px 0 0 0', fontSize: '0.75rem', color: '#888', fontStyle: 'italic', maxWidth: '200px' }}>
+                    {hoverInfo.feature.properties.description}
+                  </p>
+                )}
+              </>
             )}
           </div>
         </Popup>
@@ -487,41 +595,6 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
           </div>
         )}
 
-        {activeLayers.fossil && (
-          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
-            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Hydrocarbons</h4>
-            <div 
-              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFossil.gas ? 1 : 0.6 }}
-              onClick={() => setActiveFossil(prev => ({ ...prev, gas: !prev.gas }))}
-            >
-              <div style={{ width: '12px', height: '12px', backgroundColor: '#3b82f6', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Natural Gas</span>
-              <div style={{ width: '28px', height: '14px', backgroundColor: activeFossil.gas ? '#3b82f6' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
-                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFossil.gas ? '16px' : '2px', transition: 'left 0.2s' }}></div>
-              </div>
-            </div>
-            <div 
-              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeFossil.coal ? 1 : 0.6 }}
-              onClick={() => setActiveFossil(prev => ({ ...prev, coal: !prev.coal }))}
-            >
-              <div style={{ width: '12px', height: '12px', backgroundColor: '#6b7280', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Coal Power</span>
-              <div style={{ width: '28px', height: '14px', backgroundColor: activeFossil.coal ? '#6b7280' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
-                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFossil.coal ? '16px' : '2px', transition: 'left 0.2s' }}></div>
-              </div>
-            </div>
-            <div 
-              style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', opacity: activeFossil.oil ? 1 : 0.6 }}
-              onClick={() => setActiveFossil(prev => ({ ...prev, oil: !prev.oil }))}
-            >
-              <div style={{ width: '12px', height: '12px', backgroundColor: '#111827', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
-              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Diesel / Oil</span>
-              <div style={{ width: '28px', height: '14px', backgroundColor: activeFossil.oil ? '#111827' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
-                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeFossil.oil ? '16px' : '2px', transition: 'left 0.2s' }}></div>
-              </div>
-            </div>
-          </div>
-        )}
 
         {(activeLayers.refining || activeLayers.storage) && (
           <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
@@ -733,7 +806,58 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             </div>
           </div>
         )}
+
+        {activeLayers.nonRenewable && (
+          <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
+            <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Non-Renewable & Nuclear</h4>
+            
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeNonRenewable.coal ? 1 : 0.6 }}
+              onClick={() => setActiveNonRenewable(prev => ({ ...prev, coal: !prev.coal }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#57534e', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Coal</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeNonRenewable.coal ? '#57534e' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeNonRenewable.coal ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeNonRenewable.gas ? 1 : 0.6 }}
+              onClick={() => setActiveNonRenewable(prev => ({ ...prev, gas: !prev.gas }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#3b82f6', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Natural Gas</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeNonRenewable.gas ? '#3b82f6' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeNonRenewable.gas ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', cursor: 'pointer', opacity: activeNonRenewable.oil ? 1 : 0.6 }}
+              onClick={() => setActiveNonRenewable(prev => ({ ...prev, oil: !prev.oil }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#f97316', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Oil</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeNonRenewable.oil ? '#f97316' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeNonRenewable.oil ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+
+            <div 
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', opacity: activeNonRenewable.nuclear ? 1 : 0.6 }}
+              onClick={() => setActiveNonRenewable(prev => ({ ...prev, nuclear: !prev.nuclear }))}
+            >
+              <div style={{ width: '12px', height: '12px', backgroundColor: '#8b5cf6', border: '1.5px solid #fff', borderRadius: '50%' }}></div>
+              <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>Nuclear</span>
+              <div style={{ width: '28px', height: '14px', backgroundColor: activeNonRenewable.nuclear ? '#8b5cf6' : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+                <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: activeNonRenewable.nuclear ? '16px' : '2px', transition: 'left 0.2s' }}></div>
+              </div>
+            </div>
+          </div>
+        )}
         
+
       </div>
     </Map>
     </div>

@@ -12,7 +12,7 @@ export default function DeepDivesPage() {
       <div className="hero-section" style={{ minHeight: '40vh', padding: '60px 20px', background: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.05) 0%, var(--bg-dark) 70%)', justifyContent: 'center' }}>
         <h1 className="hero-title" style={{ fontSize: '3.5rem', marginBottom: '16px' }}>Deep Dives</h1>
         <p className="hero-subtitle" style={{ marginBottom: '0' }}>
-          Comprehensive insights into energy history, critical infrastructure, and the transition to a net-zero future.
+          Comprehensive insights into energy history, critical infrastructure, and the economic drivers of North American energy.
         </p>
       </div>
 
@@ -61,6 +61,7 @@ export default function DeepDivesPage() {
             An interactive exploration of North America's energy architecture and resources. Built to educate and highlight the critical role of energy infrastructure in powering the modern world.
           </p>
           <div style={{ display: 'flex', gap: '24px', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+            <Link to="/" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Home</Link>
             <Link to="/map" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Map Dashboard</Link>
             <Link to="/deep-dives" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Deep Dives</Link>
             <Link to="/data-sources" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Data Sources</Link>
