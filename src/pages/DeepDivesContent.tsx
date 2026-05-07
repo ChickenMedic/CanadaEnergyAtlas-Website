@@ -1,4 +1,4 @@
-import { Database, Route, Factory, Box, Zap, Leaf } from 'lucide-react';
+import { Database, Route, Factory, Box, Zap, Leaf, Flame, Diamond } from 'lucide-react';
 
 export const deepDiveSections = [
   {
@@ -729,6 +729,44 @@ export const deepDiveSections = [
 <p>The most significant evolution is the emergence of a new economic partnership model. The integration of Indigenous and Tribal equity is not merely a social mandate but a strategic necessity for the success of large-scale infrastructure projects. As the demand for reliable, carbon-neutral power grows—driven by the needs of heavy industry and the digital economy—the nations that succeed will be those that effectively combine technical innovation with genuine economic reconciliation. The data from 2024 to 2026 clearly indicates that the foundations for this integrated energy system are currently being laid through massive capacity additions, the build-out of CCS hubs, and a historic expansion of Indigenous energy leadership.</p>
 </div>
 </>
+    )
+    },
+  {
+    id: 'non-renewable',
+    icon: <Flame size={20} />,
+    title: "Non-Renewables",
+    fullTitle: "Non-Renewable Energy & Nuclear",
+    color: "#57534e",
+    content: (
+      <>
+        <div className="timeline-card">
+          <h3>Fossil Fuels Overview</h3>
+          <p>This section covers traditional fossil fuels like coal, oil, and natural gas, as well as nuclear energy, which form the historical base of North American power generation.</p>
+        </div>
+        <div className="timeline-card">
+          <h3>Interactive Map Layers</h3>
+          <p>Toggle the Non-Renewable map layers to explore where coal, gas, oil, and nuclear plants are distributed across the continent.</p>
+        </div>
+      </>
+    )
+  },
+  {
+    id: 'minerals',
+    icon: <Diamond size={20} />,
+    title: "Critical Minerals",
+    fullTitle: "Critical Minerals & Supply Chains",
+    color: "#ec4899",
+    content: (
+      <>
+        <div className="timeline-card">
+          <h3>The New Resource Rush</h3>
+          <p>Critical minerals like lithium, copper, nickel, and rare earths are essential for the energy transition. North America has massive reserves that are being unlocked for EV batteries and renewable infrastructure.</p>
+        </div>
+        <div className="timeline-card">
+          <h3>Interactive Mineral Mapping</h3>
+          <p>Explore the Critical Minerals layer on the map to see the locations of major extraction and processing facilities across the continent.</p>
+        </div>
+      </>
     )
   }
 ];

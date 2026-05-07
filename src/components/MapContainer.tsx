@@ -225,6 +225,14 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
           <Layer 
             id="facilities-labels" 
             type="symbol" 
+            filter={[
+              'any',
+              ...(activeLayers.refining && activeFacilities.oilRefinery ? [['all', ['==', ['get', 'type'], 'refinery'], ['==', ['get', 'subtype'], 'oil']]] : []),
+              ...(activeLayers.refining && activeFacilities.gasProcessing ? [['all', ['==', ['get', 'type'], 'refinery'], ['==', ['get', 'subtype'], 'gas']]] : []),
+              ...(activeLayers.storage && activeFacilities.oilStorage ? [['all', ['==', ['get', 'type'], 'storage'], ['==', ['get', 'subtype'], 'oil']]] : []),
+              ...(activeLayers.storage && activeFacilities.gasStorage ? [['all', ['==', ['get', 'type'], 'storage'], ['==', ['get', 'subtype'], 'gas']]] : []),
+              ['==', '1', '2']
+            ]}
             minzoom={5}
             layout={{ 
               'text-field': ['get', 'name'], 
@@ -304,6 +312,15 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
           <Layer 
             id="minerals-labels" 
             type="symbol" 
+            filter={[
+              'any',
+              ...(activeMinerals.uranium ? [['==', 'subtype', 'uranium']] : []),
+              ...(activeMinerals.nickel ? [['==', 'subtype', 'nickel']] : []),
+              ...(activeMinerals.copper ? [['==', 'subtype', 'copper']] : []),
+              ...(activeMinerals.rareEarth ? [['==', 'subtype', 'rare_earth']] : []),
+              ...(activeMinerals.lithium ? [['==', 'subtype', 'lithium']] : []),
+              ['==', '1', '2']
+            ]}
             minzoom={4}
             layout={{ 
               'text-field': ['get', 'name'], 
@@ -385,6 +402,13 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
           <Layer 
             id="renewables-labels" 
             type="symbol" 
+            filter={[
+              'any',
+              ...(activeRenewables.hydro ? [['all', ['==', ['get', 'type'], 'renewable'], ['==', ['get', 'subtype'], 'hydro'], ['>=', ['get', 'capacity_num'], minRenewableCapacity]]] : []),
+              ...(activeRenewables.wind ? [['all', ['==', ['get', 'type'], 'renewable'], ['==', ['get', 'subtype'], 'wind'], ['>=', ['get', 'capacity_num'], minRenewableCapacity]]] : []),
+              ...(activeRenewables.solar ? [['all', ['==', ['get', 'type'], 'renewable'], ['==', ['get', 'subtype'], 'solar'], ['>=', ['get', 'capacity_num'], minRenewableCapacity]]] : []),
+              ['==', '1', '2']
+            ]}
             minzoom={5}
             layout={{ 
               'text-field': ['get', 'name'], 
@@ -481,6 +505,14 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
           <Layer 
             id="nonRenewable-labels" 
             type="symbol" 
+            filter={[
+              'any',
+              ...(activeNonRenewable.coal ? [['all', ['==', ['get', 'type'], 'non-renewable'], ['==', ['get', 'subtype'], 'coal']]] : []),
+              ...(activeNonRenewable.gas ? [['all', ['==', ['get', 'type'], 'non-renewable'], ['==', ['get', 'subtype'], 'gas']]] : []),
+              ...(activeNonRenewable.oil ? [['all', ['==', ['get', 'type'], 'non-renewable'], ['==', ['get', 'subtype'], 'oil']]] : []),
+              ...(activeNonRenewable.nuclear ? [['==', ['get', 'type'], 'nuclear']] : []),
+              ['==', '1', '2']
+            ]}
             minzoom={5}
             layout={{ 
               'text-field': ['get', 'name'], 
