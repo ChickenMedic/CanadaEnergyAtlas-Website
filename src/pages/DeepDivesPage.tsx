@@ -32,9 +32,9 @@ const InteractiveVisualizer = ({ type }: { type: 'map' | 'chart' }) => (
 const SubTabRenderer = ({ content }: { content: React.ReactNode }) => {
   const [activeSubTab, setActiveSubTab] = useState(0);
   
-  if (!content || !React.isValidElement(content) || !content.props.children) return <>{content}</>;
+  if (!content || !React.isValidElement(content) || !(content as any).props.children) return <>{content}</>;
   
-  const childrenArray = React.Children.toArray(content.props.children);
+  const childrenArray = React.Children.toArray((content as any).props.children);
   const tabs: { title: string, items: any[] }[] = [];
   let currentTab = { title: "Overview", items: [] as any[] };
   
@@ -44,8 +44,8 @@ const SubTabRenderer = ({ content }: { content: React.ReactNode }) => {
       if (child.props && child.props.children) {
         const childrenList = React.Children.toArray(child.props.children);
         const h3 = childrenList.find((c: any) => c.type === 'h3');
-        if (h3 && typeof h3.props.children === 'string') {
-          title = h3.props.children;
+        if (h3 && typeof (h3 as any).props.children === 'string') {
+          title = (h3 as any).props.children;
         }
       }
     } catch(e) {}

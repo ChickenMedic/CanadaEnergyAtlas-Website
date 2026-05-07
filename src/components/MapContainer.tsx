@@ -232,7 +232,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
               ...(activeLayers.storage && activeFacilities.oilStorage ? [['all', ['==', ['get', 'type'], 'storage'], ['==', ['get', 'subtype'], 'oil']]] : []),
               ...(activeLayers.storage && activeFacilities.gasStorage ? [['all', ['==', ['get', 'type'], 'storage'], ['==', ['get', 'subtype'], 'gas']]] : []),
               ['==', '1', '2']
-            ]}
+            ] as any}
             minzoom={5}
             layout={{ 
               'text-field': ['get', 'name'], 
@@ -320,7 +320,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
               ...(activeMinerals.rareEarth ? [['==', 'subtype', 'rare_earth']] : []),
               ...(activeMinerals.lithium ? [['==', 'subtype', 'lithium']] : []),
               ['==', '1', '2']
-            ]}
+            ] as any}
             minzoom={4}
             layout={{ 
               'text-field': ['get', 'name'], 
@@ -408,7 +408,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
               ...(activeRenewables.wind ? [['all', ['==', ['get', 'type'], 'renewable'], ['==', ['get', 'subtype'], 'wind'], ['>=', ['get', 'capacity_num'], minRenewableCapacity]]] : []),
               ...(activeRenewables.solar ? [['all', ['==', ['get', 'type'], 'renewable'], ['==', ['get', 'subtype'], 'solar'], ['>=', ['get', 'capacity_num'], minRenewableCapacity]]] : []),
               ['==', '1', '2']
-            ]}
+            ] as any}
             minzoom={5}
             layout={{ 
               'text-field': ['get', 'name'], 
@@ -512,7 +512,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
               ...(activeNonRenewable.oil ? [['all', ['==', ['get', 'type'], 'non-renewable'], ['==', ['get', 'subtype'], 'oil']]] : []),
               ...(activeNonRenewable.nuclear ? [['==', ['get', 'type'], 'nuclear']] : []),
               ['==', '1', '2']
-            ]}
+            ] as any}
             minzoom={5}
             layout={{ 
               'text-field': ['get', 'name'], 
