@@ -897,28 +897,32 @@ input:checked + .slider:before {
 
   .sidebar-content > div:first-child {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Line up and center */
-    align-items: flex-end; /* Align to bottom so pop up looks correct */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 12px;
-    padding: 70px 20px 80px; /* Increased bottom padding to lift buttons off bottom */
-    margin: 0 !important; /* Override inline style margin */
-    pointer-events: auto; /* Re-enable clicks on the scroll row */
+    padding: 20px 0 20px 10px;
+    margin: 0 !important;
+    pointer-events: auto;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
   }
 
   .layer-toggle-wrapper {
     position: relative;
-    width: 46px; /* 32px icon + 12px padding + 2px border */
+    width: 46px;
     height: 46px;
     flex: 0 0 auto;
   }
 
   .layer-toggle {
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 6px; /* Circle when inactive */
+    top: 0;
+    left: 0;
+    height: 46px; /* fixed height prevents dropping down */
+    padding: 6px;
     margin: 0;
     border-radius: 30px;
     background: var(--bg-panel-solid);
@@ -926,41 +930,42 @@ input:checked + .slider:before {
     border: 1px solid var(--border-light);
     display: flex;
     align-items: center;
-    transition: bottom 0.3s ease, padding 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0.3s;
+    transition: left 0.3s ease, padding 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0.3s;
     white-space: nowrap;
     cursor: pointer;
     z-index: 10;
   }
 
-  /* Inactive hover moves up slightly */
+  /* Only expand on hover to show the layer name */
   @media (hover: hover) {
     .layer-toggle:hover {
-      bottom: 8px;
+      padding: 6px 16px 6px 6px;
+      left: 8px; /* Pop out to the right */
+      box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+      z-index: 100;
     }
   }
 
-  /* Active pops up high enough to clear the other buttons with a buffer */
-  .layer-toggle.active,
-  .layer-toggle.active:hover {
-    padding: 6px 16px 6px 6px; /* Expand to pill when active */
-    bottom: 56px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.7); /* Enhance shadow when popped up */
+  /* Support tapping to expand on mobile without sticking indefinitely */
+  .layer-toggle:active {
+    padding: 6px 16px 6px 6px;
+    left: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
     z-index: 100;
-    transition: bottom 0.3s ease, padding 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, z-index 0s ease 0s;
   }
 
   .toggle-info {
-    gap: 0; /* We control spacing via text margin so it animates cleanly */
+    gap: 0;
   }
 
   .toggle-icon {
-    width: 32px; /* Slightly larger touch target */
+    width: 32px;
     height: 32px;
     border-radius: 50%;
   }
 
   .toggle-text p {
-    display: none; /* Hide description */
+    display: none;
   }
 
   .toggle-text h3 {
@@ -973,14 +978,23 @@ input:checked + .slider:before {
     transition: all 0.3s ease;
   }
 
-  .layer-toggle.active .toggle-text h3 {
+  /* Show text when expanded */
+  @media (hover: hover) {
+    .layer-toggle:hover .toggle-text h3 {
+      max-width: 150px;
+      opacity: 1;
+      margin-left: 8px;
+    }
+  }
+
+  .layer-toggle:active .toggle-text h3 {
     max-width: 150px;
     opacity: 1;
     margin-left: 8px;
   }
 
   .switch {
-    display: none; /* Hide the slider switch on mobile, the pill itself acts as the toggle */
+    display: none;
   }
 
   .ui-layer {
@@ -1015,8 +1029,10 @@ input:checked + .slider:before {
   }
 
   .benchmark-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 12px;
+    max-width: 400px;
+    margin: 0 auto;
   }
   
   .stat-card {
@@ -1037,8 +1053,17 @@ input:checked + .slider:before {
   
   .ranking-details {
     position: static;
-    padding: 24px;
-    margin-top: 20px;
+    padding: 24px 16px;
+    margin: 20px auto 0;
+    max-width: 400px;
+  }
+
+  .ranking-huge-number {
+    font-size: 4rem;
+  }
+
+  .ranking-huge-number span {
+    font-size: 1.5rem;
   }
 }
 

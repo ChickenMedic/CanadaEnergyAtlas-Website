@@ -145,7 +145,7 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
           </h2>
           
           {toggleConfigs.map(({ key, icon, label, desc, colorClass }) => (
-            <div key={key} className="layer-toggle-wrapper">
+            <div key={key} className="layer-toggle-wrapper" title={label}>
               <div 
                 className={`layer-toggle ${colorClass} ${layers[key as keyof typeof layers] ? 'active' : ''}`}
                 onClick={() => onToggleLayer(key as keyof typeof layers)}
@@ -159,14 +159,6 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
                     <p>{desc}</p>
                   </div>
                 </div>
-                <label className="switch" onClick={e => e.stopPropagation()}>
-                  <input 
-                    type="checkbox" 
-                    checked={layers[key as keyof typeof layers]}
-                    onChange={() => onToggleLayer(key as keyof typeof layers)}
-                  />
-                  <span className={`slider ${colorClass}`}></span>
-                </label>
               </div>
             </div>
           ))}

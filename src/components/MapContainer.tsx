@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Map, { NavigationControl, Source, Layer, Popup } from 'react-map-gl/maplibre';
+import { ChevronUp, ChevronDown } from 'lucide-react';
 
 interface MapContainerProps {
   activeLayers: {
@@ -18,6 +19,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
   const mapStyle = "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
   const [hoverInfo, setHoverInfo] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLegendOpen, setIsLegendOpen] = useState(false);
   
   // Legend toggle states
   const [activeRenewables, setActiveRenewables] = useState({ hydro: true, wind: true, solar: true });
@@ -601,7 +603,34 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       {/* Unified Legends Container */}
       <div style={{ position: 'absolute', top: 20, right: 20, display: 'flex', flexDirection: 'column', gap: '12px', zIndex: 10 }}>
         
-        {activeLayers.pipelines && (
+        {(activeLayers.pipelines || activeLayers.refining || activeLayers.storage || activeLayers.grid || activeLayers.minerals || activeLayers.renewables) && (
+          <button 
+            onClick={() => setIsLegendOpen(!isLegendOpen)}
+            className="glass-panel"
+            style={{ 
+              padding: '6px', 
+              borderRadius: '8px', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              cursor: 'pointer', 
+              border: '1px solid var(--border-light)', 
+              color: '#fff', 
+              background: 'var(--bg-panel)', 
+              alignSelf: 'flex-end',
+              boxShadow: 'var(--glass-shadow)',
+              backdropFilter: 'var(--glass-blur)'
+            }}
+            title={isLegendOpen ? "Collapse Legend" : "Expand Legend"}
+          >
+            <span style={{ fontSize: '0.85rem', fontWeight: 600, marginRight: '4px' }}>Legend</span>
+            {isLegendOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+          </button>
+        )}
+
+        {isLegendOpen && (
+          <>
+            {activeLayers.pipelines && (
           <div className="glass-panel" style={{ padding: '12px 16px', borderRadius: '8px', minWidth: '200px' }}>
             <h4 style={{ margin: '0 0 12px 0', fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>Pipelines</h4>
             <div 
@@ -888,8 +917,8 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
             </div>
           </div>
         )}
-        
-
+          </>
+        )}
       </div>
     </Map>
     </div>
