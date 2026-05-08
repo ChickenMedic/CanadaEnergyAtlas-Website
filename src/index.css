@@ -946,8 +946,8 @@ input:checked + .slider:before {
     }
   }
 
-  /* Support tapping to expand on mobile without sticking indefinitely */
-  .layer-toggle:active {
+  /* Support tapping to expand on mobile */
+  .layer-toggle.expanded {
     padding: 6px 16px 6px 6px;
     left: 8px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.7);
@@ -987,7 +987,7 @@ input:checked + .slider:before {
     }
   }
 
-  .layer-toggle:active .toggle-text h3 {
+  .layer-toggle.expanded .toggle-text h3 {
     max-width: 150px;
     opacity: 1;
     margin-left: 8px;

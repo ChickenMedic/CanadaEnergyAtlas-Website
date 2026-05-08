@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { Database, Route, Factory, Zap, Leaf, Activity, Compass, Cylinder, Flame } from 'lucide-react';
 
 interface SidebarProps {
@@ -25,6 +26,18 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
     { key: 'grid', icon: <Zap size={20} />, label: 'The Grid', desc: 'Transmission Lines', colorClass: 'renewable' },
     { key: 'renewables', icon: <Leaf size={20} />, label: 'Renewables', desc: 'Wind, Solar & Hydro', colorClass: 'renewable' }
   ] as const;
+
+  const [expandedLayer, setExpandedLayer] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!(e.target as Element).closest('.layer-toggle')) {
+        setExpandedLayer(null);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
 
   const activeLayers = Object.entries(layers).filter(([_, v]) => v).map(([k]) => k);
   let overviewTitle = 'System Status';
@@ -147,8 +160,13 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
           {toggleConfigs.map(({ key, icon, label, desc, colorClass }) => (
             <div key={key} className="layer-toggle-wrapper" title={label}>
               <div 
-                className={`layer-toggle ${colorClass} ${layers[key as keyof typeof layers] ? 'active' : ''}`}
-                onClick={() => onToggleLayer(key as keyof typeof layers)}
+                className={`layer-toggle ${colorClass} ${layers[key as keyof typeof layers] ? 'active' : ''} ${expandedLayer === key ? 'expanded' : ''}`}
+                onClick={() => {
+                  onToggleLayer(key as keyof typeof layers);
+                  if (window.innerWidth <= 1024) {
+                    setExpandedLayer(key);
+                  }
+                }}
               >
                 <div className="toggle-info">
                   <div className={`toggle-icon ${colorClass}`}>
