@@ -601,14 +601,14 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       )}
 
       {/* Unified Legends Container */}
-      <div style={{ position: 'absolute', top: 100, right: 20, display: 'flex', flexDirection: 'column', gap: '12px', zIndex: 10 }}>
+      <div style={{ position: 'absolute', top: 75, right: 20, display: 'flex', flexDirection: 'column', gap: '12px', zIndex: 10 }}>
         
         {(activeLayers.pipelines || activeLayers.refining || activeLayers.storage || activeLayers.grid || activeLayers.minerals || activeLayers.renewables || activeLayers.nonRenewable) && (
           <button 
             onClick={() => setIsLegendOpen(!isLegendOpen)}
             className="glass-panel"
             style={{ 
-              padding: '6px', 
+              padding: '8px 16px', 
               borderRadius: '8px', 
               display: 'flex', 
               alignItems: 'center', 
@@ -618,13 +618,13 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
               color: '#fff', 
               background: 'var(--bg-panel)', 
               alignSelf: 'flex-end',
-              boxShadow: 'var(--glass-shadow)',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
               backdropFilter: 'var(--glass-blur)'
             }}
             title={isLegendOpen ? "Collapse Legend" : "Expand Legend"}
           >
-            <span style={{ fontSize: '0.85rem', fontWeight: 600, marginRight: '4px' }}>Legend</span>
-            {isLegendOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+            <span style={{ fontSize: '1rem', fontWeight: 600, marginRight: '6px' }}>Legend</span>
+            {isLegendOpen ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
           </button>
         )}
 
