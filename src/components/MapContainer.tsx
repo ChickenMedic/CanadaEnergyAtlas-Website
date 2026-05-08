@@ -601,7 +601,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       )}
 
       {/* Unified Legends Container */}
-      <div style={{ position: 'absolute', top: 65, right: 20, display: 'flex', flexDirection: 'column', gap: '12px', zIndex: 10 }}>
+      <div style={{ position: 'absolute', top: 50, right: 20, display: 'flex', flexDirection: 'column', gap: '12px', zIndex: 10 }}>
         
         {(activeLayers.pipelines || activeLayers.refining || activeLayers.storage || activeLayers.grid || activeLayers.minerals || activeLayers.renewables || activeLayers.nonRenewable) && (
           <button 
