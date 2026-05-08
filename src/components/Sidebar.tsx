@@ -162,9 +162,17 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
               <div 
                 className={`layer-toggle ${colorClass} ${layers[key as keyof typeof layers] ? 'active' : ''} ${expandedLayer === key ? 'expanded' : ''}`}
                 onClick={() => {
-                  onToggleLayer(key as keyof typeof layers);
                   if (window.innerWidth <= 1024) {
-                    setExpandedLayer(key);
+                    if (layers[key as keyof typeof layers]) {
+                      // If it's already active, just toggle the text visibility (expansion)
+                      setExpandedLayer(expandedLayer === key ? null : key);
+                    } else {
+                      // If it's not active, turn it on and expand it
+                      onToggleLayer(key as keyof typeof layers);
+                      setExpandedLayer(key);
+                    }
+                  } else {
+                    onToggleLayer(key as keyof typeof layers);
                   }
                 }}
               >
