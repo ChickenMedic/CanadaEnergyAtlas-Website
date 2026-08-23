@@ -120,7 +120,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       )}
 
       {activeLayers.pipelines && (
-        <Source id="pipelines-data" type="geojson" data="/pipelines.geojson?v=10">
+        <Source id="pipelines-data" type="geojson" data="/pipelines.display.geojson?v=1">
           {activePipelines.liquids && (
             <Layer 
               id="pipelines-layer-liquids" 
@@ -254,7 +254,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
       )}
 
       {activeLayers.grid && (
-        <Source id="grid-data" type="geojson" data="/canada_grid.geojson">
+        <Source id="grid-data" type="geojson" data="/canada_grid.display.geojson?v=1">
           {activeGrid.low && (
             <Layer 
               id="grid-line-low" 
@@ -344,7 +344,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
 
 
       {activeLayers.renewables && (
-        <Source id="renewables-data" type="geojson" data="/renewables.geojson">
+        <Source id="renewables-data" type="geojson" data="/renewables.display.geojson?v=1">
           {/* Hydro Plants */}
           {activeRenewables.hydro && (
             <Layer 
