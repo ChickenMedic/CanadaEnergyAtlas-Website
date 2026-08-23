@@ -1,0 +1,49 @@
+{
+  "updatedAt": "2026-08-23T17:11:17.220Z",
+  "anchors": {
+    "wti": {
+      "price": 86.48,
+      "change": 0.44,
+      "pctChange": 0.51,
+      "asOf": "2026-08-18",
+      "source": "EIA (Cushing, OK spot)",
+      "live": true
+    },
+    "brent": {
+      "price": 95.29,
+      "change": 2.86,
+      "pctChange": 3.09,
+      "asOf": "2026-08-18",
+      "source": "EIA (Europe Brent spot)",
+      "live": true
+    },
+    "hh": {
+      "price": 2.82,
+      "change": 0.05,
+      "pctChange": 1.81,
+      "asOf": "2026-08-18",
+      "source": "EIA (Henry Hub spot)",
+      "live": true
+    },
+    "wcs": {
+      "price": 67.57,
+      "change": 0.44,
+      "pctChange": 0.51,
+      "asOf": "2026-08-18",
+      "diffVsWti": -18.91,
+      "diffMonth": "2026-06",
+      "source": "Live WTI + Alberta Gov 2026-06 differential",
+      "live": true
+    },
+    "aeco": {
+      "price": 0.98,
+      "change": 0.05,
+      "pctChange": 1.81,
+      "asOf": "2026-08-18",
+      "diffVsHh": -1.84,
+      "diffMonth": "2026-06",
+      "source": "Live Henry Hub + Alberta Gov 2026-06 differential",
+      "live": true
+    }
+  }
+}

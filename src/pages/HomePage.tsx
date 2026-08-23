@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Globe, Zap, Activity, Droplet, Wind, Flame, Database, Leaf, Sun, Info } from 'lucide-react';
+import { Globe, Zap, Activity, Droplet, Wind, Flame, Database, Leaf, Sun } from 'lucide-react';
+import { benchmarks } from '../data/benchmarks';
+import type { BenchmarkDef, BenchmarkRegion, BenchmarkType, PricesFile } from '../data/benchmarks';
 
 const BarrelIcon = ({ size = 18, color = "#ef4444" }: { size?: number, color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -11,49 +13,34 @@ const BarrelIcon = ({ size = 18, color = "#ef4444" }: { size?: number, color?: s
   </svg>
 );
 
-const benchmarks = [
-  // North America Oil
-  { id: 'wcs', name: 'WCS (Hardisty)', type: 'oil', region: 'na', price: 75.85, change: 1.25, pctChange: 1.68, trend: 'up', note: 'Heavy sour crude', volume: 3.8, base: 'wti', diff: -15.50 },
-  { id: 'wti', name: 'WTI (Cushing)', type: 'oil', region: 'na', price: 91.38, change: 0.85, pctChange: 0.94, trend: 'up', note: 'NA light sweet reference', volume: 4.5 },
-  { id: 'lls', name: 'LLS (Louisiana)', type: 'oil', region: 'na', price: 93.10, change: 1.05, pctChange: 1.14, trend: 'up', note: 'Light Louisiana Sweet', volume: 1.2, base: 'wti', diff: 1.72 },
-  { id: 'mars', name: 'Mars Blend', type: 'oil', region: 'na', price: 88.40, change: -0.45, pctChange: -0.51, trend: 'down', note: 'Gulf Coast medium sour', volume: 0.9, base: 'wti', diff: -2.98 },
-  { id: 'syncrude', name: 'Syncrude Sweet', type: 'oil', region: 'na', price: 89.20, change: 0.60, pctChange: 0.68, trend: 'up', note: 'Synthetic crude (Alberta)', volume: 1.1, base: 'wti', diff: -2.18 },
-  { id: 'bakken', name: 'Bakken Clearbrook', type: 'oil', region: 'na', price: 87.50, change: 0.90, pctChange: 1.04, trend: 'up', note: 'North Dakota light sweet', volume: 1.4, base: 'wti', diff: -3.88 },
-  { id: 'ans', name: 'ANS (Alaska)', type: 'oil', region: 'na', price: 94.20, change: 0.30, pctChange: 0.32, trend: 'up', note: 'Alaskan North Slope', volume: 0.5, base: 'wti', diff: 2.82 },
-  { id: 'wti-midland', name: 'WTI Midland', type: 'oil', region: 'na', price: 92.15, change: 1.10, pctChange: 1.21, trend: 'up', note: 'Permian light sweet', volume: 5.8, base: 'wti', diff: 0.77 },
-  { id: 'bow-river', name: 'Bow River', type: 'oil', region: 'na', price: 74.30, change: -1.20, pctChange: -1.59, trend: 'down', note: 'Canadian heavy blend', volume: 0.7, base: 'wti', diff: -17.08 },
-  { id: 'western-canadian-select', name: 'Cold Lake Blend', type: 'oil', region: 'na', price: 73.10, change: -0.80, pctChange: -1.08, trend: 'down', note: 'Dilbit heavy sour', volume: 0.6, base: 'wti', diff: -18.28 },
-  
-  // North America Gas
-  { id: 'hh', name: 'Henry Hub', type: 'gas', region: 'na', price: 2.85, change: -0.15, pctChange: -5.00, trend: 'down', note: 'US natural gas benchmark', volume: 102 },
-  { id: 'aeco', name: 'AECO (Alberta)', type: 'gas', region: 'na', price: 2.10, change: -0.05, pctChange: -2.33, trend: 'down', note: 'Canadian gas benchmark', volume: 16, base: 'hh', diff: -0.75 },
-  { id: 'dawn', name: 'Dawn Hub', type: 'gas', region: 'na', price: 2.45, change: 0.10, pctChange: 4.26, trend: 'up', note: 'Eastern Canada gas pricing', volume: 8, base: 'hh', diff: -0.40 },
-  { id: 'station2', name: 'Station 2 (BC)', type: 'gas', region: 'na', price: 1.85, change: -0.08, pctChange: -4.15, trend: 'down', note: 'Western Canada reference', volume: 5, base: 'hh', diff: -1.00 },
-  { id: 'chicago-cg', name: 'Chicago Citygate', type: 'gas', region: 'na', price: 2.65, change: 0.12, pctChange: 4.74, trend: 'up', note: 'Midwest reference', volume: 14, base: 'hh', diff: -0.20 },
-  { id: 'socal-border', name: 'SoCal Border', type: 'gas', region: 'na', price: 4.10, change: -0.25, pctChange: -5.75, trend: 'down', note: 'Southern California index', volume: 7, base: 'hh', diff: 1.25 },
-  { id: 'pg-and-e', name: 'PG&E Citygate', type: 'gas', region: 'na', price: 4.80, change: -0.30, pctChange: -5.88, trend: 'down', note: 'Northern California', volume: 6, base: 'hh', diff: 1.95 },
-  { id: 'transco-z6', name: 'Transco Z6 (NY)', type: 'gas', region: 'na', price: 2.90, change: 0.18, pctChange: 6.62, trend: 'up', note: 'Northeast reference', volume: 12, base: 'hh', diff: 0.05 },
-  { id: 'waha', name: 'Waha Hub', type: 'gas', region: 'na', price: 1.10, change: -0.40, pctChange: -26.67, trend: 'down', note: 'Permian Basin gas', volume: 18, base: 'hh', diff: -1.75 },
-  
-  // Europe Oil & Gas
-  { id: 'brent', name: 'Brent Crude', type: 'oil', region: 'eu', price: 95.12, change: 1.40, pctChange: 1.49, trend: 'up', note: 'Global light sweet reference', volume: 5.2 },
-  { id: 'ttf', name: 'TTF (Netherlands)', type: 'gas', region: 'eu', price: 12.50, change: 0.80, pctChange: 6.84, trend: 'up', note: 'European gas benchmark', volume: 20, base: 'hh', diff: 9.65 },
-  { id: 'urals', name: 'Urals Crude', type: 'oil', region: 'eu', price: 68.40, change: -0.50, pctChange: -0.73, trend: 'down', note: 'Russian export blend', volume: 2.5, base: 'brent', diff: -26.72 },
-  { id: 'nbp', name: 'NBP (UK)', type: 'gas', region: 'eu', price: 11.90, change: 0.60, pctChange: 5.31, trend: 'up', note: 'UK gas benchmark', volume: 8.5, base: 'hh', diff: 9.05 },
-  { id: 'forties', name: 'Forties', type: 'oil', region: 'eu', price: 94.80, change: 1.10, pctChange: 1.17, trend: 'up', note: 'North Sea crude', volume: 0.8, base: 'brent', diff: -0.32 },
-  { id: 'ekofisk', name: 'Ekofisk', type: 'oil', region: 'eu', price: 96.00, change: 1.25, pctChange: 1.32, trend: 'up', note: 'North Sea light sweet', volume: 0.4, base: 'brent', diff: 0.88 },
-  { id: 'oseberg', name: 'Oseberg', type: 'oil', region: 'eu', price: 96.50, change: 1.30, pctChange: 1.37, trend: 'up', note: 'Norwegian crude', volume: 0.3, base: 'brent', diff: 1.38 },
-  { id: 'peg', name: 'PEG (France)', type: 'gas', region: 'eu', price: 12.10, change: 0.70, pctChange: 6.14, trend: 'up', note: 'French gas benchmark', volume: 4, base: 'hh', diff: 9.25 },
+interface BenchmarkRow extends BenchmarkDef {
+  price: number;
+  change: number;
+  pctChange: number;
+  trend: 'up' | 'down';
+  asOf: string;
+  live: boolean;
+}
 
-  // Asia Oil & Gas
-  { id: 'dubai', name: 'Dubai Crude', type: 'oil', region: 'asia', price: 92.40, change: 0.85, pctChange: 0.93, trend: 'up', note: 'Middle East/Asia reference', volume: 6.0, base: 'brent', diff: -2.72 },
-  { id: 'jkm', name: 'JKM (Japan/Korea)', type: 'gas', region: 'asia', price: 14.20, change: 1.10, pctChange: 8.40, trend: 'up', note: 'Asian LNG benchmark', volume: 15, base: 'hh', diff: 11.35 },
-  { id: 'tapis', name: 'Tapis (Malaysia)', type: 'oil', region: 'asia', price: 98.15, change: 1.50, pctChange: 1.55, trend: 'up', note: 'Light sweet Asian blend', volume: 0.5, base: 'brent', diff: 3.03 },
-  { id: 'oman', name: 'Oman Crude', type: 'oil', region: 'asia', price: 91.80, change: 0.75, pctChange: 0.82, trend: 'up', note: 'Middle East sour reference', volume: 1.1, base: 'brent', diff: -3.32 },
-  { id: 'minat', name: 'Minas (Indonesia)', type: 'oil', region: 'asia', price: 93.50, change: -0.60, pctChange: -0.64, trend: 'down', note: 'Heavy sweet reference', volume: 0.3, base: 'brent', diff: -1.62 },
-  { id: 'murban', name: 'Murban', type: 'oil', region: 'asia', price: 94.10, change: 0.90, pctChange: 0.97, trend: 'up', note: 'Abu Dhabi light', volume: 1.5, base: 'brent', diff: -1.02 },
-  { id: 'espo', name: 'ESPO', type: 'oil', region: 'asia', price: 74.20, change: -1.10, pctChange: -1.46, trend: 'down', note: 'Russian Pacific blend', volume: 1.2, base: 'brent', diff: -20.92 }
-];
+function buildRows(prices: PricesFile): BenchmarkRow[] {
+  return benchmarks.flatMap((def) => {
+    const anchorId = def.anchor ?? def.base;
+    const anchor = anchorId ? prices.anchors[anchorId] : undefined;
+    if (!anchor) return [];
+    const price = def.anchor ? anchor.price : +(anchor.price + (def.diff ?? 0)).toFixed(2);
+    const change = anchor.change;
+    const prevPrice = price - change;
+    return [{
+      ...def,
+      price,
+      change,
+      pctChange: prevPrice !== 0 ? +((change / prevPrice) * 100).toFixed(2) : 0,
+      trend: change >= 0 ? 'up' as const : 'down' as const,
+      asOf: anchor.asOf,
+      live: !!def.anchor,
+    }];
+  });
+}
 
 const rankings = [
   { id: 'hydro', title: 'Hydroelectricity', rank: '3', suffix: 'rd', subtitle: 'Largest Producer', details: 'Canada operates over 500 hydroelectric facilities, generating roughly 60% of the country\'s total electricity. We are a clean energy powerhouse exporting significant surplus to the US.', icon: <Zap size={28} color="var(--accent-blue)" /> },
@@ -67,106 +54,26 @@ const rankings = [
 ];
 
 export default function HomePage() {
-  const [benchmarkRegion, setBenchmarkRegion] = useState<'all' | 'na' | 'eu' | 'asia'>('na');
-  const [benchmarkType, setBenchmarkType] = useState<'all' | 'oil' | 'gas'>('oil');
+  const [benchmarkRegion, setBenchmarkRegion] = useState<'all' | BenchmarkRegion>('na');
+  const [benchmarkType, setBenchmarkType] = useState<'all' | BenchmarkType>('oil');
   const [selectedRanking, setSelectedRanking] = useState(rankings[0]);
-  const [benchmarksData, setBenchmarksData] = useState(benchmarks);
+  const [prices, setPrices] = useState<PricesFile | null>(null);
+  const [pricesError, setPricesError] = useState(false);
 
   useEffect(() => {
-    const fetchMarketData = async () => {
-      const apiKey = import.meta.env.VITE_OILPRICE_API_KEY;
-      if (!apiKey) return;
-
-      const cacheKey = 'oilprice_cache_v1';
-      const cached = localStorage.getItem(cacheKey);
-      if (cached) {
-        try {
-          const parsed = JSON.parse(cached);
-          const cacheDate = new Date(parsed.timestamp).toDateString();
-          const today = new Date().toDateString();
-          if (cacheDate === today && parsed.prices) {
-            updatePrices(parsed.prices);
-            return;
-          }
-        } catch (e) {
-          console.error("Cache parse error", e);
-        }
-      }
-
-      try {
-        const url = `https://api.oilpriceapi.com/v1/prices/latest?by_code=WTI_USD,BRENT_CRUDE_USD,NATURAL_GAS_USD`;
-        const res = await fetch(url, {
-          headers: {
-            'Authorization': `Token ${apiKey}`,
-            'Content-Type': 'application/json'
-          }
-        });
-        const data = await res.json();
-        
-        if (data.status !== 'success') return;
-        const prices = data.data.prices;
-        
-        localStorage.setItem(cacheKey, JSON.stringify({ timestamp: Date.now(), prices }));
-        updatePrices(prices);
-      } catch (err) {
-        console.error("Failed to fetch market data", err);
-      }
-    };
-
-    const updatePrices = (prices: any[]) => {
-      setBenchmarksData(prev => {
-        const wtiData = prices.find((p: any) => p.code === 'WTI_USD');
-        const brentData = prices.find((p: any) => p.code === 'BRENT_CRUDE_USD');
-        const hhData = prices.find((p: any) => p.code === 'NATURAL_GAS_USD');
-        
-        let bases: any = { wti: null, brent: null, hh: null };
-        
-        return prev.map(b => {
-          let updated: any = { ...b };
-          if (b.id === 'wti' && wtiData) {
-            updated.price = wtiData.price;
-            updated.change = wtiData.changes?.['24h']?.amount || 0;
-            updated.pctChange = wtiData.changes?.['24h']?.percent || 0;
-            updated.trend = updated.change >= 0 ? 'up' : 'down';
-            updated.updatedAt = wtiData.updated_at.split('T')[0];
-            bases.wti = updated;
-          }
-          if (b.id === 'brent' && brentData) {
-            updated.price = brentData.price;
-            updated.change = brentData.changes?.['24h']?.amount || 0;
-            updated.pctChange = brentData.changes?.['24h']?.percent || 0;
-            updated.trend = updated.change >= 0 ? 'up' : 'down';
-            updated.updatedAt = brentData.updated_at.split('T')[0];
-            bases.brent = updated;
-          }
-          if (b.id === 'hh' && hhData) {
-            updated.price = hhData.price;
-            updated.change = hhData.changes?.['24h']?.amount || 0;
-            updated.pctChange = hhData.changes?.['24h']?.percent || 0;
-            updated.trend = updated.change >= 0 ? 'up' : 'down';
-            updated.updatedAt = hhData.updated_at.split('T')[0];
-            bases.hh = updated;
-          }
-          return updated;
-        }).map(b => {
-          // Apply differentials for non-base benchmarks
-          if (b.base && bases[b.base]) {
-            const baseRef = bases[b.base];
-            b.price = +(baseRef.price + b.diff).toFixed(2);
-            b.change = baseRef.change;
-            b.pctChange = +((b.change / (b.price - b.change)) * 100).toFixed(2);
-            b.trend = baseRef.trend;
-            b.updatedAt = baseRef.updatedAt;
-          }
-          return b;
-        });
+    fetch('/prices.json')
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((data: PricesFile) => setPrices(data))
+      .catch((err) => {
+        console.error('Failed to load market data', err);
+        setPricesError(true);
       });
-    };
-
-    fetchMarketData();
   }, []);
 
-  const filteredBenchmarks = benchmarksData
+  const filteredBenchmarks = (prices ? buildRows(prices) : [])
     .filter(b => benchmarkRegion === 'all' || b.region === benchmarkRegion)
     .filter(b => benchmarkType === 'all' || b.type === benchmarkType)
     .sort((a, b) => b.price - a.price);
@@ -186,7 +93,7 @@ export default function HomePage() {
           <p className="hero-subtitle">
             Explore our continent's vast energy network through interactive maps, clear data, and insightful facts.
           </p>
-          
+
           <div className="hero-actions">
             <Link to="/map" className="primary-btn" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Globe size={20} />
@@ -201,12 +108,16 @@ export default function HomePage() {
       </div>
 
       <div className="dashboard-section" style={{ marginTop: '-40px' }}>
-        
+
         {/* Market Pricing Benchmarks */}
         <div className="dashboard-header" style={{ marginBottom: '40px' }}>
           <h2>Oil and Gas Benchmarks</h2>
-          <p style={{ color: 'var(--text-muted)' }}>Daily updated market prices across key hubs</p>
-          
+          <p style={{ color: 'var(--text-muted)' }}>
+            Live anchor prices from the U.S. EIA and Government of Alberta, updated daily
+            {prices ? ` (last refresh ${prices.updatedAt.split('T')[0]})` : ''}.
+            Other benchmarks are indicative — derived from a live anchor plus a typical differential.
+          </p>
+
           <div className="benchmark-controls">
             <div className="toggle-group">
               <button className={`toggle-btn ${benchmarkRegion === 'all' ? 'active' : ''}`} onClick={() => setBenchmarkRegion('all')}>World</button>
@@ -222,15 +133,36 @@ export default function HomePage() {
           </div>
         </div>
 
+        {pricesError && (
+          <p style={{ color: 'var(--text-muted)', textAlign: 'center', padding: '40px 0' }}>
+            Market data is temporarily unavailable.
+          </p>
+        )}
+        {!prices && !pricesError && (
+          <p style={{ color: 'var(--text-muted)', textAlign: 'center', padding: '40px 0' }}>
+            Loading market data…
+          </p>
+        )}
+
         <div className="benchmark-grid">
-          {filteredBenchmarks.map((b: any) => (
+          {filteredBenchmarks.map((b) => (
             <div key={b.id} className="stat-card">
               <div className="stat-header">
                 <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   {b.name}
-                  {b.base && (
-                    <span title={`Estimated using standard differentials to live ${b.base.toUpperCase()}`}>
-                      <Info size={14} color="var(--text-muted)" style={{ cursor: 'help' }} />
+                  {b.live ? (
+                    <span
+                      title={`Live market data — ${prices?.anchors[b.anchor!]?.source ?? ''}`}
+                      style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.06em', color: '#4ade80', background: 'rgba(74, 222, 128, 0.12)', padding: '2px 6px', borderRadius: '4px', cursor: 'help' }}
+                    >
+                      LIVE
+                    </span>
+                  ) : (
+                    <span
+                      title={`Indicative estimate: live ${b.base?.toUpperCase()} price ${b.diff! >= 0 ? '+' : '−'}$${Math.abs(b.diff!).toFixed(2)} typical differential`}
+                      style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--text-muted)', background: 'rgba(255, 255, 255, 0.08)', padding: '2px 6px', borderRadius: '4px', cursor: 'help' }}
+                    >
+                      INDICATIVE
                     </span>
                   )}
                 </span>
@@ -247,16 +179,14 @@ export default function HomePage() {
                   <span style={{ textAlign: 'right' }}>{b.trend === 'up' ? '+$' : '-$'}</span>
                   <span style={{ textAlign: 'right' }}>{Math.abs(b.change).toFixed(2)}</span>
                   <span></span>
-                  <span style={{ textAlign: 'right' }}>{b.trend === 'up' ? '+' : b.trend === 'down' ? '-' : ''}</span>
+                  <span style={{ textAlign: 'right' }}>{b.trend === 'up' ? '+' : '-'}</span>
                   <span style={{ textAlign: 'right' }}>{Math.abs(b.pctChange).toFixed(2)}</span>
                   <span style={{ textAlign: 'left' }}>%</span>
                 </div>
               </div>
               <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '4px' }}>
                 <span>{b.note}</span>
-                {b.updatedAt && (
-                  <span style={{ color: 'var(--accent-blue)', opacity: 0.9, fontWeight: 500 }}>As of {b.updatedAt}</span>
-                )}
+                <span style={{ color: 'var(--accent-blue)', opacity: 0.9, fontWeight: 500 }}>As of {b.asOf}</span>
               </div>
             </div>
           ))}
@@ -271,8 +201,8 @@ export default function HomePage() {
         <div className="rankings-container">
           <div className="rankings-list">
             {rankings.map(r => (
-              <div 
-                key={r.id} 
+              <div
+                key={r.id}
                 className={`ranking-item ${selectedRanking.id === r.id ? 'active' : ''}`}
                 onClick={() => setSelectedRanking(r)}
               >
@@ -287,7 +217,7 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-          
+
           <div className="ranking-details glass-panel">
             <div className="ranking-details-header">
               {selectedRanking.icon}
