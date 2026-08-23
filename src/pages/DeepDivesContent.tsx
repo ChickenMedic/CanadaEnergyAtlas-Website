@@ -9,7 +9,6 @@ export const deepDiveSections = [
     color: "var(--accent-orange)",
     content: (
 <>
-<p>Here is the revised deep dive. I have completely removed all em dashes and adjusted the punctuation and sentence structure to ensure the article still flows perfectly and maintains its professional, engaging tone.</p>
 <div className="timeline-card">
 <h3>Deep Dive: The Subterranean Engine: Unearthing North America's Oil and Gas Geology</h3>
 </div>

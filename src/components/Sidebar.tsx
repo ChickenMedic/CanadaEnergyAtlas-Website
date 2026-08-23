@@ -39,7 +39,7 @@ export default function Sidebar({ layers, onToggleLayer }: SidebarProps) {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  const activeLayers = Object.entries(layers).filter(([_, v]) => v).map(([k]) => k);
+  const activeLayers = Object.entries(layers).filter(([, v]) => v).map(([k]) => k);
   let overviewTitle = 'System Status';
   let canadaStats: { label: string; value: string }[] = [];
   let usStats: { label: string; value: string }[] = [];

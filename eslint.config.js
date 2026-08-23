@@ -19,4 +19,11 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    // Generated from Word documents; the prose keeps non-breaking spaces.
+    files: ['src/pages/DeepDivesContent.tsx'],
+    rules: {
+      'no-irregular-whitespace': 'off',
+    },
+  },
 ])

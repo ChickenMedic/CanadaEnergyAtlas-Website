@@ -29,26 +29,26 @@ const InteractiveVisualizer = ({ type }: { type: 'map' | 'chart' }) => (
   </div>
 );
 
+type ElementWithChildren = React.ReactElement<{ children?: React.ReactNode }>;
+
 const SubTabRenderer = ({ content }: { content: React.ReactNode }) => {
   const [activeSubTab, setActiveSubTab] = useState(0);
   
-  if (!content || !React.isValidElement(content) || !(content as any).props.children) return <>{content}</>;
-  
-  const childrenArray = React.Children.toArray((content as any).props.children);
-  const tabs: { title: string, items: any[] }[] = [];
-  let currentTab = { title: "Overview", items: [] as any[] };
-  
-  childrenArray.forEach((child: any) => {
+  if (!content || !React.isValidElement(content) || !(content as ElementWithChildren).props.children) return <>{content}</>;
+
+  const childrenArray = React.Children.toArray((content as ElementWithChildren).props.children);
+  const tabs: { title: string, items: React.ReactNode[] }[] = [];
+  let currentTab = { title: "Overview", items: [] as React.ReactNode[] };
+
+  childrenArray.forEach((child) => {
     let title = "";
-    try {
-      if (child.props && child.props.children) {
-        const childrenList = React.Children.toArray(child.props.children);
-        const h3 = childrenList.find((c: any) => c.type === 'h3');
-        if (h3 && typeof (h3 as any).props.children === 'string') {
-          title = (h3 as any).props.children;
-        }
+    if (React.isValidElement(child) && (child as ElementWithChildren).props.children) {
+      const childrenList = React.Children.toArray((child as ElementWithChildren).props.children);
+      const h3 = childrenList.find((c) => React.isValidElement(c) && c.type === 'h3') as ElementWithChildren | undefined;
+      if (h3 && typeof h3.props.children === 'string') {
+        title = h3.props.children;
       }
-    } catch(e) {}
+    }
     
     // Enhanced regex to match sections logically
     if (title.match(/^[1-9]\.|Part \d|Conclusion|The Future|Visual |📚 Sources|Strategic Implications|Emerging Demand|Future Horizons/i) || title.includes("Interactive")) {
