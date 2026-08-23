@@ -1,73 +1,62 @@
-# React + TypeScript + Vite
+# Canada Energy Atlas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive exploration of North America's energy architecture — maps, market data, and long-form explainers. Built with React 19, TypeScript, Vite, and MapLibre GL.
 
-Currently, two official plugins are available:
+**Pages**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Home** — Canada's global energy rankings and an oil & gas benchmark board (live anchors + indicative differentials, see below).
+- **Interactive Map** — toggleable layers for sedimentary basins and plays, liquids/gas pipelines, refineries and storage, power plants (renewable and non-renewable), the electrical grid by voltage class, and critical mineral mines.
+- **Deep Dives** — long-form explainers on geology, the grid, green energy, pipelines, refining, and storage.
+- **Data Sources** — attribution and GeoJSON downloads.
 
-## React Compiler
+## Development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev      # Vite dev server at http://localhost:5173
+npm run build    # type-check + production build to dist/
+npm run lint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Deployed on AWS Amplify Hosting, which builds and deploys automatically on every push to `main`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Benchmark price pipeline
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+`public/prices.json` holds the live anchor prices the Home page reads. It is regenerated on weekdays by the **Update benchmark prices** GitHub Action (`.github/workflows/update-prices.yml`), which commits the file only when values change; the push then triggers an Amplify deploy. No API keys ever reach the browser.
+
+Sources (all free):
+
+| Anchor | Source |
+|---|---|
+| WTI, Brent, Henry Hub | [EIA Open Data API](https://www.eia.gov/opendata/) daily spot series |
+| WCS | Live WTI + latest monthly WCS−WTI differential from the [Alberta Economic Dashboard API](https://economicdashboard.alberta.ca/) |
+| AECO | Live Henry Hub + latest monthly AECO−HH differential (Alberta Gov, converted CAD/GJ → USD/MMBtu via Bank of Canada FX) |
+
+All other benchmarks on the board are computed as *anchor + typical differential* and labeled **INDICATIVE** in the UI. The differentials live in `src/data/benchmarks.ts`.
+
+Run locally with `npm run prices:fetch` (set `EIA_API_KEY`; without it the shared rate-limited `DEMO_KEY` is used). **Setup requirement:** the repo needs an `EIA_API_KEY` Actions secret — register free at eia.gov/opendata.
+
+**Upgrading to more live data:** each entry in `src/data/benchmarks.ts` has a `sourceCode` field reserved for a paid feed code (e.g. OilPriceAPI's Developer tier, ~$19/mo). To upgrade, verify the code exists via their `/v1/commodities` catalog, extend `scripts/fetch-prices.mjs` to fetch it into `anchors`, and point the benchmark at it.
+
+## Map data pipeline
+
+Raw GeoJSON is produced by the one-off collection scripts in `scripts/` (CER, EIA, USGS, and OpenStreetMap/Overpass sources — run them from the repo root). Two kinds of files ship in `public/`:
+
+- **Originals** (`pipelines.geojson`, `renewables.geojson`, …) — full fidelity, linked for download on the Data Sources page.
+- **Display copies** (`*.display.geojson`) — what the map actually loads. Generated by `npm run geodata:simplify` (`scripts/simplify-geodata.cjs`): properties pruned to what the map reads, line segments dissolved into multipart features, Douglas-Peucker simplification at 100 m, coordinate precision trimmed. Pipelines: 26 MB → 7.8 MB; grid: 19 MB → 3.9 MB.
+
+The grid original lives in `data/` (not `public/`) because it isn't download-linked and shouldn't ship with deploys. If you regenerate any original, re-run `npm run geodata:simplify` and bump the `?v=` query param in `src/components/map/mapLayers.ts`.
+
+Map layers themselves are config-driven: `src/components/map/mapLayers.ts` defines every group's source URL, category filters, colors, and legend rows.
+
+## Repo layout
+
+```
+data/               source geodata not shipped with the site
+docs/source-material/  original Word docs behind the Deep Dives content
+public/             static assets incl. GeoJSON and prices.json
+scripts/            data collection + processing + price fetch scripts
+src/components/map/ layer config and map subcomponents
+src/data/           benchmark board definitions
+src/pages/          route components
 ```
