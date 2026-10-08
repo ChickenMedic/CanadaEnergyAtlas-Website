@@ -1,48 +1,59 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
-export default function Navigation() {
-  const location = useLocation();
-  const [isOpen, setIsOpen] = useState(false);
+const NAV_LINKS = [
+  { to: '/', label: 'Home' },
+  { to: '/map', label: 'Interactive Map' },
+  { to: '/deep-dives', label: 'Deep Dives' },
+  { to: '/data-sources', label: 'Data Sources' },
+];
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+export default function Navigation() {
+  const [isOpen, setIsOpen] = useState(false);
+  const closeMenu = () => setIsOpen(false);
 
   return (
-    <nav className="navbar glass-panel" style={{ borderRadius: 0, borderTop: 'none', borderLeft: 'none', borderRight: 'none' }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <img src="/maple-leaf.svg" alt="Canada Energy Atlas" width={28} height={28} style={{ display: 'block' }} />
-          <Link to="/" style={{ textDecoration: 'none', color: 'white', fontSize: '1.2rem', fontWeight: 600 }}>
+    <nav className="navbar" aria-label="Primary">
+      <div className="navbar-brand">
+        <div className="navbar-logo">
+          <img src="/maple-leaf.svg" alt="" width={28} height={28} />
+          <Link to="/" className="navbar-title" onClick={closeMenu}>
             Canada Energy Atlas
           </Link>
         </div>
-        <button className="mobile-menu-btn" onClick={toggleMenu} style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', display: 'none' }}>
+        <button
+          type="button"
+          className="mobile-menu-btn"
+          onClick={() => setIsOpen((open) => !open)}
+          aria-expanded={isOpen}
+          aria-controls="primary-nav-links"
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+        >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
-      
-      <div className={`nav-links ${isOpen ? 'open' : ''}`}>
-        <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
-          Home
-        </Link>
-        <Link to="/map" className={`nav-link ${location.pathname === '/map' ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
-          Interactive Map
-        </Link>
-        <Link to="/deep-dives" className={`nav-link ${location.pathname === '/deep-dives' ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
-          Deep Dives
-        </Link>
-        <Link to="/data-sources" className={`nav-link ${location.pathname === '/data-sources' ? 'active' : ''}`} onClick={() => setIsOpen(false)}>
-          Data Sources
-        </Link>
-        
+
+      <div id="primary-nav-links" className={`nav-links ${isOpen ? 'open' : ''}`}>
+        {NAV_LINKS.map(({ to, label }) => (
+          <NavLink
+            key={to}
+            to={to}
+            end
+            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+            onClick={closeMenu}
+          >
+            {label}
+          </NavLink>
+        ))}
+
         {/* Button linking out to the AR project */}
-        <a 
-          href="https://ar.canadaenergyatlas.com" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href="https://ar.canadaenergyatlas.com"
+          target="_blank"
+          rel="noopener noreferrer"
           className="ar-btn"
-          onClick={() => setIsOpen(false)}
+          onClick={closeMenu}
         >
           Launch AR Map
         </a>

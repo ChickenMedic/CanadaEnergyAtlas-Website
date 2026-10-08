@@ -3,9 +3,14 @@
 // hand-written layers, so rendering is unchanged; MapContainer, MapLegend and
 // LayerGroupSources all derive their behavior from this table.
 
-export type SidebarLayerKey =
-  | 'basins' | 'minerals' | 'pipelines' | 'refining'
-  | 'storage' | 'nonRenewable' | 'grid' | 'renewables';
+// Every sidebar toggle, in a fixed order; MapPage and Sidebar derive their
+// state shape and types from this list so a new layer is added in one place.
+export const SIDEBAR_LAYER_KEYS = [
+  'basins', 'minerals', 'pipelines', 'refining',
+  'storage', 'nonRenewable', 'grid', 'renewables',
+] as const;
+
+export type SidebarLayerKey = (typeof SIDEBAR_LAYER_KEYS)[number];
 
 export type ActiveLayers = Record<SidebarLayerKey, boolean>;
 

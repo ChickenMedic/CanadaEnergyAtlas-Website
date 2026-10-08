@@ -14,26 +14,30 @@ interface MapLegendProps {
 
 function Swatch({ cat }: { cat: LayerCategory }) {
   if (cat.swatch === 'line') {
-    return <div style={{ width: '16px', height: '4px', backgroundColor: cat.color, borderRadius: '2px' }}></div>;
+    return <span style={{ width: '16px', height: '4px', backgroundColor: cat.color, borderRadius: '2px' }}></span>;
   }
   if (cat.swatch === 'ring') {
-    return <div style={{ width: '10px', height: '10px', backgroundColor: '#111', border: `2px solid ${cat.color}`, borderRadius: '50%' }}></div>;
+    return <span style={{ width: '10px', height: '10px', backgroundColor: '#111', border: `2px solid ${cat.color}`, borderRadius: '50%' }}></span>;
   }
-  return <div style={{ width: '12px', height: '12px', backgroundColor: cat.color, border: '1.5px solid #fff', borderRadius: '50%' }}></div>;
+  return <span style={{ width: '12px', height: '12px', backgroundColor: cat.color, border: '1.5px solid #fff', borderRadius: '50%' }}></span>;
 }
 
 function LegendToggleRow({ cat, checked, isLast, onToggle }: { cat: LayerCategory; checked: boolean; isLast: boolean; onToggle: () => void }) {
   return (
-    <div
-      style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: isLast ? 0 : '8px', cursor: 'pointer', opacity: checked ? 1 : 0.6 }}
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      className="legend-row"
+      style={{ marginBottom: isLast ? 0 : '8px', opacity: checked ? 1 : 0.6 }}
       onClick={onToggle}
     >
       <Swatch cat={cat} />
-      <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1 }}>{cat.label}</span>
-      <div style={{ width: '28px', height: '14px', backgroundColor: checked ? cat.color : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
-        <div style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: checked ? '16px' : '2px', transition: 'left 0.2s' }}></div>
-      </div>
-    </div>
+      <span style={{ fontSize: '0.8rem', color: '#e5e7eb', flexGrow: 1, textAlign: 'left' }}>{cat.label}</span>
+      <span style={{ width: '28px', height: '14px', backgroundColor: checked ? cat.color : '#4b5563', borderRadius: '7px', position: 'relative', transition: 'background-color 0.2s' }}>
+        <span style={{ width: '10px', height: '10px', backgroundColor: '#fff', borderRadius: '50%', position: 'absolute', top: '2px', left: checked ? '16px' : '2px', transition: 'left 0.2s' }}></span>
+      </span>
+    </button>
   );
 }
 
@@ -48,36 +52,24 @@ export default function MapLegend({
   activeLayers, categoryVisibility, onToggleCategory,
   isLegendOpen, setIsLegendOpen, minRenewableCapacity, setMinRenewableCapacity,
 }: MapLegendProps) {
-  const anyGroupActive = LAYER_GROUPS.some((g) => isGroupActive(g, activeLayers));
+  const activeGroups = LAYER_GROUPS.filter((g) => isGroupActive(g, activeLayers));
 
   return (
     <div style={{ position: 'absolute', top: 50, right: 20, display: 'flex', flexDirection: 'column', gap: '12px', zIndex: 10 }}>
-      {anyGroupActive && (
+      {activeGroups.length > 0 && (
         <button
+          type="button"
           onClick={() => setIsLegendOpen(!isLegendOpen)}
-          className="glass-panel"
-          style={{
-            padding: '10px 20px',
-            borderRadius: '8px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            border: '1px solid var(--border-light)',
-            color: '#fff',
-            background: 'var(--bg-panel)',
-            alignSelf: 'flex-end',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
-            backdropFilter: 'var(--glass-blur)'
-          }}
-          title={isLegendOpen ? "Collapse Legend" : "Expand Legend"}
+          className="glass-panel legend-toggle-btn"
+          aria-expanded={isLegendOpen}
+          title={isLegendOpen ? 'Collapse Legend' : 'Expand Legend'}
         >
           <span style={{ fontSize: '1.1rem', fontWeight: 600, marginRight: '8px' }}>Legend</span>
           {isLegendOpen ? <ChevronUp size={28} /> : <ChevronDown size={28} />}
         </button>
       )}
 
-      {isLegendOpen && LAYER_GROUPS.filter((g) => isGroupActive(g, activeLayers)).map((group) => {
+      {isLegendOpen && activeGroups.map((group) => {
         // Facilities panel shows refining vs storage rows independently.
         const visibleCats = group.categories.filter((cat) => activeLayers[cat.sidebarKey]);
         return (
@@ -93,10 +85,8 @@ export default function MapLegend({
               />
             ))}
             {group.supportsCapacityFilter && (
-              <div style={{ marginTop: '16px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#e5e7eb', marginBottom: '8px' }}>
-                  <span>Min Capacity</span>
-                </div>
+              <fieldset style={{ marginTop: '16px', border: 'none', padding: 0, margin: '16px 0 0' }}>
+                <legend style={{ fontSize: '0.8rem', color: '#e5e7eb', marginBottom: '8px', padding: 0 }}>Min Capacity</legend>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {CAPACITY_OPTIONS.map((opt) => (
                     <label key={opt.value} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '0.8rem', color: '#e5e7eb' }}>
@@ -109,7 +99,7 @@ export default function MapLegend({
                     </label>
                   ))}
                 </div>
-              </div>
+              </fieldset>
             )}
           </div>
         );

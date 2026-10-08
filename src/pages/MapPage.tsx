@@ -1,43 +1,36 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import MapContainer from '../components/MapContainer';
 import Sidebar from '../components/Sidebar';
+import { SIDEBAR_LAYER_KEYS } from '../components/map/mapLayers';
+import type { ActiveLayers, SidebarLayerKey } from '../components/map/mapLayers';
+
+const allLayersOff = (): ActiveLayers =>
+  Object.fromEntries(SIDEBAR_LAYER_KEYS.map((key) => [key, false])) as ActiveLayers;
+
+const isSidebarLayerKey = (value: string | null): value is SidebarLayerKey =>
+  value !== null && (SIDEBAR_LAYER_KEYS as readonly string[]).includes(value);
 
 export default function MapPage() {
-  const [layers, setLayers] = useState({
-    basins: true,
-    minerals: false,
-    pipelines: false,
-    refining: false,
-    storage: false,
-    nonRenewable: false,
-    grid: false,
-    renewables: false
+  // At most one sidebar layer is active at a time. Basins is on by default,
+  // unless a deep dive linked here with ?layer=<key>.
+  const [searchParams] = useSearchParams();
+  const [layers, setLayers] = useState<ActiveLayers>(() => {
+    const requested = searchParams.get('layer');
+    const initial: SidebarLayerKey = isSidebarLayerKey(requested) ? requested : 'basins';
+    return { ...allLayersOff(), [initial]: true };
   });
 
-  const toggleLayer = (layer: keyof typeof layers) => {
-    setLayers(prev => {
-      // If it's already on, turn it off. Otherwise, turn it on and all others off.
-      const isTurningOn = !prev[layer];
-      return {
-        basins: false,
-        minerals: false,
-        pipelines: false,
-        refining: false,
-        storage: false,
-        nonRenewable: false,
-        grid: false,
-        renewables: false,
-        [layer]: isTurningOn
-      };
-    });
+  const toggleLayer = (layer: SidebarLayerKey) => {
+    setLayers((prev) => ({ ...allLayersOff(), [layer]: !prev[layer] }));
   };
 
   return (
     <div className="map-page-wrapper">
-      <div className="map-wrapper" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1 }}>
+      <div className="map-wrapper">
         <MapContainer activeLayers={layers} />
       </div>
-      <div className="ui-layer" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 10, pointerEvents: 'none', display: 'flex', padding: '24px' }}>
+      <div className="ui-layer">
         <Sidebar layers={layers} onToggleLayer={toggleLayer} />
       </div>
     </div>

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Globe, Zap, Activity, Droplet, Wind, Flame, Database, Leaf, Sun } from 'lucide-react';
-import { benchmarks } from '../data/benchmarks';
-import type { BenchmarkDef, BenchmarkRegion, BenchmarkType, PricesFile } from '../data/benchmarks';
+import { buildBenchmarkRows } from '../data/benchmarkRows';
+import type { BenchmarkRegion, BenchmarkType, PricesFile } from '../data/benchmarks';
+import SiteFooter from '../components/SiteFooter';
 
 const BarrelIcon = ({ size = 18, color = "#ef4444" }: { size?: number, color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -13,34 +14,21 @@ const BarrelIcon = ({ size = 18, color = "#ef4444" }: { size?: number, color?: s
   </svg>
 );
 
-interface BenchmarkRow extends BenchmarkDef {
-  price: number;
-  change: number;
-  pctChange: number;
-  trend: 'up' | 'down';
-  asOf: string;
-  live: boolean;
-}
+type RegionFilter = 'all' | BenchmarkRegion;
+type TypeFilter = 'all' | BenchmarkType;
 
-function buildRows(prices: PricesFile): BenchmarkRow[] {
-  return benchmarks.flatMap((def) => {
-    const anchorId = def.anchor ?? def.base;
-    const anchor = anchorId ? prices.anchors[anchorId] : undefined;
-    if (!anchor) return [];
-    const price = def.anchor ? anchor.price : +(anchor.price + (def.diff ?? 0)).toFixed(2);
-    const change = anchor.change;
-    const prevPrice = price - change;
-    return [{
-      ...def,
-      price,
-      change,
-      pctChange: prevPrice !== 0 ? +((change / prevPrice) * 100).toFixed(2) : 0,
-      trend: change >= 0 ? 'up' as const : 'down' as const,
-      asOf: anchor.asOf,
-      live: !!def.anchor,
-    }];
-  });
-}
+const REGION_OPTIONS: { value: RegionFilter; label: string }[] = [
+  { value: 'all', label: 'World' },
+  { value: 'na', label: 'NA' },
+  { value: 'eu', label: 'Europe' },
+  { value: 'asia', label: 'Asia' },
+];
+
+const TYPE_OPTIONS: { value: TypeFilter; label: string }[] = [
+  { value: 'all', label: 'Both' },
+  { value: 'oil', label: 'Oil' },
+  { value: 'gas', label: 'Gas' },
+];
 
 const rankings = [
   { id: 'hydro', title: 'Hydroelectricity', rank: '3', suffix: 'rd', subtitle: 'Largest Producer', details: 'Canada operates over 500 hydroelectric facilities, generating roughly 60% of the country\'s total electricity. We are a clean energy powerhouse exporting significant surplus to the US.', icon: <Zap size={28} color="var(--accent-blue)" /> },
@@ -54,56 +42,56 @@ const rankings = [
 ];
 
 export default function HomePage() {
-  const [benchmarkRegion, setBenchmarkRegion] = useState<'all' | BenchmarkRegion>('na');
-  const [benchmarkType, setBenchmarkType] = useState<'all' | BenchmarkType>('oil');
+  const [benchmarkRegion, setBenchmarkRegion] = useState<RegionFilter>('na');
+  const [benchmarkType, setBenchmarkType] = useState<TypeFilter>('oil');
   const [selectedRanking, setSelectedRanking] = useState(rankings[0]);
   const [prices, setPrices] = useState<PricesFile | null>(null);
   const [pricesError, setPricesError] = useState(false);
 
   useEffect(() => {
-    fetch('/prices.json')
+    let cancelled = false;
+    // prices.json changes daily; revalidate with the CDN instead of trusting a
+    // long-lived browser cache entry.
+    fetch('/prices.json', { cache: 'no-cache' })
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       })
-      .then((data: PricesFile) => setPrices(data))
+      .then((data: PricesFile) => {
+        if (!cancelled) setPrices(data);
+      })
       .catch((err) => {
+        if (cancelled) return;
         console.error('Failed to load market data', err);
         setPricesError(true);
       });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  const filteredBenchmarks = (prices ? buildRows(prices) : [])
+  const filteredBenchmarks = (prices ? buildBenchmarkRows(prices) : [])
     .filter(b => benchmarkRegion === 'all' || b.region === benchmarkRegion)
     .filter(b => benchmarkType === 'all' || b.type === benchmarkType)
     .sort((a, b) => b.price - a.price);
 
   return (
     <div className="page-container" style={{ overflowY: 'auto' }}>
-      <div className="hero-section" style={{ position: 'relative', overflow: 'hidden' }}>
-        <div className="video-background">
-           <video autoPlay loop muted playsInline>
-              <source src="/digital-pipes-bg.mp4" type="video/mp4" />
-           </video>
-           <div className="video-overlay"></div>
-        </div>
+      <div className="hero-section">
+        <h1 className="hero-title">Understanding Canadian Energy</h1>
+        <p className="hero-subtitle">
+          Explore our continent's vast energy network through interactive maps, clear data, and insightful facts.
+        </p>
 
-        <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <h1 className="hero-title">Understanding Canadian Energy</h1>
-          <p className="hero-subtitle">
-            Explore our continent's vast energy network through interactive maps, clear data, and insightful facts.
-          </p>
-
-          <div className="hero-actions">
-            <Link to="/map" className="primary-btn" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Globe size={20} />
-              Explore the Map
-            </Link>
-            <Link to="/deep-dives" className="secondary-btn" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Zap size={20} />
-              Read Deep Dives
-            </Link>
-          </div>
+        <div className="hero-actions">
+          <Link to="/map" className="primary-btn" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Globe size={20} />
+            Explore the Map
+          </Link>
+          <Link to="/deep-dives" className="secondary-btn" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Zap size={20} />
+            Read Deep Dives
+          </Link>
         </div>
       </div>
 
@@ -119,16 +107,31 @@ export default function HomePage() {
           </p>
 
           <div className="benchmark-controls">
-            <div className="toggle-group">
-              <button className={`toggle-btn ${benchmarkRegion === 'all' ? 'active' : ''}`} onClick={() => setBenchmarkRegion('all')}>World</button>
-              <button className={`toggle-btn ${benchmarkRegion === 'na' ? 'active' : ''}`} onClick={() => setBenchmarkRegion('na')}>NA</button>
-              <button className={`toggle-btn ${benchmarkRegion === 'eu' ? 'active' : ''}`} onClick={() => setBenchmarkRegion('eu')}>Europe</button>
-              <button className={`toggle-btn ${benchmarkRegion === 'asia' ? 'active' : ''}`} onClick={() => setBenchmarkRegion('asia')}>Asia</button>
+            <div className="toggle-group" role="group" aria-label="Region">
+              {REGION_OPTIONS.map((opt) => (
+                <button
+                  key={opt.value}
+                  type="button"
+                  className={`toggle-btn ${benchmarkRegion === opt.value ? 'active' : ''}`}
+                  aria-pressed={benchmarkRegion === opt.value}
+                  onClick={() => setBenchmarkRegion(opt.value)}
+                >
+                  {opt.label}
+                </button>
+              ))}
             </div>
-            <div className="toggle-group">
-              <button className={`toggle-btn ${benchmarkType === 'all' ? 'active' : ''}`} onClick={() => setBenchmarkType('all')}>Both</button>
-              <button className={`toggle-btn ${benchmarkType === 'oil' ? 'active' : ''}`} onClick={() => setBenchmarkType('oil')}>Oil</button>
-              <button className={`toggle-btn ${benchmarkType === 'gas' ? 'active' : ''}`} onClick={() => setBenchmarkType('gas')}>Gas</button>
+            <div className="toggle-group" role="group" aria-label="Commodity">
+              {TYPE_OPTIONS.map((opt) => (
+                <button
+                  key={opt.value}
+                  type="button"
+                  className={`toggle-btn ${benchmarkType === opt.value ? 'active' : ''}`}
+                  aria-pressed={benchmarkType === opt.value}
+                  onClick={() => setBenchmarkType(opt.value)}
+                >
+                  {opt.label}
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -151,16 +154,11 @@ export default function HomePage() {
                 <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   {b.name}
                   {b.live ? (
-                    <span
-                      title={`Live market data — ${prices?.anchors[b.anchor!]?.source ?? ''}`}
-                      style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.06em', color: '#4ade80', background: 'rgba(74, 222, 128, 0.12)', padding: '2px 6px', borderRadius: '4px', cursor: 'help' }}
-                    >
-                      LIVE
-                    </span>
+                    <span className="badge badge-live" title={`Live market data — ${b.source}`}>LIVE</span>
                   ) : (
                     <span
-                      title={`Indicative estimate: live ${b.base?.toUpperCase()} price ${b.diff! >= 0 ? '+' : '−'}$${Math.abs(b.diff!).toFixed(2)} typical differential`}
-                      style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.06em', color: 'var(--text-muted)', background: 'rgba(255, 255, 255, 0.08)', padding: '2px 6px', borderRadius: '4px', cursor: 'help' }}
+                      className="badge badge-indicative"
+                      title={`Indicative estimate: live ${b.base?.toUpperCase()} price ${(b.diff ?? 0) >= 0 ? '+' : '−'}$${Math.abs(b.diff ?? 0).toFixed(2)} typical differential`}
                     >
                       INDICATIVE
                     </span>
@@ -201,20 +199,22 @@ export default function HomePage() {
         <div className="rankings-container">
           <div className="rankings-list">
             {rankings.map(r => (
-              <div
+              <button
                 key={r.id}
+                type="button"
                 className={`ranking-item ${selectedRanking.id === r.id ? 'active' : ''}`}
+                aria-pressed={selectedRanking.id === r.id}
                 onClick={() => setSelectedRanking(r)}
               >
-                <div className="ranking-icon-container">{r.icon}</div>
-                <div className="ranking-info">
-                  <div className="ranking-title">{r.title}</div>
-                  <div className="ranking-subtitle">{r.subtitle}</div>
-                </div>
-                <div className="ranking-number">
+                <span className="ranking-icon-container">{r.icon}</span>
+                <span className="ranking-info">
+                  <span className="ranking-title">{r.title}</span>
+                  <span className="ranking-subtitle">{r.subtitle}</span>
+                </span>
+                <span className="ranking-number">
                   {r.rank}<span className="ranking-suffix">{r.suffix}</span>
-                </div>
-              </div>
+                </span>
+              </button>
             ))}
           </div>
 
@@ -233,26 +233,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <footer style={{ marginTop: 'auto', borderTop: '1px solid rgba(255, 255, 255, 0.1)', padding: '60px 20px 40px', background: 'var(--bg-panel-solid)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-            <Globe size={24} color="var(--accent-blue)" />
-            <h2 style={{ fontSize: '1.2rem', fontWeight: 600 }}>Canada Energy Atlas</h2>
-          </div>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', maxWidth: '600px', marginBottom: '24px', lineHeight: 1.6 }}>
-            An interactive exploration of North America's energy architecture and resources. Built to educate and highlight the critical role of energy infrastructure in powering the modern world.
-          </p>
-          <div style={{ display: 'flex', gap: '24px', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
-            <Link to="/" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Home</Link>
-            <Link to="/map" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Map Dashboard</Link>
-            <Link to="/deep-dives" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Deep Dives</Link>
-            <Link to="/data-sources" style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = '#fff'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>Data Sources</Link>
-          </div>
-          <div style={{ marginTop: '32px', color: '#666', fontSize: '0.8rem' }}>
-            &copy; {new Date().getFullYear()} Canada Energy Atlas. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

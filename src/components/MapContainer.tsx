@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Map, { NavigationControl, Source, Layer, Popup } from 'react-map-gl/maplibre';
+import type { MapGeoJSONFeature, MapLayerMouseEvent, MapSourceDataEvent } from 'maplibre-gl';
 import { LAYER_GROUPS, DEFAULT_CATEGORY_VISIBILITY, isGroupActive, visibilityKey } from './map/mapLayers';
 import type { ActiveLayers } from './map/mapLayers';
 import LayerGroupSources from './map/LayerGroupSources';
@@ -13,14 +14,20 @@ interface MapContainerProps {
 interface HoverInfo {
   longitude: number;
   latitude: number;
-  feature: {
-    layer: { id: string };
-    properties: Record<string, string | number | undefined>;
-  };
+  feature: MapGeoJSONFeature;
 }
 
+const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json';
+
+const INITIAL_VIEW_STATE = {
+  longitude: -100.0,
+  latitude: 45.0,
+  zoom: 2.8,
+  pitch: 0,
+};
+
 const INTERACTIVE_GROUPS = LAYER_GROUPS.filter((g) => g.interactive);
-const POPUP_LAYER_PREFIX_IDS = new Set(
+const POPUP_LAYER_IDS = new Set(
   LAYER_GROUPS.filter((g) => g.showPopup).flatMap((g) => g.categories.map((c) => c.layerId))
 );
 const HOVER_LAYER_IDS = new Set(
@@ -28,7 +35,6 @@ const HOVER_LAYER_IDS = new Set(
 );
 
 export default function MapContainer({ activeLayers }: MapContainerProps) {
-  const mapStyle = "https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json";
   const [hoverInfo, setHoverInfo] = useState<HoverInfo | null>(null);
   const [isLegendOpen, setIsLegendOpen] = useState(false);
   const [categoryVisibility, setCategoryVisibility] = useState<Record<string, boolean>>(DEFAULT_CATEGORY_VISIBILITY);
@@ -55,17 +61,9 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
   const [loadedSources, setLoadedSources] = useState<Set<string>>(new Set());
   const isLoading = mountedGroups.some((g) => !loadedSources.has(g.sourceId));
 
-  const mapCenter = {
-    longitude: -100.0,
-    latitude: 45.0,
-    zoom: 2.8,
-    pitch: 0
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onSourceData = (event: any) => {
-    if (event.sourceId && event.isSourceLoaded && !loadedSources.has(event.sourceId)) {
-      setLoadedSources((prev) => new Set([...prev, event.sourceId]));
+  const onSourceData = (event: MapSourceDataEvent) => {
+    if (event.sourceId && event.isSourceLoaded) {
+      setLoadedSources((prev) => (prev.has(event.sourceId) ? prev : new Set([...prev, event.sourceId])));
     }
   };
 
@@ -77,18 +75,13 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onHover = (event: any) => {
-    const {
-      features,
-      lngLat: { lng, lat }
-    } = event;
-    const hoveredFeature = features && features[0];
+  const onHover = (event: MapLayerMouseEvent) => {
+    const hoveredFeature = event.features?.[0];
     if (hoveredFeature && HOVER_LAYER_IDS.has(hoveredFeature.layer.id)) {
       setHoverInfo({
-        longitude: lng,
-        latitude: lat,
-        feature: hoveredFeature
+        longitude: event.lngLat.lng,
+        latitude: event.lngLat.lat,
+        feature: hoveredFeature,
       });
     } else {
       setHoverInfo(null);
@@ -108,15 +101,14 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
       {isLoading && (
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 100, background: 'rgba(0,0,0,0.7)', padding: '16px 24px', borderRadius: '8px', color: '#fff', display: 'flex', alignItems: 'center', gap: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
-          <div className="spinner" style={{ width: '20px', height: '20px', border: '3px solid rgba(255,255,255,0.3)', borderTop: '3px solid #fff', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
-          <span style={{ fontSize: '0.9rem', fontWeight: 500 }}>Loading map data...</span>
-          <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+        <div className="map-loading" role="status">
+          <div className="map-loading-spinner" aria-hidden="true"></div>
+          <span>Loading map data...</span>
         </div>
       )}
       <Map
-        initialViewState={mapCenter}
-        mapStyle={mapStyle}
+        initialViewState={INITIAL_VIEW_STATE}
+        mapStyle={MAP_STYLE}
         style={{ width: '100%', height: '100%' }}
         interactiveLayerIds={interactiveLayerIds}
         onMouseMove={onHover}
@@ -165,7 +157,7 @@ export default function MapContainer({ activeLayers }: MapContainerProps) {
           />
         ))}
 
-        {hoverInfo && POPUP_LAYER_PREFIX_IDS.has(hoverInfo.feature.layer.id) && (
+        {hoverInfo && POPUP_LAYER_IDS.has(hoverInfo.feature.layer.id) && (
           <Popup
             longitude={hoverInfo.longitude}
             latitude={hoverInfo.latitude}

@@ -1,22 +1,33 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import HomePage from './pages/HomePage';
-import MapPage from './pages/MapPage';
-import DeepDivesPage from './pages/DeepDivesPage';
-import DataSourcesPage from './pages/DataSourcesPage';
-import './index.css';
+
+// Every route except Home is code-split so the landing page doesn't pay for
+// MapLibre (~1 MB) or the long-form Deep Dives content up front.
+const MapPage = lazy(() => import('./pages/MapPage'));
+const DeepDivesPage = lazy(() => import('./pages/DeepDivesPage'));
+const DataSourcesPage = lazy(() => import('./pages/DataSourcesPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+
+function RouteFallback() {
+  return <div className="route-fallback">Loading…</div>;
+}
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Navigation />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/map" element={<MapPage />} />
-        <Route path="/deep-dives" element={<DeepDivesPage />} />
-        <Route path="/data-sources" element={<DataSourcesPage />} />
-      </Routes>
-    </Router>
+      <Suspense fallback={<RouteFallback />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/map" element={<MapPage />} />
+          <Route path="/deep-dives" element={<DeepDivesPage />} />
+          <Route path="/data-sources" element={<DataSourcesPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
 }
 
