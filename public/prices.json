@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T17:22:34.096Z",
+  "updatedAt": "2026-10-20T17:59:37.896Z",
   "anchors": {
     "wti": {
       "price": 101.91,
@@ -36,11 +36,11 @@
       "live": true
     },
     "aeco": {
-      "price": 1.18,
+      "price": 1.19,
       "change": 0.08,
       "pctChange": 2.55,
       "asOf": "2026-10-14",
-      "diffVsHh": -2.04,
+      "diffVsHh": -2.03,
       "diffMonth": "2026-08",
       "source": "Live Henry Hub + Alberta Gov 2026-08 differential",
       "live": true
