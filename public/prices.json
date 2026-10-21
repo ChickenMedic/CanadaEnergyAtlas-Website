@@ -1,19 +1,19 @@
 {
-  "updatedAt": "2026-10-20T17:59:37.896Z",
+  "updatedAt": "2026-10-21T18:01:04.328Z",
   "anchors": {
     "wti": {
-      "price": 101.91,
-      "change": 1.05,
-      "pctChange": 1.04,
-      "asOf": "2026-10-14",
+      "price": 107.89,
+      "change": -2.12,
+      "pctChange": -1.93,
+      "asOf": "2026-10-20",
       "source": "EIA (Cushing, OK spot)",
       "live": true
     },
     "brent": {
-      "price": 126.55,
-      "change": 0.77,
-      "pctChange": 0.61,
-      "asOf": "2026-10-14",
+      "price": 115.22,
+      "change": -3.6,
+      "pctChange": -3.03,
+      "asOf": "2026-10-20",
       "source": "EIA (Europe Brent spot)",
       "live": true
     },
@@ -26,10 +26,10 @@
       "live": true
     },
     "wcs": {
-      "price": 86.22,
-      "change": 1.05,
-      "pctChange": 1.04,
-      "asOf": "2026-10-14",
+      "price": 92.2,
+      "change": -2.12,
+      "pctChange": -1.93,
+      "asOf": "2026-10-20",
       "diffVsWti": -15.69,
       "diffMonth": "2026-08",
       "source": "Live WTI + Alberta Gov 2026-08 differential",
