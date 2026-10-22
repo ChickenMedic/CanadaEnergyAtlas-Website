@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-21T18:01:04.328Z",
+  "updatedAt": "2026-10-22T17:57:20.756Z",
   "anchors": {
     "wti": {
       "price": 107.89,
@@ -18,10 +18,10 @@
       "live": true
     },
     "hh": {
-      "price": 3.22,
-      "change": 0.08,
-      "pctChange": 2.55,
-      "asOf": "2026-10-14",
+      "price": 3.1,
+      "change": -0.18,
+      "pctChange": -5.49,
+      "asOf": "2026-10-20",
       "source": "EIA (Henry Hub spot)",
       "live": true
     },
