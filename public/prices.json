@@ -1,46 +1,46 @@
 {
-  "updatedAt": "2026-10-23T17:51:43.197Z",
+  "updatedAt": "2026-10-28T18:48:57.276Z",
   "anchors": {
     "wti": {
-      "price": 107.89,
-      "change": -2.12,
-      "pctChange": -1.93,
-      "asOf": "2026-10-20",
+      "price": 103.37,
+      "change": -1.88,
+      "pctChange": -1.79,
+      "asOf": "2026-10-27",
       "source": "EIA (Cushing, OK spot)",
       "live": true
     },
     "brent": {
-      "price": 115.22,
-      "change": -3.6,
-      "pctChange": -3.03,
-      "asOf": "2026-10-20",
+      "price": 123.1,
+      "change": -5.02,
+      "pctChange": -3.92,
+      "asOf": "2026-10-27",
       "source": "EIA (Europe Brent spot)",
       "live": true
     },
     "hh": {
-      "price": 3.1,
-      "change": -0.18,
-      "pctChange": -5.49,
-      "asOf": "2026-10-20",
+      "price": 2.76,
+      "change": 0.24,
+      "pctChange": 9.52,
+      "asOf": "2026-10-27",
       "source": "EIA (Henry Hub spot)",
       "live": true
     },
     "wcs": {
-      "price": 92.2,
-      "change": -2.12,
-      "pctChange": -1.93,
-      "asOf": "2026-10-20",
+      "price": 87.68,
+      "change": -1.88,
+      "pctChange": -1.79,
+      "asOf": "2026-10-27",
       "diffVsWti": -15.69,
       "diffMonth": "2026-08",
       "source": "Live WTI + Alberta Gov 2026-08 differential",
       "live": true
     },
     "aeco": {
-      "price": 1.08,
-      "change": -0.18,
-      "pctChange": -5.49,
-      "asOf": "2026-10-20",
-      "diffVsHh": -2.02,
+      "price": 0.73,
+      "change": 0.24,
+      "pctChange": 9.52,
+      "asOf": "2026-10-27",
+      "diffVsHh": -2.03,
       "diffMonth": "2026-08",
       "source": "Live Henry Hub + Alberta Gov 2026-08 differential",
       "live": true
