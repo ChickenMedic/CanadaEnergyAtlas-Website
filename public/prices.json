@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-28T18:48:57.276Z",
+  "updatedAt": "2026-10-30T18:34:24.639Z",
   "anchors": {
     "wti": {
       "price": 103.37,
@@ -26,21 +26,21 @@
       "live": true
     },
     "wcs": {
-      "price": 87.68,
+      "price": 86.43,
       "change": -1.88,
       "pctChange": -1.79,
       "asOf": "2026-10-27",
-      "diffVsWti": -15.69,
-      "diffMonth": "2026-08",
-      "source": "Live WTI + Alberta Gov 2026-08 differential",
+      "diffVsWti": -16.94,
+      "diffMonth": "2026-09",
+      "source": "Live WTI + Alberta Gov 2026-09 differential",
       "live": true
     },
     "aeco": {
-      "price": 0.73,
+      "price": 0.74,
       "change": 0.24,
       "pctChange": 9.52,
       "asOf": "2026-10-27",
-      "diffVsHh": -2.03,
+      "diffVsHh": -2.02,
       "diffMonth": "2026-08",
       "source": "Live Henry Hub + Alberta Gov 2026-08 differential",
       "live": true
