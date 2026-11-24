@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-18T21:22:53.001Z",
+  "updatedAt": "2026-11-24T22:59:27.880Z",
   "anchors": {
     "wti": {
       "price": 89.53,
@@ -26,13 +26,13 @@
       "live": true
     },
     "wcs": {
-      "price": 72.59,
+      "price": 67.92,
       "change": 0.29,
       "pctChange": 0.32,
       "asOf": "2026-11-17",
-      "diffVsWti": -16.94,
-      "diffMonth": "2026-09",
-      "source": "Live WTI + Alberta Gov 2026-09 differential",
+      "diffVsWti": -21.61,
+      "diffMonth": "2026-10",
+      "source": "Live WTI + Alberta Gov 2026-10 differential",
       "live": true
     },
     "aeco": {
