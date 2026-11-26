@@ -1,27 +1,27 @@
 {
-  "updatedAt": "2026-11-25T22:28:16.781Z",
+  "updatedAt": "2026-11-26T22:18:15.344Z",
   "anchors": {
     "wti": {
-      "price": 82.24,
-      "change": 0.82,
-      "pctChange": 1.01,
-      "asOf": "2026-11-24",
+      "price": 89.53,
+      "change": 0.29,
+      "pctChange": 0.32,
+      "asOf": "2026-11-17",
       "source": "EIA (Cushing, OK spot)",
       "live": true
     },
     "brent": {
-      "price": 91.8,
-      "change": 0.6,
-      "pctChange": 0.66,
-      "asOf": "2026-11-24",
+      "price": 92.94,
+      "change": 0.04,
+      "pctChange": 0.04,
+      "asOf": "2026-11-17",
       "source": "EIA (Europe Brent spot)",
       "live": true
     },
     "hh": {
-      "price": 3.3,
-      "change": 0.02,
-      "pctChange": 0.61,
-      "asOf": "2026-11-24",
+      "price": 3.1,
+      "change": -0.1,
+      "pctChange": -3.13,
+      "asOf": "2026-11-17",
       "source": "EIA (Henry Hub spot)",
       "live": true
     },
